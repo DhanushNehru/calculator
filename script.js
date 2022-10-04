@@ -1,19 +1,21 @@
 var display = document.getElementById("screen");
 var buttons = document.getElementsByClassName("button");
-  
-  Array.prototype.forEach.call(buttons, function(button) {
-  button.addEventListener("click", function() {
-    console.log(" Button text content", button.textContent)
-    if (button.textContent != "=" && 
-    button.textContent != "C" && 
-    button.textContent != "x" && 
-    button.textContent != "\u00F7" && 
-    button.textContent != "\u221A" && 
-    button.textContent != "x 2" &&
-    button.textContent != "x ²" && 
-    button.textContent != "%" &&  
-    button.textContent != "x^" && 
-    button.textContent != "x !") {
+
+Array.prototype.forEach.call(buttons, function (button) {
+  button.addEventListener("click", function () {
+    console.log(" Button text content", button.textContent);
+    if (
+      button.textContent != "=" &&
+      button.textContent != "C" &&
+      button.textContent != "x" &&
+      button.textContent != "\u00F7" &&
+      button.textContent != "\u221A" &&
+      button.textContent != "x 2" &&
+      button.textContent != "x ²" &&
+      button.textContent != "%" &&
+      button.textContent != "x^" &&
+      button.textContent != "x !"
+    ) {
       display.value += button.textContent;
     } else if (button.textContent === "=") {
       equals();
@@ -31,8 +33,7 @@ var buttons = document.getElementsByClassName("button");
       square();
     } else if (button.textContent === "\u221A") {
       squareRoot();
-    }
-    else if (button.textContent === "x^") {
+    } else if (button.textContent === "x^") {
       exponent();
     } else if (button.textContent === "x !") {
       factorial();
@@ -44,37 +45,47 @@ var buttons = document.getElementsByClassName("button");
   });
 });
 
-function right_bracket(){
+// Adding key event listener
+document.addEventListener("keydown", (e) => {
+  if(/^[0-9]/.test(parseInt(e.key))) {
+    display.value += parseInt(e.key);
+  }
+});
+
+function right_bracket() {
   display.value += "(";
 }
 
-function left_bracket(){
+function left_bracket() {
   display.value += ")";
 }
 
 function syntaxError() {
-  if (eval(display.value) == SyntaxError || eval(display.value) == ReferenceError || eval(display.value) == TypeError) {
+  if (
+    eval(display.value) == SyntaxError ||
+    eval(display.value) == ReferenceError ||
+    eval(display.value) == TypeError
+  ) {
     display.value == "Syntax Error";
   }
 }
 
-
 function equals() {
-  if(display.value.includes("^")){
-    console.log(" Equals1 ", display.value)
-    display.value = display.value.replaceAll("^","**");
-    console.log(" Equals2 ", display.value)
-    display.value = eval(display.value)
+  if (display.value.includes("^")) {
+    console.log(" Equals1 ", display.value);
+    display.value = display.value.replaceAll("^", "**");
+    console.log(" Equals2 ", display.value);
+    display.value = eval(display.value);
   }
   // if ((display.value).indexOf("^") > -1) {
   //   var base = (display.value).slice(0, (display.value).indexOf("^"));
   //   var exponent = (display.value).slice((display.value).indexOf("^") + 1);
   //   display.value = eval("Math.pow(" + base + "," + exponent + ")");
-  // } 
+  // }
   else {
-    display.value = eval(display.value)
+    display.value = eval(display.value);
     //checkLength()
-    syntaxError()
+    syntaxError();
   }
 }
 
@@ -91,7 +102,7 @@ function multiply() {
 }
 
 function divide() {
-  display.value +=  "/";
+  display.value += "/";
 }
 
 function factorial() {
@@ -103,7 +114,7 @@ function factorial() {
   } else {
     var number = 1;
     for (var i = display.value; i > 0; i--) {
-      number *=  i;
+      number *= i;
     }
     display.value = number;
   }
