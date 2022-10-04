@@ -66,6 +66,13 @@ button:hover {
   justify-content: space-evenly;
 }
 
+.functions-three {
+  width: 420px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
 .triggers {
   background-color: #ffc266;
 }
