@@ -1,9 +1,13 @@
-var display = document.getElementById("screen");
-var buttons = document.getElementsByClassName("button");
+let display = document.getElementById("screen");
+const buttons = Array.from(document.querySelectorAll(".button"));
+const backbtn=document.querySelector('.back');
 
-Array.prototype.forEach.call(buttons, function (button) {
+backbtn.addEventListener('click',()=>{
+  display.value=display.value.slice(0,-1);
+})
+buttons.forEach(function (button) {
   button.addEventListener("click", function () {
-    console.log(" Button text content", button.textContent);
+    console.log(display.value);
     if (
       button.textContent != "=" &&
       button.textContent != "C" &&
@@ -20,6 +24,7 @@ Array.prototype.forEach.call(buttons, function (button) {
     } else if (button.textContent === "=") {
       equals();
     } else if (button.textContent === "C") {
+      console.log("C");
       clear();
     } else if (button.textContent === "x") {
       multiply();

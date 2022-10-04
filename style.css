@@ -20,7 +20,7 @@ body {
   margin: auto;
 }
 
-input[type="text"] {
+#screen {
   width: 665px;
   height: 65px;
   border-radius: 5px;
@@ -28,7 +28,19 @@ input[type="text"] {
   background-color: #333333;
   color: #d9d9d9;
   padding: 0 10px 0 10px;
-  margin: 0px 0px 20px 100px;
+  margin: 0px 25px 20px 21px;
+}
+
+.back{
+  width: 126px;
+    height: 65px;
+    border-radius: 5px;
+    border: 0px;
+    background-color: #ffc266;
+    color: #000;
+    padding: 0 10px 0 10px;
+    font-weight: bold;
+    font-size: 15px;
 }
 
 .calc-buttons {
