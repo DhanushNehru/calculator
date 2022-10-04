@@ -3,47 +3,47 @@ var buttons = document.getElementsByClassName("button");
 
 Array.prototype.forEach.call(buttons, function (button) {
   button.addEventListener("click", function () {
-    console.log(" Button text content", button.textContent);
+    console.log(" Button text content", button.textContent.trim());
     if (
-      button.textContent != "=" &&
-      button.textContent != "C" &&
-      button.textContent != "x" &&
-      button.textContent != "\u00F7" &&
-      button.textContent != "\u221A" &&
-      button.textContent != "x 2" &&
-      button.textContent != "x ²" &&
-      button.textContent != "%" &&
-      button.textContent != "x^" &&
-      button.textContent != "x !" &&
-      button.textContent != "e ˣ" &&
-      button.textContent != "e x"
+      button.textContent.trim() != "=" &&
+      button.textContent.trim() != "C" &&
+      button.textContent.trim() != "x" &&
+      button.textContent.trim() != "\u00F7" &&
+      button.textContent.trim() != "\u221A" &&
+      button.textContent.trim() != "x 2" &&
+      button.textContent.trim() != "x ²" &&
+      button.textContent.trim() != "%" &&
+      button.textContent.trim() != "x^" &&
+      button.textContent.trim() != "x !" &&
+      button.textContent.trim() != "e ˣ" &&
+      button.textContent.trim() != "e x"
     ) {
-      display.value += button.textContent;
-    } else if (button.textContent === "=") {
+      display.value += button.textContent.trim();
+    } else if (button.textContent.trim() === "=") {
       equals();
-    } else if (button.textContent === "C") {
+    } else if (button.textContent.trim() === "C") {
       clear();
-    } else if (button.textContent === "x") {
+    } else if (button.textContent.trim() === "x") {
       multiply();
-    } else if (button.textContent === "\u00F7") {
+    } else if (button.textContent.trim() === "\u00F7") {
       divide();
-    } else if (button.textContent === "<=") {
+    } else if (button.textContent.trim() === "<=") {
       backspace();
-    } else if (button.textContent === "%") {
+    } else if (button.textContent.trim() === "%") {
       percent();
-    } else if (button.textContent === "x 2" || button.textContent === "x ²") {
+    } else if (button.textContent.trim() === "x 2" || button.textContent.trim() === "x ²") {
       square();
-    } else if (button.textContent === "\u221A") {
+    } else if (button.textContent.trim() === "\u221A") {
       squareRoot();
-    } else if (button.textContent === "x^") {
+    } else if (button.textContent.trim() === "x^") {
       exponent();
-    } else if (button.textContent === "x !") {
+    } else if (button.textContent.trim() === "x !") {
       factorial();
-    } else if (button.textContent === "(") {
+    } else if (button.textContent.trim() === "(") {
       right_bracket();
-    } else if (button.textContent === ")") {
+    } else if (button.textContent.trim() === ")") {
       left_bracket();
-    } else if (button.textContent === "e x" || button.textContent === "e ˣ") {
+    } else if (button.textContent.trim() === "e x" || button.textContent.trim() === "e ˣ") {
       exponential();
     }
   });
