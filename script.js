@@ -14,7 +14,9 @@ Array.prototype.forEach.call(buttons, function (button) {
       button.textContent != "x ²" &&
       button.textContent != "%" &&
       button.textContent != "x^" &&
-      button.textContent != "x !"
+      button.textContent != "x !" &&
+      button.textContent != "e ˣ" &&
+      button.textContent != "e x"
     ) {
       display.value += button.textContent;
     } else if (button.textContent === "=") {
@@ -41,6 +43,8 @@ Array.prototype.forEach.call(buttons, function (button) {
       right_bracket();
     } else if (button.textContent === ")") {
       left_bracket();
+    } else if (button.textContent === "e x" || button.textContent === "e ˣ") {
+      exponential();
     }
   });
 });
@@ -145,4 +149,8 @@ function percent() {
 
 function exponent() {
   display.value += "^";
+}
+
+function exponential() {
+  display.value = eval(Math.exp(display.value));
 }
