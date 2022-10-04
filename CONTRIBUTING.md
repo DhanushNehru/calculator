@@ -6,10 +6,11 @@ Reading and following these guidelines will help us make the contribution proces
 
 ## Quicklinks
 
-* [Code of Conduct](#code-of-conduct)
-* [Getting Started](#getting-started)
-    * [Issues](#issues)
-    * [Pull Requests](#pull-requests)
+* [Code of Conduct](https://github.com/DhanushNehru/calculator/blob/master/CODE-OF-CONDUCT.md)
+* [Getting Started](https://towardsdatascience.com/getting-started-with-git-and-github-6fcd0f2d4ac6)
+)
+    * [Issues](https://github.com/DhanushNehru/calculator/issues)
+    * [Pull Requests](https://github.com/DhanushNehru/calculator/pulls)
 
 ## Code of Conduct
 
@@ -39,10 +40,47 @@ For changes that address core functionality or would require breaking changes (e
 
 In general, we follow the ["fork-and-pull" Git workflow](https://github.com/susam/gitpr)
 
-1. Fork the repository to your own Github account
-2. Clone the project to your machine
-3. Create a branch locally with a succinct but descriptive name
-4. Commit changes to the branch
-5. Following any formatting and testing guidelines specific to this repo
-6. Push changes to your fork
-7. Open a PR in our repository
+1. Fork this repository to your own Github account by clicking the **Fork** button.
+    <br><img src="https://upload.wikimedia.org/wikipedia/commons/3/38/GitHub_Fork_Button.png" title="Fork image" width="400"/>
+2. **Clone** your forked repository to your local machine
+    <br><img src="https://docs.github.com/assets/images/help/repository/code-button.png" title="Code button" width="400"/>
+
+    For example, run this command inside your terminal:
+
+    ```bash
+    git clone https://github.com/<your-github-username>/Python_Projects.git
+    ```
+
+    **Replace \<your-github-username\> with your GitHub Username!**
+
+    Learn more about [forking](https://help.github.com/en/github/getting-started-with-github/fork-a-repo) and [cloning a repo](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository).
+3. Create a development branch locally with a succinct but descriptive name
+    ```bash
+    git checkout -b <branch-name>
+    ```
+4. Add & commit changes to the branch with `git add`, `git commit` ([write a good commit message](https://chris.beams.io/posts/git-commit/), if possible):
+
+    ```bash
+    git add -A
+    git commit -m "<your message>"
+    ```
+5.  Before you make any changes, [keep your fork in sync](https://www.freecodecamp.org/news/how-to-sync-your-fork-with-the-original-git-repository/) to avoid merge conflicts:
+
+    ```bash
+    git remote add upstream https://github.com/Arindam200/Python_Projects.git
+    git fetch upstream
+    git pull upstream master
+    git push
+    ```
+    
+    Alternatively, GitHub also provides syncing now - click "Fetch upstream" at the top of your repo below "Code" button.
+6. Following any formatting and testing guidelines specific to this repo
+7. Push changes to your fork
+    ```bash
+    git push origin <branch-name>
+    ```
+8. Open a PR in our repository on the GitHub page of _your fork_, and **make a pull request**:
+    ![pull request image](https://docs.github.com/assets/cb-26223/images/help/pull_requests/pullrequest-send.png)
+
+    Read more about pull requests on the [GitHub help pages](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
+- Now wait, until one of  your Pull Request*! If there are any conflicts, you will get a notification.
