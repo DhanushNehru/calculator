@@ -22,7 +22,7 @@ color: white;
 
 .calculator-container{
   text-align: center;
-  width: 50%;
+  width: 90%;
   margin: auto;
 }
 .calculator {
@@ -141,15 +141,63 @@ color: #085078;
   display: block;
 }
 
-@media only screen and (max-width : 1159px) {
+@media only screen and (max-width : 642px) {
   .functions-two {
       display: inline-block;
       width: auto;
     }
 }
 
-@media only screen and (max-width : 889px) {
+@media only screen and (max-width : 642px) {
   .separate-btn {
       display: inline;
     }
+}
+
+@media only screen and (max-width : 494px) {
+  .button {
+      margin: 3px;
+      width: 100px;
+      border: none;
+      height: 90px;
+      border-radius: 8px;
+      color: #000000;
+      cursor: pointer;
+    }
+}
+
+@media only screen and (max-width : 405px) {
+  .button {
+    margin: 3px;
+    width: 80px;
+    border: none;
+    height: 80px;
+    border-radius: 8px;
+    color: #000000;
+    cursor: pointer;
+  }
+}
+
+@media only screen and (max-width : 340px) {
+  .button {
+    margin: 3px;
+    width: 70px;
+    border: none;
+    height: 70px;
+    border-radius: 8px;
+    color: #000000;
+    cursor: pointer;
+  }
+}
+
+@media only screen and (max-width : 306px) {
+  .button {
+    margin: 3px;
+    width: 60px;
+    border: none;
+    height: 65px;
+    border-radius: 8px;
+    color: #000000;
+    cursor: pointer;
+  }
 }
