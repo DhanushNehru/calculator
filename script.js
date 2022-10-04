@@ -47,9 +47,20 @@ Array.prototype.forEach.call(buttons, function (button) {
 
 // Adding key event listener
 document.addEventListener("keydown", (e) => {
-  if(/^[0-9]/.test(parseInt(e.key))) {
-    display.value += parseInt(e.key);
-  }
+  // Check if the currently pressed key is number
+  if(/^[0-9]/.test(parseInt(e.key))) display.value += parseInt(e.key);
+
+  // Check if the currently pressed key is an operator
+  if(/^[+\-\*\/\=\(\)\%]*$/.test(e.key)) display.value +=  e.key;
+
+  // Check if the currently pressed key is Backspace, then remove last element
+  if(e.key === 'Backspace') display.value = display.value.slice(0, -1)
+
+  // Check if the currently pressed key is Enter, calculate the value
+  if(e.key === 'Enter') equals();
+
+  // Check if the currently pressed key is 'c', then clear the value
+  if(e.key === 'c') clear()
 });
 
 function right_bracket() {
