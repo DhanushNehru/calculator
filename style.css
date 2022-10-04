@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300&family=Ubuntu&display=swap');
 body {
   background: #085078; /* fallback for old browsers */
   background: -webkit-linear-gradient(
@@ -10,31 +11,42 @@ body {
     #85d8ce,
     #085078
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  font-family: 'Ubuntu', sans-serif;
 }
 
+.container{
+margin: 20px auto 20px;
+font-family: 'Heebo', sans-serif;
+color: white;
+}
+
+.calculator-container{
+  text-align: center;
+  width: 90%;
+  margin: auto;
+}
 .calculator {
-  width: 890px;
+  width: 100%;
   background-color: beige;
   padding: 20px;
   border-radius: 10px;
-  margin: auto;
+  margin: 20px auto 20px auto;
 }
 
 input[type="text"] {
-  width: 665px;
+  width: 100%;
   height: 65px;
   border-radius: 5px;
   border: 0px;
   background-color: #333333;
   color: #d9d9d9;
   padding: 0 10px 0 10px;
-  margin: 0px 0px 20px 100px;
+  
 }
 
 .calc-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
+  display: inline-block;
+  width: auto;
 }
 
 .button {
@@ -52,26 +64,21 @@ button:hover {
   transition: 0.2s;
 }
 
-.functions-one {
-  width: 420px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
+
+.functions-one{
+  display: inline-block;
 }
 
-.functions-two {
-  width: 420px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
+.functions-two{
+  display: inline-block;
+  width: 130px;
 }
 
-.functions-three {
-  width: 420px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-}
+/* 
+.functions-three{
+  display: block;
+  text-align: center;
+} */
 
 .triggers {
   background-color: #ffc266;
@@ -102,4 +109,95 @@ footer {
     text-align: center;
     padding: 0.25rem;
     bottom: 0;
+}
+
+.love a{
+  text-decoration: none;
+  color: white;
+  
+}
+
+.love a:hover{
+  color: yellow;
+}
+
+/* Boostrap CSS */
+
+.accordion{
+  width: 100%;
+  margin: 20px auto 20px;
+  text-align: center;
+}
+
+.accordion-button{
+color: #085078;
+}
+
+.accordion-body{
+  background-color: beige;
+}
+
+.separate-btn{
+  display: block;
+}
+
+@media only screen and (max-width : 642px) {
+  .functions-two {
+      display: inline-block;
+      width: auto;
+    }
+}
+
+@media only screen and (max-width : 642px) {
+  .separate-btn {
+      display: inline;
+    }
+}
+
+@media only screen and (max-width : 494px) {
+  .button {
+      margin: 3px;
+      width: 100px;
+      border: none;
+      height: 90px;
+      border-radius: 8px;
+      color: #000000;
+      cursor: pointer;
+    }
+}
+
+@media only screen and (max-width : 405px) {
+  .button {
+    margin: 3px;
+    width: 80px;
+    border: none;
+    height: 80px;
+    border-radius: 8px;
+    color: #000000;
+    cursor: pointer;
+  }
+}
+
+@media only screen and (max-width : 340px) {
+  .button {
+    margin: 3px;
+    width: 70px;
+    border: none;
+    height: 70px;
+    border-radius: 8px;
+    color: #000000;
+    cursor: pointer;
+  }
+}
+
+@media only screen and (max-width : 306px) {
+  .button {
+    margin: 3px;
+    width: 60px;
+    border: none;
+    height: 65px;
+    border-radius: 8px;
+    color: #000000;
+    cursor: pointer;
+  }
 }
