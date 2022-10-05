@@ -1,5 +1,10 @@
-var display = document.getElementById("screen");
-var buttons = document.getElementsByClassName("button");
+const display = document.getElementById("screen");
+const buttons = document.getElementsByClassName("button");
+const toggleButton = document.querySelector(".more-toggle-btn");
+const otherFuncView = document.querySelector(".other-functions");
+
+// by default
+otherFuncView.style.display = "none";
 
 Array.prototype.forEach.call(buttons, function (button) {
   button.addEventListener("click", function () {
@@ -172,3 +177,13 @@ function binary() {
 function decimal() {
   display.value = parseInt(display.value, 2);
 }
+
+// more functions toggle function.
+
+toggleButton.addEventListener("click", () => {
+  if (otherFuncView.style.display === "none") {
+    otherFuncView.style.display = "";
+  } else {
+    otherFuncView.style.display = "none";
+  }
+})
