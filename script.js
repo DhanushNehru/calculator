@@ -25,7 +25,8 @@ Array.prototype.forEach.call(buttons, function (button) {
       trimmedButtonValue != "e ˣ" &&
       trimmedButtonValue != "e x" &&
       trimmedButtonValue != "bin" &&
-      trimmedButtonValue != "dec"
+      trimmedButtonValue != "dec" &&
+      trimmedButtonValue != "pi"
     ) {
       display.value += trimmedButtonValue;
     } else if (trimmedButtonValue === "=") {
@@ -58,6 +59,8 @@ Array.prototype.forEach.call(buttons, function (button) {
       binary();
     } else if (trimmedButtonValue === "dec"){
       decimal();
+    } else if (trimmedButtonValue === "pi"){
+      pi();
     }
   });
 });
@@ -176,6 +179,10 @@ function binary() {
 
 function decimal() {
   display.value = parseInt(display.value, 2);
+}
+
+function pi() {
+  display.value += Math.PI;
 }
 
 // more functions toggle function.
