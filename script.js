@@ -54,7 +54,7 @@ Array.prototype.forEach.call(buttons, function (button) {
 // Adding key event listener
 document.addEventListener("keydown", (e) => {
   // Check if the currently pressed key is number
-  if(/^[0-9]/.test(parseInt(e.key))) display.value += parseInt(e.key);
+  if(isInteger(e.key)) display.value += parseInt(e.key);
 
   // Check if the currently pressed key is an operator
   if(/^[+\-\*\/\=\(\)\%]*$/.test(e.key)) display.value +=  e.key;
