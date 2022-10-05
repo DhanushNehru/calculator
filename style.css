@@ -14,24 +14,8 @@ body {
   font-family: 'Ubuntu', sans-serif;
 }
 
-.container{
-margin: 20px auto 20px;
-font-family: 'Heebo', sans-serif;
-color: white;
-}
 
-.calculator-container{
-  text-align: center;
-  width: 90%;
-  margin: auto;
-}
-.calculator {
-  width: 100%;
-  background-color: beige;
-  padding: 20px;
-  border-radius: 10px;
-  margin: 20px auto 20px auto;
-}
+
 
 input[type="text"] {
   width: 100%;
@@ -44,10 +28,7 @@ input[type="text"] {
   
 }
 
-.calc-buttons {
-  display: inline-block;
-  width: auto;
-}
+
 
 .button {
   margin: 3px;
@@ -65,14 +46,6 @@ button:hover {
 }
 
 
-.functions-one{
-  display: inline-block;
-}
-
-.functions-two{
-  display: inline-block;
-  width: 130px;
-}
 
 /* 
 .functions-three{
