@@ -11,6 +11,8 @@ A Calculator for general purposes.
 - Square
 - Square Root
 - Power of n
+- natural exponential function
+- factorial of n
 
 ## Built With
 
