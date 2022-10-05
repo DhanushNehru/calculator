@@ -18,7 +18,9 @@ Array.prototype.forEach.call(buttons, function (button) {
       trimmedButtonValue != "x^" &&
       trimmedButtonValue != "x !" &&
       trimmedButtonValue != "e ˣ" &&
-      trimmedButtonValue != "e x"
+      trimmedButtonValue != "e x" &&
+      trimmedButtonValue != "bin" &&
+      trimmedButtonValue != "dec"
     ) {
       display.value += trimmedButtonValue;
     } else if (trimmedButtonValue === "=") {
@@ -47,6 +49,10 @@ Array.prototype.forEach.call(buttons, function (button) {
       left_bracket();
     } else if (trimmedButtonValue === "e x" || trimmedButtonValue === "e ˣ") {
       exponential();
+    } else if (trimmedButtonValue === "bin") {
+      binary();
+    } else if (trimmedButtonValue === "dec"){
+      decimal();
     }
   });
 });
@@ -155,4 +161,14 @@ function exponent() {
 
 function exponential() {
   display.value = eval(Math.exp(display.value));
+}
+
+function binary() {
+  const number = parseInt(display.value);
+  const result = number.toString(2);
+  display.value = result;
+}
+
+function decimal() {
+  display.value = parseInt(display.value, 2);
 }
