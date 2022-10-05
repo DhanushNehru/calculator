@@ -3,47 +3,49 @@ var buttons = document.getElementsByClassName("button");
 
 Array.prototype.forEach.call(buttons, function (button) {
   button.addEventListener("click", function () {
-    console.log(" Button text content", button.textContent);
+    const trimmedButtonValue = button.textContent.trim();
+
+    console.log(" Button text content", trimmedButtonValue);
     if (
-      button.textContent != "=" &&
-      button.textContent != "C" &&
-      button.textContent != "x" &&
-      button.textContent != "\u00F7" &&
-      button.textContent != "\u221A" &&
-      button.textContent != "x 2" &&
-      button.textContent != "x ²" &&
-      button.textContent != "%" &&
-      button.textContent != "x^" &&
-      button.textContent != "x !" &&
-      button.textContent != "e ˣ" &&
-      button.textContent != "e x"
+      trimmedButtonValue != "=" &&
+      trimmedButtonValue != "C" &&
+      trimmedButtonValue != "x" &&
+      trimmedButtonValue != "\u00F7" &&
+      trimmedButtonValue != "\u221A" &&
+      trimmedButtonValue != "x 2" &&
+      trimmedButtonValue != "x ²" &&
+      trimmedButtonValue != "%" &&
+      trimmedButtonValue != "x^" &&
+      trimmedButtonValue != "x !" &&
+      trimmedButtonValue != "e ˣ" &&
+      trimmedButtonValue != "e x"
     ) {
-      display.value += button.textContent;
-    } else if (button.textContent === "=") {
+      display.value += trimmedButtonValue;
+    } else if (trimmedButtonValue === "=") {
       equals();
-    } else if (button.textContent === "C") {
+    } else if (trimmedButtonValue === "C") {
       clear();
-    } else if (button.textContent === "x") {
+    } else if (trimmedButtonValue === "x") {
       multiply();
-    } else if (button.textContent === "\u00F7") {
+    } else if (trimmedButtonValue === "\u00F7") {
       divide();
-    } else if (button.textContent === "<=") {
+    } else if (trimmedButtonValue === "<=") {
       backspace();
-    } else if (button.textContent === "%") {
+    } else if (trimmedButtonValue === "%") {
       percent();
-    } else if (button.textContent === "x 2" || button.textContent === "x ²") {
+    } else if (trimmedButtonValue === "x 2" || trimmedButtonValue === "x ²") {
       square();
-    } else if (button.textContent === "\u221A") {
+    } else if (trimmedButtonValue === "\u221A") {
       squareRoot();
-    } else if (button.textContent === "x^") {
+    } else if (trimmedButtonValue === "x^") {
       exponent();
-    } else if (button.textContent === "x !") {
+    } else if (trimmedButtonValue === "x !") {
       factorial();
-    } else if (button.textContent === "(") {
+    } else if (trimmedButtonValue === "(") {
       right_bracket();
-    } else if (button.textContent === ")") {
+    } else if (trimmedButtonValue === ")") {
       left_bracket();
-    } else if (button.textContent === "e x" || button.textContent === "e ˣ") {
+    } else if (trimmedButtonValue === "e x" || trimmedButtonValue === "e ˣ") {
       exponential();
     }
   });
@@ -55,16 +57,16 @@ document.addEventListener("keydown", (e) => {
   if(isInteger(e.key)) display.value += parseInt(e.key);
 
   // Check if the currently pressed key is an operator
-  else if(/^[+\-\*\/\=\(\)\%]*$/.test(e.key)) display.value +=  e.key;
+  if(/^[+\-\*\/\=\(\)\%]*$/.test(e.key)) display.value +=  e.key;
 
   // Check if the currently pressed key is Backspace, then remove last element
-  else if(e.key === 'Backspace') display.value = display.value.slice(0, -1)
+  if(e.key === 'Backspace') display.value = display.value.slice(0, -1)
 
   // Check if the currently pressed key is Enter, calculate the value
-  else if(e.key === 'Enter') equals();
+  if(e.key === 'Enter') equals();
 
   // Check if the currently pressed key is 'c', then clear the value
-  else if(e.key === 'c') clear()
+  if(e.key === 'c') clear()
 });
 
 function right_bracket() {
