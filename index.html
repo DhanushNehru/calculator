@@ -12,7 +12,7 @@
 
 <body>
     <!-- Calculator Component-->
-    <div class="">
+    <div >
 
         <!-- Title -->
             <h1 class="text-center text-4xl font-light my-10">
@@ -20,7 +20,7 @@
             </h1>
         
         <!--Calculator Container-->
-        <div class="container w-1/2 p-10 mx-auto bg-[#f5f5db] rounded-xl text-lg font-bold ">
+        <div class="container max-w-2/3 p-10 mx-auto bg-[#f5f5db] rounded-xl text-lg font-bold ">
 
                 <!-- Input View-->
                 <div class="w-2/3 mx-auto mb-10">
@@ -31,9 +31,9 @@
                 <div class="">
                     
                     <!-- Numbers and Functions-->
-                    <div class="flex flex-row justify-around">
+                    <div class="flex flex-col gap-3 md:flex-row justify-around">
 
-                        <div class=" grid grid-cols-3 w-5/12 gap-3">
+                        <div class=" grid grid-cols-3 max-w-5/12 gap-3">
 
                             <button class="bg-[#999999] rounded-lg p-6" >
                                 7
@@ -76,7 +76,7 @@
                             </button>
                         </div>
     
-                        <div class="grid grid-cols-3 w-5/12 gap-3">
+                        <div class="grid grid-cols-3 max-w-5/12 gap-3">
                             <button class="bg-[#80d4ff] rounded-lg p-6">
                                 +
                             </button>
@@ -131,6 +131,8 @@
 
 
         </div>
+
+
     </div>
     
     <script src="script.js"></script>
