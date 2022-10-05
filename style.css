@@ -64,6 +64,14 @@ button:hover {
   transition: 0.2s;
 }
 
+button:nth-child(13) {
+  background-color: #dc3545;
+}
+
+button:nth-child(13):hover {
+  color: white;
+}
+
 
 .functions-one{
   display: inline-block;
