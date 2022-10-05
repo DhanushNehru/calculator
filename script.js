@@ -3,6 +3,7 @@ const buttons = Array.from(document.querySelectorAll(".button"));
 
 buttons.forEach(function (button) {
   button.addEventListener("click", function () {
+
     if (
       button.textContent != "=" &&
       button.textContent != "C" &&
@@ -14,34 +15,55 @@ buttons.forEach(function (button) {
       button.textContent != "%" &&
       button.textContent != "x^" &&
       button.textContent != "x !" && button.textContent!="Back"
+=======
+    const trimmedButtonValue = button.textContent.trim();
+
+    console.log(" Button text content", trimmedButtonValue);
+    if (
+      trimmedButtonValue != "=" &&
+      trimmedButtonValue != "C" &&
+      trimmedButtonValue != "x" &&
+      trimmedButtonValue != "\u00F7" &&
+      trimmedButtonValue != "\u221A" &&
+      trimmedButtonValue != "x 2" &&
+      trimmedButtonValue != "x ²" &&
+      trimmedButtonValue != "%" &&
+      trimmedButtonValue != "x^" &&
+      trimmedButtonValue != "x !" &&
+      trimmedButtonValue != "e ˣ" &&
+      trimmedButtonValue != "e x"
     ) {
-      display.value += button.textContent;
-    } else if (button.textContent === "=") {
+      display.value += trimmedButtonValue;
+    } else if (trimmedButtonValue === "=") {
       equals();
-    } else if (button.textContent === "C") {
+    } else if (trimmedButtonValue === "C") {
       clear();
-    } else if (button.textContent === "x") {
+    } else if (trimmedButtonValue === "x") {
       multiply();
-    } else if (button.textContent === "\u00F7") {
+    } else if (trimmedButtonValue === "\u00F7") {
       divide();
-    } else if (button.textContent === "<=") {
+    } else if (trimmedButtonValue === "<=") {
       backspace();
-    } else if (button.textContent === "%") {
+    } else if (trimmedButtonValue === "%") {
       percent();
-    } else if (button.textContent === "x 2" || button.textContent === "x ²") {
+    } else if (trimmedButtonValue === "x 2" || trimmedButtonValue === "x ²") {
       square();
-    } else if (button.textContent === "\u221A") {
+    } else if (trimmedButtonValue === "\u221A") {
       squareRoot();
-    } else if (button.textContent === "x^") {
+    } else if (trimmedButtonValue === "x^") {
       exponent();
-    } else if (button.textContent === "x !") {
+    } else if (trimmedButtonValue === "x !") {
       factorial();
-    } else if (button.textContent === "(") {
+    } else if (trimmedButtonValue === "(") {
       right_bracket();
-    } else if (button.textContent === ")") {
+    } else if (trimmedButtonValue === ")") {
       left_bracket();
+
     } else if(button.textContent ==="Back"){
       display.value = display.value.slice(0, -1);
+=======
+    } else if (trimmedButtonValue === "e x" || trimmedButtonValue === "e ˣ") {
+      exponential();
     }
   });
 });
@@ -146,4 +168,8 @@ function percent() {
 
 function exponent() {
   display.value += "^";
+}
+
+function exponential() {
+  display.value = eval(Math.exp(display.value));
 }
