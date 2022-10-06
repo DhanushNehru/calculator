@@ -31,7 +31,10 @@ buttons.forEach(function (button) {
       trimmedButtonValue != "x^" &&
       trimmedButtonValue != "x !" &&
       trimmedButtonValue != "e ˣ" &&
-      trimmedButtonValue != "e x"
+      trimmedButtonValue != "e x" &&
+      trimmedButtonValue != "bin" &&
+      trimmedButtonValue != "dec" &&
+      trimmedButtonValue != "pi"
     ) {
       display.value += trimmedButtonValue;
     } else if (trimmedButtonValue === "=") {
@@ -64,14 +67,20 @@ buttons.forEach(function (button) {
 =======
     } else if (trimmedButtonValue === "e x" || trimmedButtonValue === "e ˣ") {
       exponential();
-    }
+    } else if (trimmedButtonValue === "bin") {
+      binary();
+    } else if (trimmedButtonValue === "dec"){
+      decimal();
+    } else if (trimmedButtonValue === "pi"){
+      pi();
+    } 
   });
 });
 
 // Adding key event listener
 document.addEventListener("keydown", (e) => {
   // Check if the currently pressed key is number
-  if(/^[0-9]/.test(parseInt(e.key))) display.value += parseInt(e.key);
+  if(isInteger(e.key)) display.value += parseInt(e.key);
 
   // Check if the currently pressed key is an operator
   if(/^[+\-\*\/\=\(\)\%]*$/.test(e.key)) display.value +=  e.key;
@@ -173,3 +182,27 @@ function exponent() {
 function exponential() {
   display.value = eval(Math.exp(display.value));
 }
+
+function binary() {
+  const number = parseInt(display.value);
+  const result = number.toString(2);
+  display.value = result;
+}
+
+function decimal() {
+  display.value = parseInt(display.value, 2);
+}
+
+function pi() {
+  display.value += Math.PI;
+}
+
+// more functions toggle function.
+
+toggleButton.addEventListener("click", () => {
+  if (otherFuncView.style.display === "none") {
+    otherFuncView.style.display = "";
+  } else {
+    otherFuncView.style.display = "none";
+  }
+})

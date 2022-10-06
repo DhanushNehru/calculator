@@ -22,11 +22,11 @@ color: white;
 
 .calculator-container{
   text-align: center;
-  width: 90%;
-  margin: auto;
+  /* width: 90%; */
+  /* margin: auto; */
 }
 .calculator {
-  width: 100%;
+  width: 80%;
   background-color: beige;
   padding: 20px;
   border-radius: 10px;
@@ -46,7 +46,6 @@ input[type="text"] {
   background-color: #333333;
   color: #d9d9d9;
   padding: 0 10px 0 10px;
-
   margin: 0px 25px 20px 21px;
 }
 
@@ -60,8 +59,6 @@ input[type="text"] {
     padding: 0 10px 0 10px;
     font-weight: bold;
     font-size: 15px;
-=======
-
 }
 
 .calc-buttons {
@@ -84,6 +81,14 @@ button:hover {
   transition: 0.2s;
 }
 
+button:nth-child(13) {
+  background-color: #dc3545;
+}
+
+button:nth-child(13):hover {
+  color: white;
+}
+
 
 .functions-one{
   display: inline-block;
@@ -91,17 +96,36 @@ button:hover {
 
 .functions-two{
   display: inline-block;
-  width: 130px;
 }
 
-/* 
-.functions-three{
-  display: block;
+.padding-functions{
+  display: inline-block;
+  width: 40px;
+  background-color: red;
+}
+
+.more-toggle-btn{
+  height: 60px;
+  background-color: #085078;
+  color: white;
+  font-size: large;
+  border-radius: 23px;
+}
+
+.more-toggle-btn:hover{
+  color: #000000;
+  cursor: pointer;
+}
+.other-functions{
+  margin: 20px;
   text-align: center;
-} */
+}
+
+
 
 .triggers {
   background-color: #ffc266;
+  width: 60%;
 }
 
 .numbers {
@@ -141,83 +165,51 @@ footer {
   color: yellow;
 }
 
-/* Boostrap CSS */
-
-.accordion{
-  width: 100%;
-  margin: 20px auto 20px;
-  text-align: center;
-}
-
-.accordion-button{
-color: #085078;
-}
-
-.accordion-body{
-  background-color: beige;
-}
 
 .separate-btn{
   display: block;
 }
 
-@media only screen and (max-width : 642px) {
-  .functions-two {
-      display: inline-block;
-      width: auto;
-    }
+
+/* Lots of media query for best responsiveness from a PC to a 2g phone :) */
+
+@media only screen and (max-width : 1089px) {
+  .padding-functions{
+    width: 0px;
+  }
 }
 
-@media only screen and (max-width : 642px) {
-  .separate-btn {
-      display: inline;
-    }
+@media only screen and (max-width : 529px) {
+  .button{
+  width: 100px;
+  height: 100px;
+  }
 }
 
-@media only screen and (max-width : 494px) {
+@media only screen and (max-width : 426px) {
   .button {
-      margin: 3px;
-      width: 100px;
-      border: none;
-      height: 90px;
-      border-radius: 8px;
-      color: #000000;
-      cursor: pointer;
-    }
-}
-
-@media only screen and (max-width : 405px) {
-  .button {
-    margin: 3px;
     width: 80px;
-    border: none;
     height: 80px;
-    border-radius: 8px;
-    color: #000000;
-    cursor: pointer;
   }
 }
 
-@media only screen and (max-width : 340px) {
+@media only screen and (max-width : 352px) {
   .button {
-    margin: 3px;
     width: 70px;
-    border: none;
     height: 70px;
-    border-radius: 8px;
-    color: #000000;
-    cursor: pointer;
   }
 }
 
-@media only screen and (max-width : 306px) {
+@media only screen and (max-width : 312px) {
   .button {
-    margin: 3px;
     width: 60px;
-    border: none;
-    height: 65px;
-    border-radius: 8px;
-    color: #000000;
-    cursor: pointer;
+    height: 60px;
+  }
+}
+
+@media only screen and (max-width : 275px) {
+  .button {
+    width: 50px;
+    height: 50px;
   }
 }
