@@ -56,6 +56,11 @@ color: white;
   font-size: 15px;
 }
 
+.upper{
+  display:flex;
+  justify-content: center;
+  
+}
 .calc-buttons {
   display: inline-block;
   width: auto;
