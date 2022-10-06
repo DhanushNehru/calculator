@@ -27,6 +27,9 @@ Array.prototype.forEach.call(buttons, function (button) {
       trimmedButtonValue != "bin" &&
       trimmedButtonValue != "dec" &&
       trimmedButtonValue != "pi" && trimmedButtonValue != "Back"
+      trimmedButtonValue != "pi" &&
+      trimmedButtonValue != "log" &&
+      trimmedButtonValue != "log10"
     ) {
       display.value += trimmedButtonValue;
     } else if (trimmedButtonValue === "=") {
@@ -61,9 +64,13 @@ Array.prototype.forEach.call(buttons, function (button) {
       decimal();
     } else if (trimmedButtonValue === "pi"){
       pi();
+
     } else if (trimmedButtonValue === "Back") {
       display.value = display.value.slice(0, -1);
     }
+    } else if(trimmedButtonValue === "log10"){
+      log10();
+    } 
   });
 });
 
@@ -185,6 +192,10 @@ function decimal() {
 
 function pi() {
   display.value += (Math.PI).toFixed(3);
+}
+
+function log10(){
+  display.value = eval(Math.log10(display.value));
 }
 
 // more functions toggle function.
