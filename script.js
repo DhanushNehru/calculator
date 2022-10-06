@@ -2,6 +2,7 @@ const display = document.getElementById("screen");
 const buttons = document.getElementsByClassName("button");
 const toggleButton = document.querySelector(".more-toggle-btn");
 const otherFuncView = document.querySelector(".other-functions");
+const calculatorContainer = document.getElementById("body_screen");
 
 // by default
 otherFuncView.style.display = "none";
@@ -216,3 +217,11 @@ toggleButton.addEventListener("click", () => {
     otherFuncView.style.display = "none";
   }
 })
+
+
+// on press escap button 
+calculatorContainer.addEventListener("keyup", (e) => {
+  if (e.key === "Escape") {
+    display.value = '';   
+  } 
+});
