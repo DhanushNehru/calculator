@@ -1,5 +1,5 @@
 const display = document.getElementById("screen");
-const buttons = document.getElementsByClassName("button");
+const buttons = Array.from(document.querySelectorAll(".button"));
 const toggleButton = document.querySelector(".more-toggle-btn");
 const otherFuncView = document.querySelector(".other-functions");
 
@@ -10,7 +10,7 @@ Array.prototype.forEach.call(buttons, function (button) {
   button.addEventListener("click", function () {
     const trimmedButtonValue = button.textContent.trim();
 
-    console.log(" Button text content", trimmedButtonValue);
+    // console.log(" Button text content", trimmedButtonValue);
     if (
       trimmedButtonValue != "=" &&
       trimmedButtonValue != "C" &&
@@ -26,7 +26,7 @@ Array.prototype.forEach.call(buttons, function (button) {
       trimmedButtonValue != "e x" &&
       trimmedButtonValue != "bin" &&
       trimmedButtonValue != "dec" &&
-      trimmedButtonValue != "pi"
+      trimmedButtonValue != "pi" && trimmedButtonValue != "Back"
     ) {
       display.value += trimmedButtonValue;
     } else if (trimmedButtonValue === "=") {
@@ -61,14 +61,16 @@ Array.prototype.forEach.call(buttons, function (button) {
       decimal();
     } else if (trimmedButtonValue === "pi"){
       pi();
-    } 
+    } else if (trimmedButtonValue === "Back") {
+      display.value = display.value.slice(0, -1);
+    }
   });
 });
 
 // Adding key event listener
 document.addEventListener("keydown", (e) => {
   // Check if the currently pressed key is number
-  if(isInteger(e.key)) display.value += parseInt(e.key);
+  if ((e.key).isInteger) display.value += parseInt(e.key);
 
   // Check if the currently pressed key is an operator
   if(/^[+\-\*\/\=\(\)\%]*$/.test(e.key)) display.value +=  e.key;
@@ -80,7 +82,7 @@ document.addEventListener("keydown", (e) => {
   if(e.key === 'Enter') equals();
 
   // Check if the currently pressed key is 'c', then clear the value
-  if(e.key === 'c') clear()
+  if(e.key === 'c') clear();
 });
 
 function right_bracket() {
@@ -182,7 +184,7 @@ function decimal() {
 }
 
 function pi() {
-  display.value += Math.PI;
+  display.value += (Math.PI).toFixed(3);
 }
 
 // more functions toggle function.

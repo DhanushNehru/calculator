@@ -33,15 +33,27 @@ color: white;
   margin: 20px auto 20px auto;
 }
 
-input[type="text"] {
-  width: 100%;
+#screen {
+  width: 665px;
   height: 65px;
   border-radius: 5px;
   border: 0px;
   background-color: #333333;
   color: #d9d9d9;
-  /* padding: 0 10px 0 10px; */
-  
+  padding: 0 10px 0 10px;
+  margin: 0px 25px 20px 21px;
+}
+
+#back {
+  width: 126px;
+  height: 65px;
+  border-radius: 5px;
+  border: 0px;
+  background-color: #ffc266;
+  color: #000;
+  padding: 0 10px 0 10px;
+  font-weight: bold;
+  font-size: 15px;
 }
 
 .calc-buttons {
