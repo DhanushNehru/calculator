@@ -1,15 +1,14 @@
 const display = document.getElementById("screen");
 const buttons = document.getElementsByClassName("button");
-const toggleButton = document.querySelector(".more-toggle-btn");
-const otherFuncView = document.querySelector(".other-functions");
+// const toggleButton = document.querySelector(".more-toggle-btn");
+// const otherFuncView = document.querySelector(".other-functions");
 
 // by default
-otherFuncView.style.display = "none";
+// otherFuncView.style.display = "none";
 
 Array.prototype.forEach.call(buttons, function (button) {
   button.addEventListener("click", function () {
     const trimmedButtonValue = button.textContent.trim();
-
     console.log(" Button text content", trimmedButtonValue);
     if (
       trimmedButtonValue != "=" &&
@@ -25,7 +24,8 @@ Array.prototype.forEach.call(buttons, function (button) {
       trimmedButtonValue != "e ˣ" &&
       trimmedButtonValue != "e x" &&
       trimmedButtonValue != "bin" &&
-      trimmedButtonValue != "dec"
+      trimmedButtonValue != "dec" &&
+      trimmedButtonValue != "clr"
     ) {
       display.value += trimmedButtonValue;
     } else if (trimmedButtonValue === "=") {
@@ -58,6 +58,8 @@ Array.prototype.forEach.call(buttons, function (button) {
       binary();
     } else if (trimmedButtonValue === "dec"){
       decimal();
+    } else if (trimmedButtonValue === "clr"){
+      clearOne();
     }
   });
 });
@@ -121,6 +123,10 @@ function clear() {
   display.value = "";
 }
 
+function clearOne() {
+  display.value = display.value.slice(0, -1);
+}
+
 function backspace() {
   display.value = display.value.substring(0, display.value.length - 1);
 }
@@ -180,10 +186,10 @@ function decimal() {
 
 // more functions toggle function.
 
-toggleButton.addEventListener("click", () => {
-  if (otherFuncView.style.display === "none") {
-    otherFuncView.style.display = "";
-  } else {
-    otherFuncView.style.display = "none";
-  }
-})
+// toggleButton.addEventListener("click", () => {
+//   if (otherFuncView.style.display === "none") {
+//     otherFuncView.style.display = "";
+//   } else {
+//     otherFuncView.style.display = "none";
+//   }
+// })
