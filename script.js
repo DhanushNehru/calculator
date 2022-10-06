@@ -26,7 +26,8 @@ Array.prototype.forEach.call(buttons, function (button) {
       trimmedButtonValue != "e x" &&
       trimmedButtonValue != "bin" &&
       trimmedButtonValue != "dec" &&
-      trimmedButtonValue != "pi"
+      trimmedButtonValue != "pi" &&
+      trimmedButtonValue != "log"
     ) {
       display.value += trimmedButtonValue;
     } else if (trimmedButtonValue === "=") {
@@ -61,6 +62,8 @@ Array.prototype.forEach.call(buttons, function (button) {
       decimal();
     } else if (trimmedButtonValue === "pi"){
       pi();
+    } else if(trimmedButtonValue === "log"){
+      log();
     } 
   });
 });
