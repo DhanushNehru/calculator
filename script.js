@@ -188,6 +188,10 @@ function pi() {
   display.value += Math.PI;
 }
 
+function log(){
+  display.value = eval(Math.log10(display.value));
+}
+
 // more functions toggle function.
 
 toggleButton.addEventListener("click", () => {
