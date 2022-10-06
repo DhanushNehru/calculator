@@ -35,13 +35,17 @@ color: white;
 
 input[type="text"] {
   width: 100%;
-  height: 65px;
+  height: 100px;
   border-radius: 5px;
   border: 0px;
   background-color: #333333;
   color: #d9d9d9;
   /* padding: 0 10px 0 10px; */
-  
+  font-size: x-large;
+  padding: 20px;
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+  box-sizing: border-box;
 }
 
 .calc-buttons {
@@ -51,9 +55,9 @@ input[type="text"] {
 
 .button {
   margin: 3px;
-  width: 126px;
+  width: 108px;
   border: none;
-  height: 90px;
+  height: 80px;
   border-radius: 8px;
   color: #000000;
   cursor: pointer;
