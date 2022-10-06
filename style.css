@@ -39,6 +39,7 @@ input[type="text"] {
   border-radius: 5px;
   border: 0px;
   background-color: #333333;
+  box-shadow: 4px 4px 30px #656060;
   color: #d9d9d9;
   /* padding: 0 10px 0 10px; */
   font-size: x-large;
@@ -61,6 +62,7 @@ input[type="text"] {
   border-radius: 8px;
   color: #000000;
   cursor: pointer;
+  /* box-shadow: 2px 2px 40px #df6672; */
 }
 
 button:hover {
@@ -70,6 +72,7 @@ button:hover {
 
 button:nth-child(13) {
   background-color: #dc3545;
+  box-shadow: 2px 2px 40px #6d5255;
 }
 
 button:nth-child(13):hover {
@@ -112,19 +115,23 @@ button:nth-child(13):hover {
 
 .triggers {
   background-color: #ffc266;
+  box-shadow: 2px 2px 60px #958c80;
   width: 60%;
 }
 
 .numbers {
   background-color: #999999;
+  box-shadow: 2px 2px 60px #7d7373;
 }
 
 .basic-stuff {
   background-color: #80d4ff;
+  box-shadow: 2px 2px 60px #95a1a7;
 }
 
 .complex-stuff {
   background-color: #80ffff;
+  box-shadow: 2px 2px 60px #838f95;
 }
 
 footer {
