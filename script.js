@@ -2,12 +2,19 @@ const display = document.getElementById("screen");
 const buttons = Array.from(document.querySelectorAll(".button"));
 const toggleButton = document.querySelector(".more-toggle-btn");
 const otherFuncView = document.querySelector(".other-functions");
+const calculatorContainer = document.getElementById("body_screen");
 
 // by default
 otherFuncView.style.display = "none";
 
+function play(){
+  audio = document.querySelector('audio');
+  audio.play();
+}
+
 Array.prototype.forEach.call(buttons, function (button) {
   button.addEventListener("click", function () {
+    play();
     const trimmedButtonValue = button.textContent.trim();
 
     // console.log(" Button text content", trimmedButtonValue);
@@ -29,7 +36,9 @@ Array.prototype.forEach.call(buttons, function (button) {
       trimmedButtonValue != "pi" && trimmedButtonValue != "Back"
       trimmedButtonValue != "pi" &&
       trimmedButtonValue != "log" &&
-      trimmedButtonValue != "log10"
+      trimmedButtonValue != "log10" &&
+      trimmedButtonValue != "1/x" &&
+      trimmedButtonValue != "x 3"
     ) {
       display.value += trimmedButtonValue;
     } else if (trimmedButtonValue === "=") {
@@ -60,36 +69,52 @@ Array.prototype.forEach.call(buttons, function (button) {
       exponential();
     } else if (trimmedButtonValue === "bin") {
       binary();
-    } else if (trimmedButtonValue === "dec"){
+    } else if (trimmedButtonValue === "dec") {
       decimal();
-    } else if (trimmedButtonValue === "pi"){
+    } else if (trimmedButtonValue === "pi") {
       pi();
+
 
     } else if (trimmedButtonValue === "Back") {
       display.value = display.value.slice(0, -1);
     }
     } else if(trimmedButtonValue === "log10"){
+
+    } else if (trimmedButtonValue === "log10") {
+
       log10();
-    } 
+    } else if (trimmedButtonValue === "1/x") {
+      reciprocalValue();
+    } else if (trimmedButtonValue === "x 3") {
+      cube();
+    }
   });
 });
 
 // Adding key event listener
 document.addEventListener("keydown", (e) => {
   // Check if the currently pressed key is number
+
   if ((e.key).isInteger) display.value += parseInt(e.key);
 
+  if (isInteger(e.key)) display.value += parseInt(e.key);
+
+
   // Check if the currently pressed key is an operator
-  if(/^[+\-\*\/\=\(\)\%]*$/.test(e.key)) display.value +=  e.key;
+  if (/^[+\-\*\/\=\(\)\%]*$/.test(e.key)) display.value += e.key;
 
   // Check if the currently pressed key is Backspace, then remove last element
-  if(e.key === 'Backspace') display.value = display.value.slice(0, -1)
+  if (e.key === 'Backspace') display.value = display.value.slice(0, -1)
 
   // Check if the currently pressed key is Enter, calculate the value
-  if(e.key === 'Enter') equals();
+  if (e.key === 'Enter') equals();
 
   // Check if the currently pressed key is 'c', then clear the value
+
   if(e.key === 'c') clear();
+
+  if (e.key === 'c') clear()
+
 });
 
 function right_bracket() {
@@ -194,16 +219,34 @@ function pi() {
   display.value += (Math.PI).toFixed(3);
 }
 
-function log10(){
+function log10() {
   display.value = eval(Math.log10(display.value));
+}
+
+function reciprocalValue() {
+  display.value = Math.pow(display.value, -1);
+}
+
+function cube() {
+  display.value = eval(display.value * display.value * display.value);
 }
 
 // more functions toggle function.
 
 toggleButton.addEventListener("click", () => {
   if (otherFuncView.style.display === "none") {
+    toggleButton.innerHTML = "Hide functions:"
     otherFuncView.style.display = "";
   } else {
     otherFuncView.style.display = "none";
+    toggleButton.innerHTML = "More functions:"
   }
 })
+
+
+// on press escap button 
+calculatorContainer.addEventListener("keyup", (e) => {
+  if (e.key === "Escape") {
+    display.value = '';   
+  } 
+});

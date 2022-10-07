@@ -9,13 +9,13 @@
     <link rel="icon" href="https://cdn2.iconfinder.com/data/icons/ios7-inspired-mac-icon-set/512/Calculator_512.png">
 </head>
 
-<body>
+<body id="body_screen">
     <div class="container">
         <h1 align="center">
             Calculator
         </h1>
     </div>
-    <div class="calculator-container">
+    <div class="calculator-container" id="calculator_container_screen">
         <div class="calculator">
             <div class="upper">
             <input type="text" id="screen" maxlength="30" />
@@ -36,6 +36,7 @@
                     <button class="button numbers"><h1>2</h1></button>
                     <button class="button numbers"><h1>3</h1></button>
                     <div class="separate-btn"></div>
+
                     <button class="button" ><h1>C</h1></button>
                     <button class="button numbers"><h1>0</h1></button>
                     <button class="button basic-stuff"><h1>.</h1></button>
@@ -49,6 +50,30 @@
                     <button class="button basic-stuff"><h1>+</h1></button>
                     <button class="button basic-stuff"><h1>-</h1></button>
                     <button class="button basic-stuff"><h1>x</h1></button>
+
+                    <button class="button">
+                        <h1>C</h1>
+                    </button>
+                    <button class="button numbers">
+                        <h1>0</h1>
+                    </button>
+                    <button class="button basic-stuff">
+                        <h1>.</h1>
+                    </button>
+                </div>
+                <div class="padding-functions"></div>
+                <div class="functions-two">
+                    <button class="button basic-stuff">
+                        <h1>+</h1>
+                    </button>
+                    <button class="button basic-stuff">
+                        <h1>-</h1>
+                    </button>
+                    <button class="button basic-stuff">
+                        <h1>x</h1>
+                    </button>
+
+
                     <div class="separate-btn"></div>
 
                     <button class="button basic-stuff"><h1><span>&#247;</span></h1></button>
@@ -60,18 +85,19 @@
                     <button class="button complex-stuff"><h1>x <sup>2</sup></h1></button>
                     <button class="button complex-stuff"><h1>%</h1></button>
                     <div class="separate-btn"></div>
-                    
+
 
                     <button class="button complex-stuff"><h1>x !</h1></button>
                     <button class="button complex-stuff"><h1>x^</h1></button>
                     <button class="button complex-stuff"><h1>e <sup>x</sup></h1></button>
                 </div>
                 <br>
-                
+
                 <br>
                 <div class="more-functions-toggle">
                     <button class="more-toggle-btn">More functions:</button>
                     <div class="other-functions">
+
 
                         <button class="button complex-stuff"><h1>bin</h1></button>
                         <button class="button complex-stuff"><h1>dec</h1></button>
@@ -81,6 +107,30 @@
                         <button class="button complex-stuff"><h1>pi</h1></button>
                             
                     <button class="button complex-stuff"><h1>log<sub>10</sub></h1></button>
+
+                        <button class="button complex-stuff">
+                            <h1>bin</h1>
+                        </button>
+                        <button class="button complex-stuff">
+                            <h1>dec</h1>
+                            <button class="button complex-stuff">
+                                <h1>pi</h1>
+
+                                <button class="button complex-stuff">
+                                    <h1>log<sub>10</sub>
+                                    </h1>
+                                </button>
+
+                                <button class="button complex-stuff">
+                                    <h1>1/x</sub>
+                                    </h1>
+                                </button>
+
+                                <button class="button complex-stuff">
+                                    <h1>x <sup>3</sup></h1>
+                                    </h1>
+                                </button>
+
                     </div>
                 </div>
                 <br>
@@ -90,6 +140,8 @@
             </div>
         </div>
     </div>
+
+    <audio src="tink.wav"></audio>
     
     <script src="script.js"></script>
     <br></br>
