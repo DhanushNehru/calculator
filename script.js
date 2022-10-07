@@ -6,8 +6,14 @@ const otherFuncView = document.querySelector(".other-functions");
 // by default
 otherFuncView.style.display = "none";
 
+function play(){
+  audio = document.querySelector('audio');
+  audio.play();
+}
+
 Array.prototype.forEach.call(buttons, function (button) {
   button.addEventListener("click", function () {
+    play();
     const trimmedButtonValue = button.textContent.trim();
 
     console.log(" Button text content", trimmedButtonValue);
