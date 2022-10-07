@@ -34,7 +34,9 @@ Array.prototype.forEach.call(buttons, function (button) {
       trimmedButtonValue != "dec" &&
       trimmedButtonValue != "pi" &&
       trimmedButtonValue != "log" &&
-      trimmedButtonValue != "log10"
+      trimmedButtonValue != "log10"&&
+      trimmedButtonValue != "sin" &&
+      trimmedButtonValue != "cos"
     ) {
       display.value += trimmedButtonValue;
     } else if (trimmedButtonValue === "=") {
@@ -71,7 +73,11 @@ Array.prototype.forEach.call(buttons, function (button) {
       pi();
     } else if(trimmedButtonValue === "log10"){
       log10();
-    } 
+    } else if(trimmedButtonValue === "sin"){
+      sin();
+    } else if(trimmedButtonValue === "cos"){
+      cos();
+    }
   });
 });
 
@@ -198,6 +204,15 @@ function pi() {
 function log10(){
   display.value = eval(Math.log10(display.value));
 }
+
+function sin(){
+  display.value = eval(Math.sin(display.value));
+}
+
+function cos(){
+  display.value = eval(Math.cos(display.value));
+}
+
 
 // more functions toggle function.
 
