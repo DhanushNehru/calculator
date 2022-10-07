@@ -12,7 +12,16 @@ body {
     #085078
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   font-family: 'Ubuntu', sans-serif;
+  /* hide Scrollbar */
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+  margin:0;
 }
+/* hide scrollbar */
+body::-webkit-scrollbar {
+  display: none;
+}
+
 
 .container{
 margin: 20px auto 20px;
@@ -35,13 +44,18 @@ color: white;
 
 input[type="text"] {
   width: 100%;
-  height: 65px;
+  height: 100px;
   border-radius: 5px;
   border: 0px;
   background-color: #333333;
+  box-shadow: 4px 4px 30px #656060;
   color: #d9d9d9;
   /* padding: 0 10px 0 10px; */
-  
+  font-size: x-large;
+  padding: 20px;
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+  box-sizing: border-box;
 }
 
 .calc-buttons {
@@ -51,12 +65,13 @@ input[type="text"] {
 
 .button {
   margin: 3px;
-  width: 126px;
+  width: 108px;
   border: none;
-  height: 90px;
+  height: 80px;
   border-radius: 8px;
   color: #000000;
   cursor: pointer;
+  /* box-shadow: 2px 2px 40px #df6672; */
 }
 
 button:hover {
@@ -66,6 +81,7 @@ button:hover {
 
 button:nth-child(13) {
   background-color: #dc3545;
+  box-shadow: 2px 2px 40px #6d5255;
 }
 
 button:nth-child(13):hover {
@@ -108,19 +124,23 @@ button:nth-child(13):hover {
 
 .triggers {
   background-color: #ffc266;
+  box-shadow: 2px 2px 60px #958c80;
   width: 60%;
 }
 
 .numbers {
   background-color: #999999;
+  box-shadow: 2px 2px 60px #7d7373;
 }
 
 .basic-stuff {
   background-color: #80d4ff;
+  box-shadow: 2px 2px 60px #95a1a7;
 }
 
 .complex-stuff {
   background-color: #80ffff;
+  box-shadow: 2px 2px 60px #838f95;
 }
 
 footer {

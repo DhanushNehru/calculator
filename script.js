@@ -7,8 +7,14 @@ const calculatorContainer = document.getElementById("body_screen");
 // by default
 otherFuncView.style.display = "none";
 
+function play(){
+  audio = document.querySelector('audio');
+  audio.play();
+}
+
 Array.prototype.forEach.call(buttons, function (button) {
   button.addEventListener("click", function () {
+    play();
     const trimmedButtonValue = button.textContent.trim();
 
     console.log(" Button text content", trimmedButtonValue);
@@ -212,9 +218,11 @@ function cube() {
 
 toggleButton.addEventListener("click", () => {
   if (otherFuncView.style.display === "none") {
+    toggleButton.innerHTML = "Hide functions:"
     otherFuncView.style.display = "";
   } else {
     otherFuncView.style.display = "none";
+    toggleButton.innerHTML = "More functions:"
   }
 })
 
