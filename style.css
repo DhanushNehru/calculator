@@ -12,7 +12,16 @@ body {
     #085078
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   font-family: 'Ubuntu', sans-serif;
+  /* hide Scrollbar */
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+  margin:0;
 }
+/* hide scrollbar */
+body::-webkit-scrollbar {
+  display: none;
+}
+
 
 .container{
 margin: 20px auto 20px;
