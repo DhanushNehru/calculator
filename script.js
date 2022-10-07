@@ -203,8 +203,10 @@ function log10(){
 
 toggleButton.addEventListener("click", () => {
   if (otherFuncView.style.display === "none") {
+    toggleButton.innerHTML = "Hide functions:"
     otherFuncView.style.display = "";
   } else {
     otherFuncView.style.display = "none";
+    toggleButton.innerHTML = "More functions:"
   }
 })
