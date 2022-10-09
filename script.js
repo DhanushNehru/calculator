@@ -1,5 +1,5 @@
 const display = document.getElementById("screen");
-const buttons = document.getElementsByClassName("button");
+const buttons = Array.from(document.querySelectorAll(".button"));
 const toggleButton = document.querySelector(".more-toggle-btn");
 const otherFuncView = document.querySelector(".other-functions");
 const calculatorContainer = document.getElementById("body_screen");
@@ -17,7 +17,7 @@ Array.prototype.forEach.call(buttons, function (button) {
     play();
     const trimmedButtonValue = button.textContent.trim();
 
-    console.log(" Button text content", trimmedButtonValue);
+    // console.log(" Button text content", trimmedButtonValue);
     if (
       trimmedButtonValue != "=" &&
       trimmedButtonValue != "C" &&
@@ -33,6 +33,7 @@ Array.prototype.forEach.call(buttons, function (button) {
       trimmedButtonValue != "e x" &&
       trimmedButtonValue != "bin" &&
       trimmedButtonValue != "dec" &&
+      trimmedButtonValue != "pi" && trimmedButtonValue != "Back"
       trimmedButtonValue != "pi" &&
       trimmedButtonValue != "log" &&
       trimmedButtonValue != "log10" &&
@@ -72,7 +73,15 @@ Array.prototype.forEach.call(buttons, function (button) {
       decimal();
     } else if (trimmedButtonValue === "pi") {
       pi();
+
+
+    } else if (trimmedButtonValue === "Back") {
+      display.value = display.value.slice(0, -1);
+    }
+    } else if(trimmedButtonValue === "log10"){
+
     } else if (trimmedButtonValue === "log10") {
+
       log10();
     } else if (trimmedButtonValue === "1/x") {
       reciprocalValue();
@@ -85,7 +94,11 @@ Array.prototype.forEach.call(buttons, function (button) {
 // Adding key event listener
 document.addEventListener("keydown", (e) => {
   // Check if the currently pressed key is number
+
+  if ((e.key).isInteger) display.value += parseInt(e.key);
+
   if (isInteger(e.key)) display.value += parseInt(e.key);
+
 
   // Check if the currently pressed key is an operator
   if (/^[+\-\*\/\=\(\)\%]*$/.test(e.key)) display.value += e.key;
@@ -97,7 +110,11 @@ document.addEventListener("keydown", (e) => {
   if (e.key === 'Enter') equals();
 
   // Check if the currently pressed key is 'c', then clear the value
+
+  if(e.key === 'c') clear();
+
   if (e.key === 'c') clear()
+
 });
 
 function right_bracket() {
@@ -199,7 +216,7 @@ function decimal() {
 }
 
 function pi() {
-  display.value += Math.PI;
+  display.value += (Math.PI).toFixed(3);
 }
 
 function log10() {
