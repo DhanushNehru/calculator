@@ -40,7 +40,13 @@ Array.prototype.forEach.call(buttons, function (button) {
       trimmedButtonValue != "log" &&
       trimmedButtonValue != "log10" &&
       trimmedButtonValue != "1/x" &&
-      trimmedButtonValue != "x 3"
+      trimmedButtonValue != "x 3" &&
+      trimmedButtonValue != "sin" &&
+      trimmedButtonValue != "cos" &&
+      trimmedButtonValue != "tan" &&
+      trimmedButtonValue != "sec" &&
+      trimmedButtonValue != "cosec" &&
+      trimmedButtonValue != "cot"
     ) {
       display.value += trimmedButtonValue;
     } else if (trimmedButtonValue === "=") {
@@ -81,6 +87,24 @@ Array.prototype.forEach.call(buttons, function (button) {
       reciprocalValue();
     } else if (trimmedButtonValue === "x 3") {
       cube();
+    }
+    else if (trimmedButtonValue === "sin"){
+      calculatesin();
+    }
+    else if (trimmedButtonValue === "cos"){
+      calculatecos();
+    }
+    else if (trimmedButtonValue === "tan"){
+      calculatetan();
+    }
+    else if (trimmedButtonValue === "sec"){
+      calculatesec();
+    }
+    else if (trimmedButtonValue === "cosec"){
+      calculatecosec();
+    }
+    else if (trimmedButtonValue === "cot"){
+      calculatecot();
     }
   });
 });
@@ -234,6 +258,25 @@ function cube() {
   display.value = eval(display.value * display.value * display.value);
   manageLocalStorage(display.value);
 }
+function calculatesin() {
+  display.value=Math.sin((Math.PI/180)*display.value);
+}
+function calculatecos() {
+   display.value=Math.cos((Math.PI/180)*display.value);
+}
+function calculatetan() {
+  display.value=Math.sin((Math.PI/180)*display.value)/Math.cos((Math.PI/180)*display.value);
+}
+function calculatesec() {
+  display.value=1/Math.cos((Math.PI/180)*display.value);
+}
+function calculatecosec() {
+  display.value=1/Math.sin((Math.PI/180)*display.value);
+}
+function calculatecot() {
+  display.value=Math.cos((Math.PI/180)*display.value)/Math.sin((Math.PI/180)*display.value);
+}
+
 
 // more functions toggle function.
 
