@@ -17,7 +17,7 @@
     </div>
     <div class="calculator-container" id="calculator_container_screen">
         <div class="calculator">
-            <input type="text" id="screen" maxlength="30" />
+            <input type="text" title="You can directly type." id="screen" maxlength="30" readonly />
             <div class="calc-buttons">
                 <br>
                 <div class="functions-one">
@@ -112,7 +112,7 @@
 
                 <br>
                 <div class="more-functions-toggle">
-                    <button class="more-toggle-btn">More functions:</button>
+                    <button class="more-toggle-btn">MORE FUNCTIONS</button>
                     <div class="other-functions">
                         <button class="button complex-stuff">
                             <h1>bin</h1>
@@ -144,12 +144,21 @@
                         <h1>=</h1>
                     </button>
                 </div>
+                <div class="historyDisplay">
+                    <h2>HISTORY</h2>
+                    <table id="tableParent">
+                    </table>
+                    <button onclick="clearLocalStorage()" class="hClear-btn">Clear History</button>
+                </div>
             </div>
         </div>
     </div>
+    <div class="toggleHistory">
+        <button id="showHistoryButton" class="more-toggle-btn">HISTORY</button>
+    </div>
 
     <audio src="tink.wav"></audio>
-    
+
     <script src="script.js"></script>
     <br></br>
     <footer class="end">

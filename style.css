@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300&family=Ubuntu&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=IM+Fell+Great+Primer+SC&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Heebo:wght@300&family=Ubuntu&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=IM+Fell+Great+Primer+SC&display=swap");
 body {
   background: #085078; /* fallback for old browsers */
   background: -webkit-linear-gradient(
@@ -12,25 +12,24 @@ body {
     #85d8ce,
     #085078
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  font-family: 'Ubuntu', sans-serif;
+  font-family: "Ubuntu", sans-serif;
   /* hide Scrollbar */
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
-  margin:0;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  margin: 0;
 }
 /* hide scrollbar */
 body::-webkit-scrollbar {
   display: none;
 }
 
-
-.container{
-margin: 20px auto 20px;
-font-family: 'Heebo', sans-serif;
-color: white;
+.container {
+  margin: 20px auto 20px;
+  font-family: "Heebo", sans-serif;
+  color: white;
 }
 
-.calculator-container{
+.calculator-container {
   text-align: center;
   /* width: 90%; */
   /* margin: auto; */
@@ -51,12 +50,12 @@ input[type="text"] {
   background-color: #333333;
   box-shadow: 4px 4px 30px #656060;
   color: #d9d9d9;
-  /* padding: 0 10px 0 10px; */
   font-size: x-large;
   padding: 20px;
   -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+  -moz-box-sizing: border-box; /* Firefox, other Gecko */
   box-sizing: border-box;
+  cursor: default;
 }
 
 .calc-buttons {
@@ -89,22 +88,21 @@ button:nth-child(13):hover {
   color: white;
 }
 
-
-.functions-one{
+.functions-one {
   display: inline-block;
 }
 
-.functions-two{
+.functions-two {
   display: inline-block;
 }
 
-.padding-functions{
+.padding-functions {
   display: inline-block;
   width: 40px;
   background-color: red;
 }
 
-.more-toggle-btn{
+.more-toggle-btn {
   height: 60px;
   background-color: #085078;
   color: white;
@@ -112,16 +110,15 @@ button:nth-child(13):hover {
   border-radius: 23px;
 }
 
-.more-toggle-btn:hover{
+.more-toggle-btn:hover {
   color: #000000;
   cursor: pointer;
+  background-color: #80ffff;
 }
-.other-functions{
+.other-functions {
   margin: 20px;
   text-align: center;
 }
-
-
 
 .triggers {
   background-color: #ffc266;
@@ -152,72 +149,146 @@ footer {
 }
 
 .end {
-    background-color: rgb(51, 130, 152);
-    color: rgb(169, 184, 193);
-    text-align: center;
-    padding: 0.25rem;
-    bottom: 0;
+  background-color: rgb(51, 130, 152);
+  color: rgb(169, 184, 193);
+  text-align: center;
+  padding: 0.25rem;
+  bottom: 0;
 }
 
-.love a{
+.love a {
   text-decoration: none;
   color: white;
-  
 }
 
-.love a:hover{
+.love a:hover {
   color: yellow;
 }
 
-
-.separate-btn{
+.separate-btn {
   display: block;
 }
 
-
-#calc-style{
-  font-family: 'IM Fell Great Primer SC', serif;
+#calc-style {
+  font-family: "IM Fell Great Primer SC", serif;
 }
 
+/* History toggle & other stuffs */
+.toggleHistory {
+  width: 92%;
+  text-align: right;
+}
+.more-toggle-btn {
+  border: none;
+}
+
+.toggleHistory button {
+  width: 100px;
+}
+
+.toggleHistory button:hover {
+  background-color: #80ffff;
+}
+/* table design */
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+.hClear-btn {
+  background-color: red;
+  color: white;
+  height: 40px;
+  margin: 10px;
+  border: none;
+  border-radius: 23px;
+  cursor: pointer;
+}
+.hClear-btn:hover {
+  color: black;
+}
 /* Lots of media query for best responsiveness from a PC to a 2g phone :) */
 
-@media only screen and (max-width : 1089px) {
-  .padding-functions{
+@media only screen and (max-width: 1089px) {
+  .padding-functions {
     width: 0px;
   }
 }
 
-@media only screen and (max-width : 529px) {
-  .button{
-  width: 100px;
-  height: 100px;
+@media only screen and (max-width: 529px) {
+  .button {
+    width: 100px;
+    height: 100px;
+  }
+  .more-toggle-btn {
+    width: 80%;
+  }
+  .triggers {
+    width: 80%;
   }
 }
 
-@media only screen and (max-width : 426px) {
+@media only screen and (max-width: 426px) {
   .button {
     width: 80px;
     height: 80px;
   }
+  .more-toggle-btn {
+    width: 80%;
+  }
+  .triggers {
+    width: 80%;
+  }
 }
 
-@media only screen and (max-width : 352px) {
+@media only screen and (max-width: 352px) {
   .button {
     width: 70px;
     height: 70px;
   }
+  .more-toggle-btn {
+    width: 80%;
+  }
+  .triggers {
+    width: 80%;
+  }
 }
 
-@media only screen and (max-width : 312px) {
+@media only screen and (max-width: 312px) {
   .button {
     width: 60px;
     height: 60px;
   }
+  .more-toggle-btn {
+    width: 80%;
+  }
+  .triggers {
+    width: 80%;
+  }
 }
 
-@media only screen and (max-width : 275px) {
+@media only screen and (max-width: 275px) {
   .button {
     width: 50px;
     height: 50px;
+  }
+  .more-toggle-btn {
+    width: 80%;
+  }
+  .triggers {
+    width: 80%;
   }
 }
