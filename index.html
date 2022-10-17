@@ -10,11 +10,21 @@
 </head>
 
 <body id="body_screen">
+
     <div class="container">
-        <h1 align="center" id="calc-style">
-            ➕Calculator➖👨‍🔬
-        </h1>
+
+        <div align="center" class="heading">
+            <h1 id="calc-style">
+                ➕  Calculator  ➖  👨‍🔬
+            </h1>
+        </div>
+
+        <div align="left">
+            <img src="/logos/night-mode.png" class="mode-toggle" id="bright-icon" alt="">
+            <img src="/logos/neon.png" class="mode-toggle" id="neon-icon" alt="">
+        </div>
     </div>
+
     <div class="calculator-container" id="calculator_container_screen">
         <div class="calculator">
             <input type="text" title="You can directly type." id="screen" maxlength="30" readonly />
@@ -135,7 +145,7 @@
                                 <button class="button complex-stuff">
                                     <h1>x <sup>3</sup></h1>
                                     </h1>
-                                    
+
                                 </button>
                                 <br>
                                 <button class="button complex-stuff">
@@ -180,6 +190,28 @@
         <p class="love">Made with <span style="color: #e25555;">&hearts;</span> by <a
                 href="https://twitter.com/Dhanush_Nehru"> Dhanush Nehru </a></p>
     </footer>
+
+    <script>
+        var brightIcon = document.getElementById("bright-icon");
+
+        brightIcon.onclick = () => {
+            document.body.classList.toggle("dark-theme");
+            if(document.body.classList.contains("dark-theme")){
+                brightIcon.src="/logos/brightness.png"
+            }
+            else{
+                brightIcon.src="/logos/night-mode.png";
+            }
+        }
+
+        var neonIcon = document.getElementById("neon-icon");
+
+        neonIcon.onclick = () => {
+            document.body.classList.toggle("neon-theme");
+        }
+
+    </script>
+
 </body>
 
 </html>
