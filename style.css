@@ -1,23 +1,68 @@
-@import url("https://fonts.googleapis.com/css2?family=Heebo:wght@300&family=Ubuntu&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=IM+Fell+Great+Primer+SC&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@800&family=Raleway:wght@900&display=swap');
+
+
+:root {
+  --primary-calculator-color: #FAF7F0;
+  --secondary-calculator-color: #3C4048;
+  --primary-input-color: #333333;
+  --secondary-input-color: #ced6d6;
+  --primary-end-color: #3C4048;
+  --secondary-end-color: rgb(30, 30, 30);
+  --primary-input-text: white;
+  --secondary-input-text: black;
+  --primary-number-shadow: #7d7373;
+  --secondary-number-shadow: #9e7ed9;
+  --primary-input-shadow: #656060;
+  --secondary-input-shadow: #96f5c1;
+  --primary-trigger-shadow: #958c80;
+  --secondary-trigger-shadow: #f6fd70;
+  --primary-calculator-shadow: ;
+  --secondary-calculator-shadow: #ff5f72;
+  --primary-body-color: #B2B2B2;
+  --secondary-body-color: #3d3d3d;
+  --primary-heading-color: black;
+  --secondary-heading-color: white;
+}
+
+.dark-theme {
+  --secondary-calculator-color: #FAF7F0;
+  --primary-calculator-color: #3C4048;
+  --secondary-input-color: #333333;
+  --primary-input-color: #ced6d6;
+  --secondary-end-color: #3C4048;
+  --primary-end-color: rgb(30, 30, 30);
+  --secondary-input-text: white;
+  --primary-input-text: black;
+  --secondary-body-color: #B2B2B2;
+  --primary-body-color: #3d3d3d;
+  --secondary-heading-color: black;
+  --primary-heading-color: white;
+}
+
+.neon-theme{
+  --secondary-number-shadow: #7d7373;
+  --primary-number-shadow: #9e7ed9;
+  --secondary-input-shadow: #656060;
+  --primary-input-shadow: #96f5c1;
+  --secondary-trigger-shadow: #958c80;
+  --primary-trigger-shadow: #f6fd70;
+  --secondary-calculator-shadow: ;
+  --primary-calculator-shadow: #ff5f72;
+}
+
 body {
-  background: #085078; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to right,
-    #85d8ce,
-    #085078
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to right,
-    #85d8ce,
-    #085078
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background-color: var(--primary-body-color);
+  /* Chrome 10-25, Safari 5.1-6 */
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   font-family: "Ubuntu", sans-serif;
   /* hide Scrollbar */
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
   margin: 0;
 }
+
 /* hide scrollbar */
 body::-webkit-scrollbar {
   display: none;
@@ -25,21 +70,23 @@ body::-webkit-scrollbar {
 
 .container {
   margin: 20px auto 20px;
-  font-family: "Heebo", sans-serif;
+  font-family: 'Dosis', sans-serif;  
   color: white;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .calculator-container {
   text-align: center;
-  /* width: 90%; */
-  /* margin: auto; */
 }
+
 .calculator {
   width: 80%;
-  background-color: beige;
+  background-color: var(--primary-calculator-color);
   padding: 20px;
   border-radius: 10px;
   margin: 20px auto 20px auto;
+  box-shadow: 2px 2px 40px var(--primary-calculator-shadow);
 }
 
 input[type="text"] {
@@ -47,13 +94,15 @@ input[type="text"] {
   height: 100px;
   border-radius: 5px;
   border: 0px;
-  background-color: #333333;
-  box-shadow: 4px 4px 30px #656060;
-  color: #d9d9d9;
+  background-color: var(--primary-input-color);
+  box-shadow: 4px 4px 30px var(--primary-input-shadow);
+  color: var(--primary-input-text);
   font-size: x-large;
   padding: 20px;
-  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-  -moz-box-sizing: border-box; /* Firefox, other Gecko */
+  -webkit-box-sizing: border-box;
+  /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;
+  /* Firefox, other Gecko */
   box-sizing: border-box;
   cursor: default;
 }
@@ -79,12 +128,12 @@ button:hover {
   transition: 0.2s;
 }
 
-button:nth-child(13) {
+.functions-one button:nth-child(13) {
   background-color: #dc3545;
   box-shadow: 2px 2px 40px #6d5255;
 }
 
-button:nth-child(13):hover {
+.functions-one button:nth-child(13):hover {
   color: white;
 }
 
@@ -115,6 +164,7 @@ button:nth-child(13):hover {
   cursor: pointer;
   background-color: #80ffff;
 }
+
 .other-functions {
   margin: 20px;
   text-align: center;
@@ -122,23 +172,23 @@ button:nth-child(13):hover {
 
 .triggers {
   background-color: #ffc266;
-  box-shadow: 2px 2px 60px #958c80;
+  box-shadow: 2px 2px 60px var(--primary-trigger-shadow);
   width: 60%;
 }
 
 .numbers {
   background-color: #999999;
-  box-shadow: 2px 2px 60px #7d7373;
+  box-shadow: 2px 2px 60px var(--primary-number-shadow);
 }
 
 .basic-stuff {
   background-color: #80d4ff;
-  box-shadow: 2px 2px 60px #95a1a7;
+  box-shadow: 2px 2px 60px var(--primary-number-shadow);
 }
 
 .complex-stuff {
   background-color: #80ffff;
-  box-shadow: 2px 2px 60px #838f95;
+  box-shadow: 2px 2px 60px var(--primary-number-shadow);
 }
 
 footer {
@@ -149,7 +199,7 @@ footer {
 }
 
 .end {
-  background-color: rgb(51, 130, 152);
+  background-color: var(--primary-end-color);
   color: rgb(169, 184, 193);
   text-align: center;
   padding: 0.25rem;
@@ -169,15 +219,16 @@ footer {
   display: block;
 }
 
-#calc-style {
+/* #calc-style {
   font-family: "IM Fell Great Primer SC", serif;
-}
+} */
 
 /* History toggle & other stuffs */
 .toggleHistory {
   width: 92%;
   text-align: right;
 }
+
 .more-toggle-btn {
   border: none;
 }
@@ -189,6 +240,7 @@ footer {
 .toggleHistory button:hover {
   background-color: #80ffff;
 }
+
 /* table design */
 
 table {
@@ -217,9 +269,11 @@ tr:nth-child(even) {
   border-radius: 23px;
   cursor: pointer;
 }
+
 .hClear-btn:hover {
   color: black;
 }
+
 /* Lots of media query for best responsiveness from a PC to a 2g phone :) */
 
 @media only screen and (max-width: 1089px) {
@@ -233,9 +287,11 @@ tr:nth-child(even) {
     width: 100px;
     height: 100px;
   }
+
   .more-toggle-btn {
     width: 80%;
   }
+
   .triggers {
     width: 80%;
   }
@@ -246,9 +302,11 @@ tr:nth-child(even) {
     width: 80px;
     height: 80px;
   }
+
   .more-toggle-btn {
     width: 80%;
   }
+
   .triggers {
     width: 80%;
   }
@@ -259,9 +317,11 @@ tr:nth-child(even) {
     width: 70px;
     height: 70px;
   }
+
   .more-toggle-btn {
     width: 80%;
   }
+
   .triggers {
     width: 80%;
   }
@@ -272,9 +332,11 @@ tr:nth-child(even) {
     width: 60px;
     height: 60px;
   }
+
   .more-toggle-btn {
     width: 80%;
   }
+
   .triggers {
     width: 80%;
   }
@@ -285,10 +347,25 @@ tr:nth-child(even) {
     width: 50px;
     height: 50px;
   }
+
   .more-toggle-btn {
     width: 80%;
   }
+
   .triggers {
     width: 80%;
   }
 }
+
+.mode-toggle {
+  width: 6vh;
+  height: 6vh;
+  cursor: pointer;
+  /* margin: 2.2vh; */
+  margin: 3vh 0.2vh;
+}
+
+.heading{
+  color: var(--primary-heading-color);
+}
+
