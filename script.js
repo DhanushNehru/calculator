@@ -9,6 +9,7 @@ const parentTable = document.querySelector("#tableParent");
 // by default
 otherFuncView.style.display = "none";
 historyDisplay.style.display = "none";
+display.value = "0";
 
 function play() {
   audio = document.querySelector("audio");
@@ -19,8 +20,9 @@ Array.prototype.forEach.call(buttons, function (button) {
   button.addEventListener("click", function () {
     play();
     const trimmedButtonValue = button.textContent.trim();
-
     console.log(" Button text content", trimmedButtonValue);
+    if(display.value=="0")
+      display.value="";
     if (
       trimmedButtonValue != "=" &&
       trimmedButtonValue != "C" &&
@@ -171,7 +173,7 @@ function equals() {
 }
 
 function clear() {
-  display.value = "";
+  display.value = "0";
 }
 
 function backspace() {
