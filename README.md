@@ -18,6 +18,8 @@ A Calculator that performs many **mathematical** functions
 - Power of n
 - Natural exponential function
 - Factorial of n
+- Trigonometric operation
+- Cuberoot
 ```
 
 ## Tech Stack
