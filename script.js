@@ -48,7 +48,8 @@ Array.prototype.forEach.call(buttons, function (button) {
       trimmedButtonValue != "tan" &&
       trimmedButtonValue != "sec" &&
       trimmedButtonValue != "cosec" &&
-      trimmedButtonValue != "cot"
+      trimmedButtonValue != "cot" &&
+      trimmedButtonValue != "\u221B"
     ) {
       display.value += trimmedButtonValue;
     } else if (trimmedButtonValue === "=") {
@@ -107,6 +108,10 @@ Array.prototype.forEach.call(buttons, function (button) {
     }
     else if (trimmedButtonValue === "cot"){
       calculatecot();
+    }
+    else if (trimmedButtonValue === "\u221B"){
+      
+      calculatecuberoot();
     }
   });
 });
@@ -278,7 +283,12 @@ function calculatecosec() {
 function calculatecot() {
   display.value=Math.cos((Math.PI/180)*display.value)/Math.sin((Math.PI/180)*display.value);
 }
-
+//cuberoot function 
+function calculatecuberoot(){
+  console.log('cuberoot');
+  display.value = Math.cbrt(display.value);
+  manageLocalStorage(display.value);
+}
 
 // more functions toggle function.
 
