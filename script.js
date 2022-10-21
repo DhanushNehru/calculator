@@ -41,7 +41,6 @@ Array.prototype.forEach.call(buttons, function (button) {
       trimmedButtonValue != "pi" &&
       trimmedButtonValue != "log" &&
       trimmedButtonValue != "log10" &&
-      trimmedButtonValue != "log2" &&
       trimmedButtonValue != "1/x" &&
       trimmedButtonValue != "x 3" &&
       trimmedButtonValue != "sin" &&
@@ -87,8 +86,6 @@ Array.prototype.forEach.call(buttons, function (button) {
       pi();
     } else if (trimmedButtonValue === "log10") {
       log10();
-    } else if (trimmedButtonValue === "log2") {
-      log2();
     } else if (trimmedButtonValue === "1/x") {
       reciprocalValue();
     } else if (trimmedButtonValue === "x 3") {
@@ -256,11 +253,6 @@ function pi() {
 
 function log10() {
   display.value = eval(Math.log10(display.value));
-  manageLocalStorage(display.value);
-}
-
-function log2() {
-  display.value = eval(Math.log2(display.value));
   manageLocalStorage(display.value);
 }
 
