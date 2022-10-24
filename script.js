@@ -49,7 +49,10 @@ Array.prototype.forEach.call(buttons, function (button) {
       trimmedButtonValue != "sec" &&
       trimmedButtonValue != "cosec" &&
       trimmedButtonValue != "cot" &&
-      trimmedButtonValue != "\u221B"
+      trimmedButtonValue != "\u221B" &&
+      trimmedButtonValue != "sin-1" &&
+      trimmedButtonValue != "cos-1" &&
+      trimmedButtonValue != "tan-1"      
     ) {
       display.value += trimmedButtonValue;
     } else if (trimmedButtonValue === "=") {
@@ -113,6 +116,16 @@ Array.prototype.forEach.call(buttons, function (button) {
       
       calculatecuberoot();
     }
+    else if (trimmedButtonValue === "sin-1"){
+      calculateisin();
+    }
+    else if (trimmedButtonValue === "cos-1"){
+      calculateicos();
+    }
+    else if (trimmedButtonValue === "tan-1"){
+      calculateitan();
+    }
+
   });
 });
 
@@ -288,6 +301,21 @@ function calculatecuberoot(){
   console.log('cuberoot');
   display.value = Math.cbrt(display.value);
   manageLocalStorage(display.value);
+}
+//inverse trigonometry
+function calculateisin() {
+  const radian=Math.asin(display.value);
+  display.value=((180/Math.PI)*radian)
+}
+
+function calculateicos() {
+  const radian=Math.acos(display.value);
+  display.value=((180/Math.PI)*radian)
+}
+
+function calculateitan() {
+  const radian=Math.atan(display.value);
+  display.value=((180/Math.PI)*radian)
 }
 
 // more functions toggle function.
