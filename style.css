@@ -68,12 +68,13 @@ body::-webkit-scrollbar {
   display: none;
 }
 
-.container {
-  margin: 20px auto 20px;
-  font-family: 'Dosis', sans-serif;  
-  color: white;
+.navbar {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  height: 10vh;
+  padding: 10px;
 }
 
 .calculator-container {
@@ -360,13 +361,18 @@ tr:nth-child(even) {
 }
 
 .mode-toggle {
-  width: 6vh;
-  height: 6vh;
+  padding: 10px 10px;
+  font-size: 20px;
+  border: none;
+  border-radius: 10px;
+  margin: 5px;
+  text-align: center;
+  transition: all 0.5s ease-in;
   cursor: pointer;
-  /* margin: 2.2vh; */
-  margin: 3vh 2.2vh;
-  transition: all;
-  transition-duration: 0.4s;
+}
+
+.mode-toggle:hover {
+  background-color: #D3D3D3;
 }
 .heading{
   color: var(--primary-heading-color);

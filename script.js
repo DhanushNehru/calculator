@@ -197,7 +197,7 @@ function equals() {
 }
 
 function clear() {
-  display.value = "0";
+  display.value = "";
 }
 
 function backspace() {
