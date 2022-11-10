@@ -155,7 +155,6 @@ function decimalPointOkay() {
   const sinceLastDecimal = screenNumber.substring(
     screenNumber.lastIndexOf(".") + 1,
     screenNumber.length - 1)
-    console.log(sinceLastDecimal)
 
   if (
     sinceLastDecimal.includes("+") ||
