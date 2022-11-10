@@ -138,10 +138,37 @@ Array.prototype.forEach.call(buttons, function (button) {
 
 // Prevents multiple decimal points from being typed through keyboard
 function isNumber(num) {
-  if (num === "." && !display.value.includes(".")) {
+  if (num === "." && decimalPointOkay()) {
     return true;
   }
   return !isNaN(parseFloat(num)) && isFinite(num);
+}
+
+// Checks if there is an operand between the previous decimal point and the current cursor.
+
+function decimalPointOkay() {
+  screenNumber = display.value
+  if (!screenNumber.includes(".")) {
+    return true
+  }
+
+  const sinceLastDecimal = screenNumber.substring(
+    screenNumber.lastIndexOf(".") + 1,
+    screenNumber.length - 1)
+    console.log(sinceLastDecimal)
+
+  if (
+    sinceLastDecimal.includes("+") ||
+    sinceLastDecimal.includes("-") ||
+    sinceLastDecimal.includes("*") ||
+    sinceLastDecimal.includes("/") ||
+    sinceLastDecimal.includes("(") ||
+    sinceLastDecimal.includes(")") ||
+    sinceLastDecimal.includes("^")
+    ) {
+    return true
+  }
+  return false
 }
 
 // Adding key event listener
