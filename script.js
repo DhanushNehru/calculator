@@ -55,7 +55,7 @@ Array.prototype.forEach.call(buttons, function (button) {
       trimmedButtonValue != "sin-1" &&
       trimmedButtonValue != "cos-1" &&
       trimmedButtonValue != "tan-1" &&
-      !(trimmedButtonValue == "." && display.value.includes("."))
+      !(trimmedButtonValue == "." && !decimalPointOkay())
     ) {
       display.value += trimmedButtonValue;
     } else if (trimmedButtonValue === "=") {
