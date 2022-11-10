@@ -54,7 +54,8 @@ Array.prototype.forEach.call(buttons, function (button) {
       trimmedButtonValue != "\u221B" &&
       trimmedButtonValue != "sin-1" &&
       trimmedButtonValue != "cos-1" &&
-      trimmedButtonValue != "tan-1"      
+      trimmedButtonValue != "tan-1" &&
+      !(trimmedButtonValue == "." && display.value.includes("."))
     ) {
       display.value += trimmedButtonValue;
     } else if (trimmedButtonValue === "=") {
@@ -135,8 +136,9 @@ Array.prototype.forEach.call(buttons, function (button) {
   });
 });
 
+// Prevents multiple decimal points from being typed through keyboard
 function isNumber(num) {
-  if (num === ".") {
+  if (num === "." && !display.value.includes(".")) {
     return true;
   }
   return !isNaN(parseFloat(num)) && isFinite(num);
