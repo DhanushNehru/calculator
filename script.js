@@ -54,7 +54,8 @@ Array.prototype.forEach.call(buttons, function (button) {
       trimmedButtonValue != "\u221B" &&
       trimmedButtonValue != "sin-1" &&
       trimmedButtonValue != "cos-1" &&
-      trimmedButtonValue != "tan-1"      
+      trimmedButtonValue != "tan-1" &&
+      (trimmedButtonValue != "." || decimalPointOkay())
     ) {
       display.value += trimmedButtonValue;
     } else if (trimmedButtonValue === "=") {
@@ -135,11 +136,38 @@ Array.prototype.forEach.call(buttons, function (button) {
   });
 });
 
+// Prevents multiple decimal points from being typed through keyboard
 function isNumber(num) {
-  if (num === ".") {
+  if (num === "." && decimalPointOkay()) {
     return true;
   }
   return !isNaN(parseFloat(num)) && isFinite(num);
+}
+
+// Checks if there is an operand between the previous decimal point and the current cursor.
+
+function decimalPointOkay() {
+  screenNumber = display.value
+  if (!screenNumber.includes(".")) {
+    return true
+  }
+
+  const sinceLastDecimal = screenNumber.substring(
+    screenNumber.lastIndexOf(".") + 1,
+    screenNumber.length - 1)
+
+  if (
+    sinceLastDecimal.includes("+") ||
+    sinceLastDecimal.includes("-") ||
+    sinceLastDecimal.includes("*") ||
+    sinceLastDecimal.includes("/") ||
+    sinceLastDecimal.includes("(") ||
+    sinceLastDecimal.includes(")") ||
+    sinceLastDecimal.includes("^")
+    ) {
+    return true
+  }
+  return false
 }
 
 // Adding key event listener
