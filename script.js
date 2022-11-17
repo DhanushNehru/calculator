@@ -25,6 +25,7 @@ Array.prototype.forEach.call(buttons, function (button) {
       display.value="";
     if (
       trimmedButtonValue != "=" &&
+      trimmedButtonValue != "⌫" &&
       trimmedButtonValue != "C" &&
       trimmedButtonValue != "x" &&
       trimmedButtonValue != "\u00F7" &&
@@ -60,7 +61,10 @@ Array.prototype.forEach.call(buttons, function (button) {
       display.value += trimmedButtonValue;
     } else if (trimmedButtonValue === "=") {
       equals();
-    } else if (trimmedButtonValue === "C") {
+    } else if(trimmedButtonValue === "⌫"){
+      backspace()
+
+    }else if (trimmedButtonValue === "C") {
       clear();
     } else if (trimmedButtonValue === "x") {
       multiply();
@@ -229,7 +233,13 @@ function clear() {
 }
 
 function backspace() {
-  display.value = display.value.substring(0, display.value.length - 1);
+  var letters = /[a-zA-Z]/;
+  if( display.value.match(letters)) {
+    clear();
+  }
+  else{
+    display.value = display.value.slice(0, -1);
+  }
 }
 
 function multiply() {
