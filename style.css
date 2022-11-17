@@ -196,7 +196,6 @@ button:hover {
 
 .complex-stuff {
   background-color: #80ffff;
-  /* background-color: #690fae; */
   box-shadow: 2px 2px 60px var(--primary-number-shadow);
 }
 
