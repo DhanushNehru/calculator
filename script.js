@@ -43,6 +43,10 @@ Array.prototype.forEach.call(buttons, function (button) {
       trimmedButtonValue != "log10" &&
       trimmedButtonValue != "log2" &&
       trimmedButtonValue != "loge" &&
+      trimmedButtonValue != "rand" &&
+      trimmedButtonValue != "|x|" &&
+      trimmedButtonValue != "⌊x⌋" &&
+      trimmedButtonValue != "⌈x⌉" &&
       trimmedButtonValue != "1/x" &&
       trimmedButtonValue != "x 3" &&
       trimmedButtonValue != "sin" &&
@@ -96,6 +100,14 @@ Array.prototype.forEach.call(buttons, function (button) {
       log2();
     } else if (trimmedButtonValue === "loge") {
       loge();
+    } else if (trimmedButtonValue === "rand") {
+      rand();
+    } else if (trimmedButtonValue === "|x|") {
+      abs();
+    } else if (trimmedButtonValue === "⌊x⌋") {
+      floor();
+    } else if (trimmedButtonValue === "⌈x⌉") {
+      ceil();
     } else if (trimmedButtonValue === "1/x") {
       reciprocalValue();
     } else if (trimmedButtonValue === "x 3") {
@@ -309,7 +321,27 @@ function log2() {
 }
 
 function loge() {
-  display.value =  eval(Math.log(display.value));
+  display.value = eval(Math.log(display.value));
+  manageLocalStorage(display.value);
+}
+
+function rand() {
+  display.value = eval(Math.random());
+  manageLocalStorage(display.value);
+}
+
+function abs() {
+  display.value = eval(Math.abs(display.value));
+  manageLocalStorage(display.value);
+}
+
+function floor() {
+  display.value = eval(Math.floor(display.value));
+  manageLocalStorage(display.value);
+}
+
+function ceil() {
+  display.value = eval(Math.ceil(display.value));
   manageLocalStorage(display.value);
 }
 
