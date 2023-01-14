@@ -1,6 +1,7 @@
 const display = document.getElementById("screen");
 const buttons = document.getElementsByClassName("button");
 const toggleButton = document.querySelector(".more-toggle-btn");
+const deleteButton = document.querySelector("#delete-btn");
 const otherFuncView = document.querySelector(".other-functions");
 const calculatorContainer = document.getElementById("body_screen");
 const historyToggleButton = document.querySelector("#showHistoryButton");
@@ -373,6 +374,12 @@ toggleButton.addEventListener("click", () => {
     toggleButton.innerHTML = "MORE FUNCTIONS";
   }
 });
+
+deleteButton.addEventListener("click", () => {
+  display.value = display.value.substring(0, display.value.length - 1);
+});
+
+
 
 // manage localStorage
 
