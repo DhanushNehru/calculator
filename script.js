@@ -1,6 +1,7 @@
 const display = document.getElementById("screen");
 const buttons = document.getElementsByClassName("button");
 const toggleButton = document.querySelector(".more-toggle-btn");
+const deleteButton = document.querySelector("#delete-btn");
 const otherFuncView = document.querySelector(".other-functions");
 const calculatorContainer = document.getElementById("body_screen");
 const historyToggleButton = document.querySelector("#showHistoryButton");
@@ -44,6 +45,10 @@ Array.prototype.forEach.call(buttons, function (button) {
       trimmedButtonValue != "log10" &&
       trimmedButtonValue != "log2" &&
       trimmedButtonValue != "loge" &&
+      trimmedButtonValue != "rand" &&
+      trimmedButtonValue != "|x|" &&
+      trimmedButtonValue != "⌊x⌋" &&
+      trimmedButtonValue != "⌈x⌉" &&
       trimmedButtonValue != "1/x" &&
       trimmedButtonValue != "x 3" &&
       trimmedButtonValue != "sin" &&
@@ -100,6 +105,14 @@ Array.prototype.forEach.call(buttons, function (button) {
       log2();
     } else if (trimmedButtonValue === "loge") {
       loge();
+    } else if (trimmedButtonValue === "rand") {
+      rand();
+    } else if (trimmedButtonValue === "|x|") {
+      abs();
+    } else if (trimmedButtonValue === "⌊x⌋") {
+      floor();
+    } else if (trimmedButtonValue === "⌈x⌉") {
+      ceil();
     } else if (trimmedButtonValue === "1/x") {
       reciprocalValue();
     } else if (trimmedButtonValue === "x 3") {
@@ -319,7 +332,27 @@ function log2() {
 }
 
 function loge() {
-  display.value =  eval(Math.log(display.value));
+  display.value = eval(Math.log(display.value));
+  manageLocalStorage(display.value);
+}
+
+function rand() {
+  display.value = eval(Math.random());
+  manageLocalStorage(display.value);
+}
+
+function abs() {
+  display.value = eval(Math.abs(display.value));
+  manageLocalStorage(display.value);
+}
+
+function floor() {
+  display.value = eval(Math.floor(display.value));
+  manageLocalStorage(display.value);
+}
+
+function ceil() {
+  display.value = eval(Math.ceil(display.value));
   manageLocalStorage(display.value);
 }
 
@@ -383,6 +416,12 @@ toggleButton.addEventListener("click", () => {
     toggleButton.innerHTML = "MORE FUNCTIONS";
   }
 });
+
+deleteButton.addEventListener("click", () => {
+  display.value = display.value.substring(0, display.value.length - 1);
+});
+
+
 
 // manage localStorage
 
