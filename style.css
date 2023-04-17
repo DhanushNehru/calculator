@@ -186,6 +186,11 @@ button:hover {
 	box-shadow: 2px 2px 60px var(--primary-number-shadow);
 }
 
+.backspace{
+  background-color: #e2801e;
+  box-shadow: 2px 2px 60px var(--primary-number-shadow);
+}
+
 .basic-stuff {
 	background-color: #80d4ff;
 	box-shadow: 2px 2px 60px var(--primary-number-shadow);
