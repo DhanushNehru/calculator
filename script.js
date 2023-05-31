@@ -12,6 +12,21 @@ otherFuncView.style.display = "none";
 historyDisplay.style.display = "none";
 display.value = "0";
 
+function verification(displayText, new_caracter) {
+  if (displayText === "" && (new_caracter === '*' || new_caracter === '/')) {
+    return displayText;
+  }
+
+  if ((displayText[displayText.length - 1] === '/' || displayText[displayText.length - 1] === '*' || displayText[displayText.length - 1] === '+' || displayText[displayText.length - 1] === '-') &&
+    (new_caracter === '/' || new_caracter === '*' || new_caracter === '+' || new_caracter === '-')) {
+    return displayText;
+  }
+
+  return displayText + new_caracter;
+}
+
+  
+
 function play() {
   audio = document.querySelector("audio");
   audio.play();
@@ -63,7 +78,8 @@ Array.prototype.forEach.call(buttons, function (button) {
       trimmedButtonValue != "tan-1" &&
       (trimmedButtonValue != "." || decimalPointOkay())
     ) {
-      display.value += trimmedButtonValue;
+      
+      display.value = verification(display.value,trimmedButtonValue) ;
     } else if (trimmedButtonValue === "=") {
       equals();
     } else if(trimmedButtonValue === "⌫"){
@@ -190,10 +206,11 @@ function decimalPointOkay() {
 // Adding key event listener
 document.addEventListener("keydown", (e) => {
   // Check if the currently pressed key is number
-  if (isNumber(e.key)) display.value += e.key;
+  if (isNumber(e.key)) display.value = verification(display.value,e.key);
+  ;
 
   // Check if the currently pressed key is an operator
-  if (/^[+\-\*\/\=\(\)\%]*$/.test(e.key)) display.value += e.key;
+  if (/^[+\-\*\/\=\(\)\%]*$/.test(e.key)) display.value =verification(display.value,e.key);
 
   // Check if the currently pressed key is Backspace, then remove last element
   if (e.key === "Backspace") display.value = display.value.slice(0, -1);
@@ -256,11 +273,12 @@ function backspace() {
 }
 
 function multiply() {
-  display.value += "*";
+  display.value = verification( display.value,"*");
 }
 
 function divide() {
-  display.value += "/";
+  
+  display.value = verification( display.value,"/");
 }
 
 function factorial() {
