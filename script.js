@@ -1,7 +1,6 @@
 const display = document.getElementById("screen");
 const buttons = document.getElementsByClassName("button");
 const toggleButton = document.querySelector(".more-toggle-btn");
-const deleteButton = document.querySelector("#delete-btn");
 const otherFuncView = document.querySelector(".other-functions");
 const calculatorContainer = document.getElementById("body_screen");
 const historyToggleButton = document.querySelector("#showHistoryButton");
@@ -17,7 +16,8 @@ function verification(displayText, new_caracter) {
     return displayText;
   }
 
-  if ((displayText[displayText.length - 1] === '/' || displayText[displayText.length - 1] === '*' || displayText[displayText.length - 1] === '+' || displayText[displayText.length - 1] === '-') &&
+  if ((displayText[displayText.length - 1] === '/' || displayText[displayText.length - 1] === '*' || 
+    displayText[displayText.length - 1] === '+' || displayText[displayText.length - 1] === '-') &&
     (new_caracter === '/' || new_caracter === '*' || new_caracter === '+' || new_caracter === '-')) {
     return displayText;
   }
@@ -433,10 +433,6 @@ toggleButton.addEventListener("click", () => {
     otherFuncView.style.display = "none";
     toggleButton.innerHTML = "MORE FUNCTIONS";
   }
-});
-
-deleteButton.addEventListener("click", () => {
-  display.value = display.value.substring(0, display.value.length - 1);
 });
 
 
