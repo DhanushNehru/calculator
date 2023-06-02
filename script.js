@@ -43,6 +43,7 @@ Array.prototype.forEach.call(buttons, function (button) {
       trimmedButtonValue != "=" &&
       trimmedButtonValue != "⌫" &&
       trimmedButtonValue != "C" &&
+      trimmedButtonValue != "." &&
       trimmedButtonValue != "x" &&
       trimmedButtonValue != "\u00F7" &&
       trimmedButtonValue != "\u221A" &&
@@ -87,7 +88,9 @@ Array.prototype.forEach.call(buttons, function (button) {
 
     }else if (trimmedButtonValue === "C") {
       clear();
-    } else if (trimmedButtonValue === "x") {
+    }else if (trimmedButtonValue === "."){
+      dot()
+    }else if (trimmedButtonValue === "x") {
       multiply();
     } else if (trimmedButtonValue === "\u00F7") {
       divide();
@@ -260,6 +263,21 @@ function equals() {
 
 function clear() {
   display.value = "";
+}
+
+function dot(){
+  let num = display.value.split("");
+  let flag = 0;
+  for(var i=0;i<num.length;i++){
+    if(num[i]==='.'){
+      flag=1
+    }
+  }
+  if(flag==1){
+    display.value = display.value
+  }else{
+    display.value += "."
+  }
 }
 
 function backspace() {
