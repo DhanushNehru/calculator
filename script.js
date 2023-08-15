@@ -16,7 +16,7 @@ function verification(displayText, new_caracter) {
     return displayText;
   }
 
-  if ((displayText[displayText.length - 1] === '/' || displayText[displayText.length - 1] === '*' || 
+  if ((displayText[displayText.length - 1] === '/' || displayText[displayText.length - 1] === '*' ||
     displayText[displayText.length - 1] === '+' || displayText[displayText.length - 1] === '-') &&
     (new_caracter === '/' || new_caracter === '*' || new_caracter === '+' || new_caracter === '-')) {
     return displayText;
@@ -25,7 +25,7 @@ function verification(displayText, new_caracter) {
   return displayText + new_caracter;
 }
 
-  
+
 
 function play() {
   audio = document.querySelector("audio");
@@ -37,8 +37,8 @@ Array.prototype.forEach.call(buttons, function (button) {
     play();
     const trimmedButtonValue = button.textContent.trim();
     console.log(" Button text content", trimmedButtonValue);
-    if(display.value=="0")
-      display.value="";
+    if (display.value == "0")
+      display.value = "";
     if (
       trimmedButtonValue != "=" &&
       trimmedButtonValue != "⌫" &&
@@ -78,14 +78,13 @@ Array.prototype.forEach.call(buttons, function (button) {
       trimmedButtonValue != "tan-1" &&
       (trimmedButtonValue != "." || decimalPointOkay())
     ) {
-      
-      display.value = verification(display.value,trimmedButtonValue) ;
+      display.value = verification(display.value, trimmedButtonValue);
     } else if (trimmedButtonValue === "=") {
       equals();
-    } else if(trimmedButtonValue === "⌫"){
+    } else if (trimmedButtonValue === "⌫") {
       backspace()
 
-    }else if (trimmedButtonValue === "C") {
+    } else if (trimmedButtonValue === "C") {
       clear();
     } else if (trimmedButtonValue === "x") {
       multiply();
@@ -134,35 +133,35 @@ Array.prototype.forEach.call(buttons, function (button) {
     } else if (trimmedButtonValue === "x 3") {
       cube();
     }
-    else if (trimmedButtonValue === "sin"){
+    else if (trimmedButtonValue === "sin") {
       calculatesin();
     }
-    else if (trimmedButtonValue === "cos"){
+    else if (trimmedButtonValue === "cos") {
       calculatecos();
     }
-    else if (trimmedButtonValue === "tan"){
+    else if (trimmedButtonValue === "tan") {
       calculatetan();
     }
-    else if (trimmedButtonValue === "sec"){
+    else if (trimmedButtonValue === "sec") {
       calculatesec();
     }
-    else if (trimmedButtonValue === "cosec"){
+    else if (trimmedButtonValue === "cosec") {
       calculatecosec();
     }
-    else if (trimmedButtonValue === "cot"){
+    else if (trimmedButtonValue === "cot") {
       calculatecot();
     }
-    else if (trimmedButtonValue === "\u221B"){
-      
+    else if (trimmedButtonValue === "\u221B") {
+
       calculatecuberoot();
     }
-    else if (trimmedButtonValue === "sin-1"){
+    else if (trimmedButtonValue === "sin-1") {
       calculateisin();
     }
-    else if (trimmedButtonValue === "cos-1"){
+    else if (trimmedButtonValue === "cos-1") {
       calculateicos();
     }
-    else if (trimmedButtonValue === "tan-1"){
+    else if (trimmedButtonValue === "tan-1") {
       calculateitan();
     }
 
@@ -197,7 +196,7 @@ function decimalPointOkay() {
     sinceLastDecimal.includes("(") ||
     sinceLastDecimal.includes(")") ||
     sinceLastDecimal.includes("^")
-    ) {
+  ) {
     return true
   }
   return false
@@ -206,14 +205,14 @@ function decimalPointOkay() {
 // Adding key event listener
 document.addEventListener("keydown", (e) => {
   // Check if the currently pressed key is number
-  if (isNumber(e.key)) display.value = verification(display.value,e.key);
+  if (isNumber(e.key)) display.value = verification(display.value, e.key);
   ;
 
   // Check if the currently pressed key is an operator
-  if (/^[+\-\*\/\=\(\)\%]*$/.test(e.key)) display.value =verification(display.value,e.key);
+  if (/^[+\-\*\/\=\(\)\%]*$/.test(e.key)) display.value = verification(display.value, e.key);
 
   // Check if the currently pressed key is Backspace, then remove last element
-  if (e.key === "Backspace") display.value = display.value.slice(0, -1);
+  if (e.key === "Backspace") backspace();
 
   // Check if the currently pressed key is Enter, calculate the value
   if (e.key === "Enter") equals();
@@ -259,26 +258,30 @@ function equals() {
 }
 
 function clear() {
-  display.value = "";
+  display.value = "0";
 }
 
+//if the length if the display value is greater than 1 then remove the last character else clear the display value
 function backspace() {
-  var letters = /[a-zA-Z]/;
-  if( display.value.match(letters)) {
+  const letters = /[a-zA-Z]/;
+  if (display.value.match(letters)) {
     clear();
   }
-  else{
+  if (display.value.length > 1) {
     display.value = display.value.slice(0, -1);
+  }
+  else {
+    clear();
   }
 }
 
 function multiply() {
-  display.value = verification( display.value,"*");
+  display.value = verification(display.value, "*");
 }
 
 function divide() {
-  
-  display.value = verification( display.value,"/");
+
+  display.value = verification(display.value, "/");
 }
 
 function factorial() {
@@ -384,43 +387,43 @@ function cube() {
   manageLocalStorage(display.value);
 }
 function calculatesin() {
-  display.value=Math.sin((Math.PI/180)*display.value);
+  display.value = Math.sin((Math.PI / 180) * display.value);
 }
 function calculatecos() {
-   display.value=Math.cos((Math.PI/180)*display.value);
+  display.value = Math.cos((Math.PI / 180) * display.value);
 }
 function calculatetan() {
-  display.value=Math.sin((Math.PI/180)*display.value)/Math.cos((Math.PI/180)*display.value);
+  display.value = Math.sin((Math.PI / 180) * display.value) / Math.cos((Math.PI / 180) * display.value);
 }
 function calculatesec() {
-  display.value=1/Math.cos((Math.PI/180)*display.value);
+  display.value = 1 / Math.cos((Math.PI / 180) * display.value);
 }
 function calculatecosec() {
-  display.value=1/Math.sin((Math.PI/180)*display.value);
+  display.value = 1 / Math.sin((Math.PI / 180) * display.value);
 }
 function calculatecot() {
-  display.value=Math.cos((Math.PI/180)*display.value)/Math.sin((Math.PI/180)*display.value);
+  display.value = Math.cos((Math.PI / 180) * display.value) / Math.sin((Math.PI / 180) * display.value);
 }
 //cuberoot function 
-function calculatecuberoot(){
+function calculatecuberoot() {
   console.log('cuberoot');
   display.value = Math.cbrt(display.value);
   manageLocalStorage(display.value);
 }
 //inverse trigonometry
 function calculateisin() {
-  const radian=Math.asin(display.value);
-  display.value=((180/Math.PI)*radian)
+  const radian = Math.asin(display.value);
+  display.value = ((180 / Math.PI) * radian)
 }
 
 function calculateicos() {
-  const radian=Math.acos(display.value);
-  display.value=((180/Math.PI)*radian)
+  const radian = Math.acos(display.value);
+  display.value = ((180 / Math.PI) * radian)
 }
 
 function calculateitan() {
-  const radian=Math.atan(display.value);
-  display.value=((180/Math.PI)*radian)
+  const radian = Math.atan(display.value);
+  display.value = ((180 / Math.PI) * radian)
 }
 
 // more functions toggle function.
@@ -444,10 +447,10 @@ const manageLocalStorage = (storing_value) => {
     localStorage.setItem(
       "calHistory",
       new Date().toLocaleTimeString() +
-        "||" +
-        new Date().toLocaleDateString() +
-        "||" +
-        String(storing_value)
+      "||" +
+      new Date().toLocaleDateString() +
+      "||" +
+      String(storing_value)
     );
   } else {
     let temp = localStorage.getItem("calHistory");
