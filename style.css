@@ -214,6 +214,7 @@ footer {
 	text-align: center;
 	padding: 0.25rem;
 	bottom: 0;
+	font-size: 20px;
 }
 
 .love a {
@@ -416,6 +417,35 @@ a 2g phone :) */
 	transition: all 0.5s ease-in;
 	cursor: pointer;
 }
+
+.share{
+	padding: 10px 10px;
+	font-size: 20px;
+	border: none;
+	border-radius: 10px;
+	margin: 5px;
+	text-align: center;
+	transition: all 0.5s ease-in;
+	cursor: pointer;
+	/* background-color: #000000;
+	color: #fff; */
+}
+
+.share a img{
+	height: 25px;
+	width: 25px;
+	margin: 10px 5px;
+	padding: 10px;
+}
+
+/* .share:hover{ */
+	/* font-size: 22px; */
+	/* background-color: #a2bbc9; */
+	/* color: #070708; */
+	/* transition: all 0.5s ease-in; */
+	/* border-radius: 20px; */
+	/* border: 3px solid ; */
+/* } */
 
 .mode-toggle:hover {
 	background-color: #d3d3d3;
