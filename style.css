@@ -79,6 +79,12 @@ body::-webkit-scrollbar {
 	padding: 10px;
 }
 
+#calc-style {
+	/*background-color: hsla(180, 100%, 40%, 0.3);*/
+	font-family:'Times New Roman', Times, serif;
+	font-size:35px;
+}
+
 .calculator-container {
 	text-align: center;
 }
