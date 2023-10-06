@@ -239,6 +239,12 @@ footer {
 	width: 92%;
 	text-align: right;
 }
+@media only screen and (max-width: 600px) {
+	.toggleHistory {
+		width: 100%;
+		text-align: center;
+	}
+  }
 
 .more-toggle-btn {
 	border: none;
@@ -424,11 +430,12 @@ a 2g phone :) */
 	border: none;
 	border-radius: 10px;
 	margin: 5px;
-	margin-left: 41%;
+	
 	text-align: center;
 	transition: all 0.5s ease-in;
 	cursor: pointer;
 	display: flex;
+	justify-content: center;
 	/* align-content: center; */
 	/* align-self: center; */
 	align-items: center;
@@ -436,6 +443,7 @@ a 2g phone :) */
 	/* background-color: #000000;
 	color: #fff; */
 }
+
 
 .share a img{
 	height: 25px;
