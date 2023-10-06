@@ -424,9 +424,15 @@ a 2g phone :) */
 	border: none;
 	border-radius: 10px;
 	margin: 5px;
+	margin-left: 41%;
 	text-align: center;
 	transition: all 0.5s ease-in;
 	cursor: pointer;
+	display: flex;
+	/* align-content: center; */
+	/* align-self: center; */
+	align-items: center;
+	/* left: 60%; */
 	/* background-color: #000000;
 	color: #fff; */
 }
