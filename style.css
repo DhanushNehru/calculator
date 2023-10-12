@@ -80,9 +80,7 @@ body::-webkit-scrollbar {
 }
 
 #calc-style {
-	/*background-color: hsla(180, 100%, 40%, 0.3);*/
-	font-family:'Times New Roman', Times, serif;
-	font-size:35px;
+	font-size:30px;
 }
 
 .calculator-container {
@@ -90,7 +88,7 @@ body::-webkit-scrollbar {
 }
 
 .calculator {
-	width: 80%;
+	width: 70%;
 	background-color: var(--primary-calculator-color);
 	padding: 20px;
 	border-radius: 10px;
@@ -102,7 +100,7 @@ input[type="text"] {
 	width: 90%;
 	height: 100px;
 	border-radius: 20px;
-	border: 0px;
+	border: 2px solid white;
 	background-color: var(--primary-input-color);
 	box-shadow: 4px 4px 30px var(--primary-input-shadow);
 	color: var(--primary-input-text);
@@ -124,7 +122,7 @@ input[type="text"] {
 .button {
 	margin: 3px;
 	width: 108px;
-	border: none;
+	border: 2px solid black;
 	height: 80px;
 	border-radius: 40px;
 	color: #000000;
@@ -163,17 +161,17 @@ button:hover {
 }
 
 .more-toggle-btn {
-	height: 60px;
-	background-color: #085078;
-	color: white;
+	background-color: white;
+	color: black;
 	font-size: large;
-	border-radius: 23px;
+	border-radius: 15px;
+	padding: 15px;
 }
 
 .more-toggle-btn:hover {
-	color: #000000;
+	color: black;
 	cursor: pointer;
-	background-color: #80ffff;
+	background-color: white;
 }
 
 .other-functions {
@@ -184,12 +182,6 @@ button:hover {
 .triggers {
 	background-color: #ffc266;
 	box-shadow: 2px 2px 60px var(--primary-trigger-shadow);
-	width: 60%;
-}
-
-.numbers {
-	background-color: #999999;
-	box-shadow: 2px 2px 60px var(--primary-number-shadow);
 }
 
 .backspace{
@@ -199,12 +191,10 @@ button:hover {
 
 .basic-stuff {
 	background-color: #80d4ff;
-	box-shadow: 2px 2px 60px var(--primary-number-shadow);
 }
 
 .complex-stuff {
 	background-color: #80ffff;
-	box-shadow: 2px 2px 60px var(--primary-number-shadow);
 }
 
 footer {
@@ -222,7 +212,9 @@ footer {
 	bottom: 0;
 	font-size: 20px;
 }
-
+.love{
+	font-size: 30px;
+}
 .love a {
 	text-decoration: none;
 	color: white;
@@ -251,15 +243,7 @@ footer {
 		text-align: center;
 	}
   }
-
-.more-toggle-btn {
-	border: none;
-}
-
-.toggleHistory button {
-	width: 100px;
-}
-
+  
 .toggleHistory button:hover {
 	background-color: #80ffff;
 }
@@ -333,9 +317,6 @@ a 2g phone :) */
 	.padding-functions {
 		width: 0px;
 	}
-	.calculator {
-		width: 65%;
-	}
 }
 
 @media only screen and (max-width: 1089px) {
@@ -353,10 +334,6 @@ a 2g phone :) */
 	.more-toggle-btn {
 		width: 80%;
 	}
-
-	.triggers {
-		width: 80%;
-	}
 }
 
 @media only screen and (max-width: 426px) {
@@ -366,10 +343,6 @@ a 2g phone :) */
 	}
 
 	.more-toggle-btn {
-		width: 80%;
-	}
-
-	.triggers {
 		width: 80%;
 	}
 }
@@ -446,8 +419,9 @@ a 2g phone :) */
 	/* align-self: center; */
 	align-items: center;
 	/* left: 60%; */
-	/* background-color: #000000;
-	color: #fff; */
+	/* background-color: #000000; */
+	color: #fff; 
+	font-size: larger;
 }
 
 
@@ -455,7 +429,9 @@ a 2g phone :) */
 	height: 25px;
 	width: 25px;
 	margin: 10px 5px;
-	padding: 10px;
+	background: beige;
+	border-radius: 10px;
+	padding: 14px;
 }
 
 /* .share:hover{ */
