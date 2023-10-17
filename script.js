@@ -12,7 +12,7 @@ historyDisplay.style.display = "none";
 display.value = "0";
 
 function verification(displayText, new_caracter) {
-  if (displayText === "" && (new_caracter === '*' || new_caracter === '/')) {
+  if (displayText === "" && (new_caracter === '*' || new_caracter === '/' || new_caracter === '+' || new_caracter === '-')) {
     return displayText;
   }
 
