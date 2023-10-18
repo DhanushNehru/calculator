@@ -13,7 +13,7 @@ display.value = "0";
 
 function verification(displayText, new_caracter) {
   play();
-  if (displayText === "" && (new_caracter === '*' || new_caracter === '/')) {
+  if (displayText === "" && (new_caracter === '*' || new_caracter === '/' || new_caracter === '+' || new_caracter === '-')) {
     return displayText;
   }
 
@@ -77,6 +77,7 @@ Array.prototype.forEach.call(buttons, function (button) {
       trimmedButtonValue != "sin-1" &&
       trimmedButtonValue != "cos-1" &&
       trimmedButtonValue != "tan-1" &&
+      trimmedButtonValue != "nPr"   &&
       (trimmedButtonValue != "." || decimalPointOkay())
     ) {
       display.value = verification(display.value, trimmedButtonValue);
@@ -165,7 +166,9 @@ Array.prototype.forEach.call(buttons, function (button) {
     else if (trimmedButtonValue === "tan-1") {
       calculateitan();
     }
-
+    else if (trimmedButtonValue === "nPr"){
+      nPr(display.value);   
+    }
   });
 });
 
@@ -246,6 +249,17 @@ function equals() {
 
     // local storage implementation
     manageLocalStorage(eval(display.value));
+  }
+  else if(display.value.includes("P")){
+    let num=display.value;
+    let [n, r] = display.value.split('P');
+    let nInt = parseInt(n);
+    let rInt = parseInt(r);
+    console.log("nInt  ",nInt)
+    console.log("rInt  ",rInt)
+    const result=calculateCR(nInt,rInt)
+    display.value=result;
+    console.log("Result ",result)
   }
   // if ((display.value).indexOf("^") > -1) {
   //   var base = (display.value).slice(0, (display.value).indexOf("^"));
@@ -525,3 +539,18 @@ calculatorContainer.addEventListener("keyup", (e) => {
     display.value = "";
   }
 });
+function calculateCR(set,r){
+  if(set<r){
+    return "Math Error"
+  }
+  else{
+    let result = 1;
+    for (let i = 0; i < r; i++) {
+      result *= set - i;
+    }
+    return result;
+}
+}
+function nPr(set){
+  display.value+="P"; 
+}
