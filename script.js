@@ -12,6 +12,7 @@ historyDisplay.style.display = "none";
 display.value = "0";
 
 function verification(displayText, new_caracter) {
+  play();
   if (displayText === "" && (new_caracter === '*' || new_caracter === '/')) {
     return displayText;
   }
@@ -204,7 +205,14 @@ function decimalPointOkay() {
 
 // Adding key event listener
 document.addEventListener("keydown", (e) => {
-  // Check if the currently pressed key is number
+  // Check if the currently pressed key is number  play()
+  const pressedButton = document.querySelector(`[data-text="${e.key.toLowerCase()}"]`);
+  if (pressedButton) {
+    pressedButton.classList.add('highlighted');
+    setTimeout(() => {
+      pressedButton.classList.remove('highlighted');
+    }, 200);
+  }
   if (isNumber(e.key)) display.value = verification(display.value, e.key);
   ;
 
@@ -258,11 +266,13 @@ function equals() {
 }
 
 function clear() {
+  play();
   display.value = "0";
 }
 
 //if the length if the display value is greater than 1 then remove the last character else clear the display value
 function backspace() {
+  play();
   const letters = /[a-zA-Z]/;
   if (display.value.match(letters)) {
     clear();
