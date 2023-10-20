@@ -246,9 +246,9 @@ function equals() {
   // }
   else {
     try {
-      display.value = eval(display.value);
+      display.value = math.evaluate(display.value).toString();
       // local storage implementation
-      manageLocalStorage(eval(display.value));
+      manageLocalStorage(math.evaluate(display.value).toString());
     } catch (error) {
       console.log(error);
       // display.value = "Syntax error !";
