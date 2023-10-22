@@ -8,6 +8,8 @@
     <title>Calculator | Dhanush Nehru</title>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="icon" href="https://cdn2.iconfinder.com/data/icons/ios7-inspired-mac-icon-set/512/Calculator_512.png">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.11.2/math.min.js">
+    </script>
 </head>
 
 <body id="body_screen">
@@ -254,6 +256,7 @@
     </footer>
 
     <script>
+        math.config({number: 'BigNumber'})
         var brightIcon = document.getElementById("bright-icon");
 
         brightIcon.onclick = () => {
