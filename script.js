@@ -12,7 +12,7 @@ historyDisplay.style.display = "none";
 display.value = "0";
 
 function verification(displayText, new_caracter) {
-  if (displayText === "" && (new_caracter === '*' || new_caracter === '/')) {
+  if (displayText === "" && (new_caracter === '*' || new_caracter === '/' || new_caracter === '+' || new_caracter === '-')) {
     return displayText;
   }
 
@@ -37,7 +37,9 @@ Array.prototype.forEach.call(buttons, function (button) {
     play();
     const trimmedButtonValue = button.textContent.trim();
     console.log(" Button text content", trimmedButtonValue);
-    if (display.value == "0")
+    if (display.value == 0 &&
+       trimmedButtonValue != "." && 
+       !display.value.includes(".")) 
       display.value = "";
     if (
       trimmedButtonValue != "=" &&
@@ -212,8 +214,13 @@ function decimalPointOkay() {
 // Adding key event listener
 document.addEventListener("keydown", (e) => {
   // Check if the currently pressed key is number
-  if (isNumber(e.key)) display.value = verification(display.value, e.key);
-  ;
+  if (isNumber(e.key)){ 
+    if (display.value == 0 &&
+      e.key != "." && 
+      !display.value.includes(".")) 
+     display.value = "";
+     
+     display.value = verification(display.value, e.key)};
 
   // Check if the currently pressed key is an operator
   if (/^[+\-\*\/\=\(\)\%]*$/.test(e.key)) display.value = verification(display.value, e.key);
@@ -275,9 +282,9 @@ function equals() {
   // }
   else {
     try {
-      display.value = eval(display.value);
+      display.value = math.evaluate(display.value).toString();
       // local storage implementation
-      manageLocalStorage(eval(display.value));
+      manageLocalStorage(math.evaluate(display.value).toString());
     } catch (error) {
       console.log(error);
       // display.value = "Syntax error !";
