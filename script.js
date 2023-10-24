@@ -78,7 +78,8 @@ Array.prototype.forEach.call(buttons, function (button) {
       trimmedButtonValue != "sin-1" &&
       trimmedButtonValue != "cos-1" &&
       trimmedButtonValue != "tan-1" &&
-      trimmedButtonValue != "nPr"   &&
+      trimmedButtonValue != "nPr" &&
+      trimmedButtonValue != "nCr" &&
       (trimmedButtonValue != "." || decimalPointOkay())
     ) {
       display.value = verification(display.value, trimmedButtonValue);
@@ -167,8 +168,11 @@ Array.prototype.forEach.call(buttons, function (button) {
     else if (trimmedButtonValue === "tan-1") {
       calculateitan();
     }
-    else if (trimmedButtonValue === "nPr"){
-      nPr(display.value);   
+    else if (trimmedButtonValue === "nPr") {
+      nPr(display.value);
+    }
+    else if (trimmedButtonValue === "nCr") {
+      nCr(display.value);
     }
   });
 });
@@ -249,16 +253,27 @@ function equals() {
     // local storage implementation
     manageLocalStorage(eval(display.value));
   }
-  else if(display.value.includes("P")){
-    let num=display.value;
+  else if (display.value.includes("P")) {
+    let num = display.value;
     let [n, r] = display.value.split('P');
     let nInt = parseInt(n);
     let rInt = parseInt(r);
-    console.log("nInt  ",nInt)
-    console.log("rInt  ",rInt)
-    const result=calculateCR(nInt,rInt)
-    display.value=result;
-    console.log("Result ",result)
+    console.log("nInt  ", nInt)
+    console.log("rInt  ", rInt)
+    const result = calculateCR(nInt, rInt)
+    display.value = result;
+    console.log("Result ", result)
+  }
+  else if (display.value.includes("C")) {
+    let num = display.value;
+    let [n, r] = display.value.split('C');
+    let nInt = parseInt(n);
+    let rInt = parseInt(r);
+    console.log("nInt  ", nInt)
+    console.log("rInt  ", rInt)
+    const result = calnCr(nInt, rInt)
+    display.value = result;
+    console.log("Result ", result)
   }
   // if ((display.value).indexOf("^") > -1) {
   //   var base = (display.value).slice(0, (display.value).indexOf("^"));
@@ -536,18 +551,43 @@ calculatorContainer.addEventListener("keyup", (e) => {
     display.value = "";
   }
 });
-function calculateCR(set,r){
-  if(set<r){
+function calculateCR(set, r) {
+  if (set < r) {
     return "Math Error"
   }
-  else{
+  else {
     let result = 1;
     for (let i = 0; i < r; i++) {
       result *= set - i;
     }
     return result;
+  }
 }
+function nPr(set) {
+  display.value += "P";
 }
-function nPr(set){
-  display.value+="P"; 
+function nCr(set) {
+  display.value += "C";
 }
+function fact(n) {
+  let ans = 1;
+  if (n === 0) {
+    return 1;
+  }
+  else {
+    return n * fact(n - 1);
+  }
+}
+
+function calnCr(n, r) {
+  let res=1;
+  if (n < r) {
+    return "Math Error"
+  }
+  else {
+    res = (fact(n) / (fact(r) * fact(n - r)));
+    return res;
+  }
+  
+}
+
