@@ -21,6 +21,7 @@ A Calculator that performs many **mathematical** functions
 - Trigonometric operation
 - Cuberoot
 -nPr[Permutation of n elments]
+-nCr[Number of combinations for given set]
 ```
 
 ## Gitpod
