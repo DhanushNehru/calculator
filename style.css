@@ -139,6 +139,14 @@ button:hover {
 	box-shadow: 0 5px 15px rgba(5, 197, 245, 0.986);
 }
 
+.highlighted{
+	background-color: hsla(180, 100%, 40%, 0.3) !important;
+	transition: 0.2s;
+	color: rgb(255, 85, 23);
+	text-shadow: 0px 0px 1px white;
+	box-shadow: 0 5px 15px rgba(5, 197, 245, 0.986);
+}
+
 .functions-one button:nth-child(13) {
 	background-color: #dc3545;
 	box-shadow: 2px 2px 40px #6d5255;
