@@ -6,6 +6,7 @@ const calculatorContainer = document.getElementById("body_screen");
 const historyToggleButton = document.querySelector("#showHistoryButton");
 const historyDisplay = document.querySelector(".historyDisplay");
 const parentTable = document.querySelector("#tableParent");
+var resultDisplayed = false;
 // by default
 otherFuncView.style.display = "none";
 historyDisplay.style.display = "none";
@@ -38,6 +39,10 @@ Array.prototype.forEach.call(buttons, function (button) {
     play();
     const trimmedButtonValue = button.textContent.trim();
     console.log(" Button text content", trimmedButtonValue);
+    if (resultDisplayed) {
+      clear();
+      resultDisplayed = false;
+    }
     if (display.value == 0 &&
        trimmedButtonValue != "." && 
        !display.value.includes(".")) 
@@ -245,7 +250,10 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "Enter") equals();
 
   // Check if the currently pressed key is 'c', then clear the value
-  if (e.key === "c") clear();
+  if (e.key === "c") {
+    resultDisplayed = false;
+    clear();
+  }
 });
 
 function right_bracket() {
@@ -262,7 +270,7 @@ function equals() {
     display.value = display.value.replaceAll("^", "**");
     console.log(" Equals2 ", display.value);
     display.value = eval(display.value);
-
+    resultDisplayed = true;
     // local storage implementation
     manageLocalStorage(eval(display.value));
   }
@@ -275,6 +283,7 @@ function equals() {
     console.log("rInt  ", rInt)
     const result = calculateCR(nInt, rInt)
     display.value = result;
+    resultDisplayed = true;
     console.log("Result ", result)
   }
   else if (display.value.includes("C")) {
@@ -286,6 +295,7 @@ function equals() {
     console.log("rInt  ", rInt)
     const result = calnCr(nInt, rInt)
     display.value = result;
+    resultDisplayed = true;
     console.log("Result ", result)
   }
   // if ((display.value).indexOf("^") > -1) {
@@ -296,6 +306,7 @@ function equals() {
   else {
     try {
       display.value = math.evaluate(display.value).toString();
+      resultDisplayed = true;
       // local storage implementation
       manageLocalStorage(math.evaluate(display.value).toString());
     } catch (error) {
@@ -348,31 +359,37 @@ function factorial() {
     }
     display.value = number;
   }
+  resultDisplayed = true;
   manageLocalStorage(display.value);
 }
 
 function square() {
   display.value = eval(display.value * display.value);
+  resultDisplayed = true;
   manageLocalStorage(display.value);
 }
 
 function squareRoot() {
   display.value = Math.sqrt(display.value);
+  resultDisplayed = true;
   manageLocalStorage(display.value);
 }
 
 function percent() {
   display.value = display.value / 100;
+  resultDisplayed = true;
   manageLocalStorage(display.value);
 }
 
 function exponent() {
   display.value += "^";
+  resultDisplayed = true;
   manageLocalStorage(display.value);
 }
 
 function exponential() {
   display.value = eval(Math.exp(display.value));
+  resultDisplayed = true;
   manageLocalStorage(display.value);
 }
 
@@ -380,100 +397,122 @@ function binary() {
   const number = parseInt(display.value);
   const result = number.toString(2);
   display.value = result;
+  resultDisplayed = true;
   manageLocalStorage(display.value);
 }
 
 function decimal() {
   display.value = parseInt(display.value, 2);
+  resultDisplayed = true;
   manageLocalStorage(display.value);
 }
 
 function pi() {
   display.value += Math.PI;
+  resultDisplayed = true;
   manageLocalStorage(display.value);
 }
 
 function log10() {
   display.value = eval(Math.log10(display.value));
+  resultDisplayed = true;
   manageLocalStorage(display.value);
 }
 
 function log2() {
   display.value = eval(Math.log2(display.value));
+  resultDisplayed = true;
   manageLocalStorage(display.value);
 }
 
 function loge() {
   display.value = eval(Math.log(display.value));
+  resultDisplayed = true;
   manageLocalStorage(display.value);
 }
 
 function rand() {
   display.value = eval(Math.random());
+  resultDisplayed = true;
   manageLocalStorage(display.value);
 }
 
 function abs() {
   display.value = eval(Math.abs(display.value));
+  resultDisplayed = true;
   manageLocalStorage(display.value);
 }
 
 function floor() {
   display.value = eval(Math.floor(display.value));
+  resultDisplayed = true;
   manageLocalStorage(display.value);
 }
 
 function ceil() {
   display.value = eval(Math.ceil(display.value));
+  resultDisplayed = true;
   manageLocalStorage(display.value);
 }
 
 function reciprocalValue() {
   display.value = Math.pow(display.value, -1);
+  resultDisplayed = true;
   manageLocalStorage(display.value);
 }
 
 function cube() {
   display.value = eval(display.value * display.value * display.value);
+  resultDisplayed = true;
   manageLocalStorage(display.value);
 }
 function calculatesin() {
   display.value = Math.sin((Math.PI / 180) * display.value);
+  resultDisplayed = true;
 }
 function calculatecos() {
   display.value = Math.cos((Math.PI / 180) * display.value);
+  resultDisplayed = true;
 }
 function calculatetan() {
   display.value = Math.sin((Math.PI / 180) * display.value) / Math.cos((Math.PI / 180) * display.value);
+  resultDisplayed = true;
 }
 function calculatesec() {
   display.value = 1 / Math.cos((Math.PI / 180) * display.value);
+  resultDisplayed = true;
 }
 function calculatecosec() {
   display.value = 1 / Math.sin((Math.PI / 180) * display.value);
+  resultDisplayed = true;
 }
 function calculatecot() {
   display.value = Math.cos((Math.PI / 180) * display.value) / Math.sin((Math.PI / 180) * display.value);
+  resultDisplayed = true;
 }
 //cuberoot function 
 function calculatecuberoot() {
   console.log('cuberoot');
   display.value = Math.cbrt(display.value);
+  resultDisplayed = true;
   manageLocalStorage(display.value);
 }
 //inverse trigonometry
 function calculateisin() {
   const radian = Math.asin(display.value);
+  resultDisplayed = true;
   display.value = ((180 / Math.PI) * radian)
 }
 
 function calculateicos() {
   const radian = Math.acos(display.value);
+  resultDisplayed = true;
   display.value = ((180 / Math.PI) * radian)
 }
 
 function calculateitan() {
   const radian = Math.atan(display.value);
+  resultDisplayed = true;
   display.value = ((180 / Math.PI) * radian)
 }
 
