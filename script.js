@@ -14,13 +14,13 @@ display.value = "0";
 
 function verification(displayText, new_caracter) {
   play();
-  if (displayText === "" && (new_caracter === '*' || new_caracter === '/' || new_caracter === '+' || new_caracter === '-')) {
+  if (displayText === "" && (new_caracter === '*' || new_caracter === '/' || new_caracter === '+' || new_caracter === '-' || new_caracter === '//')) {
     return displayText;
   }
 
   if ((displayText[displayText.length - 1] === '/' || displayText[displayText.length - 1] === '*' ||
-    displayText[displayText.length - 1] === '+' || displayText[displayText.length - 1] === '-') &&
-    (new_caracter === '/' || new_caracter === '*' || new_caracter === '+' || new_caracter === '-')) {
+    displayText[displayText.length - 1] === '+' || displayText[displayText.length - 1] === '-' || displayText[displayText.length - 1] === '//') &&
+    (new_caracter === '/' || new_caracter === '*' || new_caracter === '+' || new_caracter === '-' || new_caracter === '//')) {
     return displayText;
   }
 
@@ -44,8 +44,8 @@ Array.prototype.forEach.call(buttons, function (button) {
       resultDisplayed = false;
     }
     if (display.value == 0 &&
-       trimmedButtonValue != "." && 
-       !display.value.includes(".")) 
+      trimmedButtonValue != "." &&
+      !display.value.includes("."))
       display.value = "";
     if (
       trimmedButtonValue != "=" &&
@@ -53,6 +53,7 @@ Array.prototype.forEach.call(buttons, function (button) {
       trimmedButtonValue != "C" &&
       trimmedButtonValue != "x" &&
       trimmedButtonValue != "\u00F7" &&
+      trimmedButtonValue != "//" &&
       trimmedButtonValue != "\u221A" &&
       trimmedButtonValue != "x 2" &&
       trimmedButtonValue != "x ²" &&
@@ -100,6 +101,8 @@ Array.prototype.forEach.call(buttons, function (button) {
       multiply();
     } else if (trimmedButtonValue === "\u00F7") {
       divide();
+    } else if (trimmedButtonValue === "//") {
+      mod();
     } else if (trimmedButtonValue === "<=") {
       backspace();
     } else if (trimmedButtonValue === "%") {
@@ -208,6 +211,7 @@ function decimalPointOkay() {
     sinceLastDecimal.includes("-") ||
     sinceLastDecimal.includes("*") ||
     sinceLastDecimal.includes("/") ||
+    sinceLastDecimal.includes("//") ||
     sinceLastDecimal.includes("(") ||
     sinceLastDecimal.includes(")") ||
     sinceLastDecimal.includes("^")
@@ -230,18 +234,18 @@ document.addEventListener("keydown", (e) => {
   }
 
   // Check if the currently pressed key is number
-  if (isNumber(e.key)){ 
+  if (isNumber(e.key)) {
     if (display.value == 0 &&
-      e.key != "." && 
-      !display.value.includes(".")) 
-     display.value = "";
-     
-     display.value = verification(display.value, e.key)
+      e.key != "." &&
+      !display.value.includes("."))
+      display.value = "";
+
+    display.value = verification(display.value, e.key)
   };
 
 
   // Check if the currently pressed key is an operator
-  if (/^[+\-\*\/\=\(\)\%]*$/.test(e.key)) display.value = verification(display.value, e.key);
+  if (/^[+\-\//\*\/\=\(\)\%]*$/.test(e.key)) display.value = verification(display.value, e.key);
 
   // Check if the currently pressed key is Backspace, then remove last element
   if (e.key === "Backspace") backspace();
@@ -344,6 +348,14 @@ function multiply() {
 function divide() {
 
   display.value = verification(display.value, "/");
+}
+
+function mod() {
+  display.value = verification(display.value, "//");
+  display.value = display.value.replaceAll("//", "%");
+  modulo = display.value % new_caracter;
+  resultDisplayed = true;
+  manageLocalStorage(eval(modulo));
 }
 
 function factorial() {
@@ -634,7 +646,7 @@ function fact(n) {
 }
 
 function calnCr(n, r) {
-  let res=1;
+  let res = 1;
   if (n < r) {
     return "Math Error"
   }
@@ -642,6 +654,6 @@ function calnCr(n, r) {
     res = (fact(n) / (fact(r) * fact(n - r)));
     return res;
   }
-  
+
 }
 
