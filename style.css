@@ -170,12 +170,13 @@ button:hover {
 	background-color: red;
 }
 
-.more-toggle-btn {
+.more-toggle-btn , .solve-quadratic{
 	background-color: white;
 	color: black;
 	font-size: large;
 	border-radius: 15px;
 	padding: 15px;
+	margin: 10px;
 }
 
 .more-toggle-btn:hover {

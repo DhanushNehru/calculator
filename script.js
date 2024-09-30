@@ -29,6 +29,60 @@ function verification(displayText, new_caracter) {
 
 
 
+function solveQuadratic() {
+  // Get coefficients from the display
+  const equation = display.value;
+  const coeffs = equation.split(',').map(Number);
+
+  if (coeffs.length === 3) {
+    
+    const [a, b, c] = coeffs;
+    const discriminant = b * b - 4 * a * c;
+
+    if (discriminant > 0) {
+      const x1 = (-b + Math.sqrt(discriminant)) / (2 * a);
+      const x2 = (-b - Math.sqrt(discriminant)) / (2 * a);
+      display.value = `x1 = ${x1.toFixed(2)}, x2 = ${x2.toFixed(2)}`;
+    } else if (discriminant === 0) {
+      const x = -b / (2 * a);
+      display.value = `x = ${x.toFixed(2)}`;
+    } else {
+      display.value = "No real roots";
+    }
+  } else if (coeffs.length === 4) {
+    
+    const [a, b, c, d] = coeffs;
+    const p = (3 * a * c - b * b) / (3 * a * a);
+    const q = (2 * b * b * b - 9 * a * b * c + 27 * a * a * d) / (27 * a * a * a);
+    const roots = solveCubic(p, q);
+    display.value = roots.map(x => x.toFixed(2)).join(', ');
+  } else {
+    alert('Please enter coefficients in the screen before solving.');
+  }
+}
+
+function solveCubic(p, q) {
+  const D = (q * q / 4) + (p * p * p / 27);
+  if (D > 0) {
+    const u = Math.cbrt(-q / 2 + Math.sqrt(D));
+    const v = Math.cbrt(-q / 2 - Math.sqrt(D));
+    return [u + v];
+  } else if (D === 0) {
+    const u = Math.cbrt(-q / 2);
+    return [2 * u, -u];
+  } else {
+    const phi = Math.acos(-q / 2 / Math.sqrt(-p * p * p / 27));
+    const r = 2 * Math.sqrt(-p / 3);
+    return [
+      r * Math.cos(phi / 3),
+      r * Math.cos((phi + 2 * Math.PI) / 3),
+      r * Math.cos((phi + 4 * Math.PI) / 3)
+    ];
+  }
+}
+
+
+
 function play() {
   audio = document.querySelector("audio");
   audio.play();
