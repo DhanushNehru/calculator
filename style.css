@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Dosis:wght@800&family=Raleway:wght@900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 :root {
 	--primary-calculator-color: #faf7f0;
@@ -53,7 +53,7 @@ body {
 	background-color: var(--primary-body-color);
 	/* Chrome 10-25, Safari 5.1-6 */
 	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-	font-family: "Ubuntu", sans-serif;
+	font-family: "Poppins", sans-serif;
 	/* hide Scrollbar */
 	-ms-overflow-style: none;
 	/* IE and Edge */
