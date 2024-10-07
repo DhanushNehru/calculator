@@ -51,7 +51,7 @@ To deploy the project locally
 
 >Interface of the **Calculator**
 
-![image](https://user-images.githubusercontent.com/48837703/215178413-15e5d827-f7ad-4204-b5a1-80778cac6d21.png)
+![image](./screenshot.png)
 
 ## 🔗 Connect with me
 
