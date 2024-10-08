@@ -73,7 +73,7 @@ body::-webkit-scrollbar {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	width: 75%;
+	width: 95%;
 	margin: 0 auto 0 auto;
 	height: 10vh;
 	padding: 10px;
