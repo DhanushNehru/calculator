@@ -171,17 +171,39 @@ button:hover {
 }
 
 .more-toggle-btn {
+	
 	background-color: white;
 	color: black;
 	font-size: large;
 	border-radius: 15px;
 	padding: 15px;
+	margin-right: 100px;
+	
 }
 
+.solve-quadratic{
+	background-color: white;
+	color: black;
+	margin-left: 60px;
+	font-size: large;
+	border-radius: 15px;
+	padding: 5px;
+	margin-right: 130px;
+	height: 55px;
+	width: 300px;
+	
+	
+}
+.more-functions-toggle{
+	width: 80%;
+}
 .more-toggle-btn:hover {
 	color: black;
 	cursor: pointer;
 	background-color: white;
+}
+.options-container{
+	display: flex;
 }
 
 .other-functions {
