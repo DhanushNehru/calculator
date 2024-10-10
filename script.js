@@ -105,6 +105,7 @@ Array.prototype.forEach.call(buttons, function (button) {
       trimmedButtonValue != "=" &&
       trimmedButtonValue != "⌫" &&
       trimmedButtonValue != "C" &&
+      trimmedButtonValue != "+/-" &&
       trimmedButtonValue != "x" &&
       trimmedButtonValue != "\u00F7" &&
       trimmedButtonValue != "//" &&
@@ -151,6 +152,8 @@ Array.prototype.forEach.call(buttons, function (button) {
 
     } else if (trimmedButtonValue === "C") {
       clear();
+    } else if (trimmedButtonValue === "+/-") {
+      alterSign();
     } else if (trimmedButtonValue === "x") {
       multiply();
     } else if (trimmedButtonValue === "\u00F7") {
@@ -393,6 +396,12 @@ function backspace() {
   else {
     clear();
   }
+}
+
+function alterSign() {
+  display.value = eval(display.value * -1);
+  resultDisplayed = true;
+  manageLocalStorage(display.value);
 }
 
 function multiply() {
