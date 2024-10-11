@@ -1,6 +1,10 @@
 
 # Calculator
 
+[![Join Our Discord](https://img.shields.io/badge/Discord-Join%20Server-blue?logo=discord&style=for-the-badge)](https://discord.com/invite/Yn9g6KuWyA)
+[![Subscribe on YouTube](https://img.shields.io/badge/YouTube-Subscribe-red?logo=youtube&style=for-the-badge)](https://www.youtube.com/@dhanushnehru?sub_confirmation=1)
+[![Subscribe to Newsletter](https://img.shields.io/badge/Newsletter-Subscribe-orange?style=for-the-badge)](https://dhanushn.substack.com/)
+
 A Calculator that performs many **mathematical** functions
 
 ![Mar-Business_11](https://user-images.githubusercontent.com/114678694/193993341-4915b37e-8de2-42a3-a940-8eb2b58aaedf.jpg)
@@ -53,8 +57,6 @@ To deploy the project locally
 
 ![image](./screenshot.png)
 
-## 🔗 Connect with me
-
-Hey, I am Dhanush N,the maintainer of this opensource repository. You can connect with me and support or follow my work via [Twitter](https://twitter.com/Dhanush_Nehru) / [Instagram](https://www.instagram.com/dhanush_nehru/) / [Youtube](https://www.youtube.com/@dhanushnehru?sub_confirmation=1) / [Github](https://github.com/DhanushNehru) / [Newsletter](https://dhanushn.substack.com/) / [Discord](https://discord.com/invite/Yn9g6KuWyA)
+</br>
 
 If you liked this project support it by starring it 🌟 and share it on social media
