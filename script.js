@@ -14,28 +14,41 @@ display.value = "0";
 
 function verification(displayText, new_caracter) {
   play();
-  if (displayText === "" && (new_caracter === '*' || new_caracter === '/' || new_caracter === '+' || new_caracter === '-' || new_caracter === '//')) {
+  if (
+    displayText === "" &&
+    (new_caracter === "*" ||
+      new_caracter === "/" ||
+      new_caracter === "+" ||
+      new_caracter === "-" ||
+      new_caracter === "//")
+  ) {
     return displayText;
   }
 
-  if ((displayText[displayText.length - 1] === '/' || displayText[displayText.length - 1] === '*' ||
-    displayText[displayText.length - 1] === '+' || displayText[displayText.length - 1] === '-' || displayText[displayText.length - 1] === '//') &&
-    (new_caracter === '/' || new_caracter === '*' || new_caracter === '+' || new_caracter === '-' || new_caracter === '//')) {
+  if (
+    (displayText[displayText.length - 1] === "/" ||
+      displayText[displayText.length - 1] === "*" ||
+      displayText[displayText.length - 1] === "+" ||
+      displayText[displayText.length - 1] === "-" ||
+      displayText[displayText.length - 1] === "//") &&
+    (new_caracter === "/" ||
+      new_caracter === "*" ||
+      new_caracter === "+" ||
+      new_caracter === "-" ||
+      new_caracter === "//")
+  ) {
     return displayText;
   }
 
   return displayText + new_caracter;
 }
 
-
-
 function solveQuadratic() {
   // Get coefficients from the display
   const equation = display.value;
-  const coeffs = equation.split(',').map(Number);
+  const coeffs = equation.split(",").map(Number);
 
   if (coeffs.length === 3) {
-    
     const [a, b, c] = coeffs;
     const discriminant = b * b - 4 * a * c;
 
@@ -50,19 +63,19 @@ function solveQuadratic() {
       display.value = "No real roots";
     }
   } else if (coeffs.length === 4) {
-    
     const [a, b, c, d] = coeffs;
     const p = (3 * a * c - b * b) / (3 * a * a);
-    const q = (2 * b * b * b - 9 * a * b * c + 27 * a * a * d) / (27 * a * a * a);
+    const q =
+      (2 * b * b * b - 9 * a * b * c + 27 * a * a * d) / (27 * a * a * a);
     const roots = solveCubic(p, q);
-    display.value = roots.map(x => x.toFixed(2)).join(', ');
+    display.value = roots.map((x) => x.toFixed(2)).join(", ");
   } else {
-    alert('Please enter coefficients in the screen before solving.');
+    alert("Please enter coefficients in the screen before solving.");
   }
 }
 
 function solveCubic(p, q) {
-  const D = (q * q / 4) + (p * p * p / 27);
+  const D = (q * q) / 4 + (p * p * p) / 27;
   if (D > 0) {
     const u = Math.cbrt(-q / 2 + Math.sqrt(D));
     const v = Math.cbrt(-q / 2 - Math.sqrt(D));
@@ -71,17 +84,15 @@ function solveCubic(p, q) {
     const u = Math.cbrt(-q / 2);
     return [2 * u, -u];
   } else {
-    const phi = Math.acos(-q / 2 / Math.sqrt(-p * p * p / 27));
+    const phi = Math.acos(-q / 2 / Math.sqrt((-p * p * p) / 27));
     const r = 2 * Math.sqrt(-p / 3);
     return [
       r * Math.cos(phi / 3),
       r * Math.cos((phi + 2 * Math.PI) / 3),
-      r * Math.cos((phi + 4 * Math.PI) / 3)
+      r * Math.cos((phi + 4 * Math.PI) / 3),
     ];
   }
 }
-
-
 
 function play() {
   audio = document.querySelector("audio");
@@ -97,9 +108,11 @@ Array.prototype.forEach.call(buttons, function (button) {
       clear();
       resultDisplayed = false;
     }
-    if (display.value == 0 &&
+    if (
+      display.value == 0 &&
       trimmedButtonValue != "." &&
-      !display.value.includes("."))
+      !display.value.includes(".")
+    )
       display.value = "";
     if (
       trimmedButtonValue != "=" &&
@@ -148,8 +161,7 @@ Array.prototype.forEach.call(buttons, function (button) {
     } else if (trimmedButtonValue === "=") {
       equals();
     } else if (trimmedButtonValue === "⌫") {
-      backspace()
-
+      backspace();
     } else if (trimmedButtonValue === "C") {
       clear();
     } else if (trimmedButtonValue === "+/-") {
@@ -202,42 +214,29 @@ Array.prototype.forEach.call(buttons, function (button) {
       reciprocalValue();
     } else if (trimmedButtonValue === "x 3") {
       cube();
-    }
-    else if (trimmedButtonValue === "sin") {
+    } else if (trimmedButtonValue === "sin") {
       calculatesin();
-    }
-    else if (trimmedButtonValue === "cos") {
+    } else if (trimmedButtonValue === "cos") {
       calculatecos();
-    }
-    else if (trimmedButtonValue === "tan") {
+    } else if (trimmedButtonValue === "tan") {
       calculatetan();
-    }
-    else if (trimmedButtonValue === "sec") {
+    } else if (trimmedButtonValue === "sec") {
       calculatesec();
-    }
-    else if (trimmedButtonValue === "cosec") {
+    } else if (trimmedButtonValue === "cosec") {
       calculatecosec();
-    }
-    else if (trimmedButtonValue === "cot") {
+    } else if (trimmedButtonValue === "cot") {
       calculatecot();
-    }
-    else if (trimmedButtonValue === "\u221B") {
-
+    } else if (trimmedButtonValue === "\u221B") {
       calculatecuberoot();
-    }
-    else if (trimmedButtonValue === "sin-1") {
+    } else if (trimmedButtonValue === "sin-1") {
       calculateisin();
-    }
-    else if (trimmedButtonValue === "cos-1") {
+    } else if (trimmedButtonValue === "cos-1") {
       calculateicos();
-    }
-    else if (trimmedButtonValue === "tan-1") {
+    } else if (trimmedButtonValue === "tan-1") {
       calculateitan();
-    }
-    else if (trimmedButtonValue === "nPr") {
+    } else if (trimmedButtonValue === "nPr") {
       nPr(display.value);
-    }
-    else if (trimmedButtonValue === "nCr") {
+    } else if (trimmedButtonValue === "nCr") {
       nCr(display.value);
     }
   });
@@ -254,14 +253,15 @@ function isNumber(num) {
 // Checks if there is an operand between the previous decimal point and the current cursor.
 
 function decimalPointOkay() {
-  screenNumber = display.value
+  screenNumber = display.value;
   if (!screenNumber.includes(".")) {
-    return true
+    return true;
   }
 
   const sinceLastDecimal = screenNumber.substring(
     screenNumber.lastIndexOf(".") + 1,
-    screenNumber.length - 1)
+    screenNumber.length - 1
+  );
 
   if (
     sinceLastDecimal.includes("+") ||
@@ -273,36 +273,35 @@ function decimalPointOkay() {
     sinceLastDecimal.includes(")") ||
     sinceLastDecimal.includes("^")
   ) {
-    return true
+    return true;
   }
-  return false
+  return false;
 }
 
 // Adding key event listener
 document.addEventListener("keydown", (e) => {
-
   // Check if the currently pressed key is number  play()
-  const pressedButton = document.querySelector(`[data-text="${e.key.toLowerCase()}"]`);
+  const pressedButton = document.querySelector(
+    `[data-text="${e.key.toLowerCase()}"]`
+  );
   if (pressedButton) {
-    pressedButton.classList.add('highlighted');
+    pressedButton.classList.add("highlighted");
     setTimeout(() => {
-      pressedButton.classList.remove('highlighted');
+      pressedButton.classList.remove("highlighted");
     }, 200);
   }
 
   // Check if the currently pressed key is number
   if (isNumber(e.key)) {
-    if (display.value == 0 &&
-      e.key != "." &&
-      !display.value.includes("."))
+    if (display.value == 0 && e.key != "." && !display.value.includes("."))
       display.value = "";
 
-    display.value = verification(display.value, e.key)
-  };
-
+    display.value = verification(display.value, e.key);
+  }
 
   // Check if the currently pressed key is an operator
-  if (/^[+\-\//\*\/\=\(\)\%]*$/.test(e.key)) display.value = verification(display.value, e.key);
+  if (/^[+\-\//\*\/\=\(\)\%]*$/.test(e.key))
+    display.value = verification(display.value, e.key);
 
   // Check if the currently pressed key is Backspace, then remove last element
   if (e.key === "Backspace") backspace();
@@ -334,30 +333,28 @@ function equals() {
     resultDisplayed = true;
     // local storage implementation
     manageLocalStorage(eval(display.value));
-  }
-  else if (display.value.includes("P")) {
+  } else if (display.value.includes("P")) {
     let num = display.value;
-    let [n, r] = display.value.split('P');
+    let [n, r] = display.value.split("P");
     let nInt = parseInt(n);
     let rInt = parseInt(r);
-    console.log("nInt  ", nInt)
-    console.log("rInt  ", rInt)
-    const result = calculateCR(nInt, rInt)
+    console.log("nInt  ", nInt);
+    console.log("rInt  ", rInt);
+    const result = calculateCR(nInt, rInt);
     display.value = result;
     resultDisplayed = true;
-    console.log("Result ", result)
-  }
-  else if (display.value.includes("C")) {
+    console.log("Result ", result);
+  } else if (display.value.includes("C")) {
     let num = display.value;
-    let [n, r] = display.value.split('C');
+    let [n, r] = display.value.split("C");
     let nInt = parseInt(n);
     let rInt = parseInt(r);
-    console.log("nInt  ", nInt)
-    console.log("rInt  ", rInt)
-    const result = calnCr(nInt, rInt)
+    console.log("nInt  ", nInt);
+    console.log("rInt  ", rInt);
+    const result = calnCr(nInt, rInt);
     display.value = result;
     resultDisplayed = true;
-    console.log("Result ", result)
+    console.log("Result ", result);
   }
   // if ((display.value).indexOf("^") > -1) {
   //   var base = (display.value).slice(0, (display.value).indexOf("^"));
@@ -392,8 +389,7 @@ function backspace() {
   }
   if (display.value.length > 1) {
     display.value = display.value.slice(0, -1);
-  }
-  else {
+  } else {
     clear();
   }
 }
@@ -409,7 +405,6 @@ function multiply() {
 }
 
 function divide() {
-
   display.value = verification(display.value, "/");
 }
 
@@ -550,7 +545,9 @@ function calculatecos() {
   resultDisplayed = true;
 }
 function calculatetan() {
-  display.value = Math.sin((Math.PI / 180) * display.value) / Math.cos((Math.PI / 180) * display.value);
+  display.value =
+    Math.sin((Math.PI / 180) * display.value) /
+    Math.cos((Math.PI / 180) * display.value);
   resultDisplayed = true;
 }
 function calculatesec() {
@@ -562,12 +559,14 @@ function calculatecosec() {
   resultDisplayed = true;
 }
 function calculatecot() {
-  display.value = Math.cos((Math.PI / 180) * display.value) / Math.sin((Math.PI / 180) * display.value);
+  display.value =
+    Math.cos((Math.PI / 180) * display.value) /
+    Math.sin((Math.PI / 180) * display.value);
   resultDisplayed = true;
 }
-//cuberoot function 
+//cuberoot function
 function calculatecuberoot() {
-  console.log('cuberoot');
+  console.log("cuberoot");
   display.value = Math.cbrt(display.value);
   resultDisplayed = true;
   manageLocalStorage(display.value);
@@ -576,19 +575,19 @@ function calculatecuberoot() {
 function calculateisin() {
   const radian = Math.asin(display.value);
   resultDisplayed = true;
-  display.value = ((180 / Math.PI) * radian)
+  display.value = (180 / Math.PI) * radian;
 }
 
 function calculateicos() {
   const radian = Math.acos(display.value);
   resultDisplayed = true;
-  display.value = ((180 / Math.PI) * radian)
+  display.value = (180 / Math.PI) * radian;
 }
 
 function calculateitan() {
   const radian = Math.atan(display.value);
   resultDisplayed = true;
-  display.value = ((180 / Math.PI) * radian)
+  display.value = (180 / Math.PI) * radian;
 }
 
 // more functions toggle function.
@@ -603,8 +602,6 @@ toggleButton.addEventListener("click", () => {
   }
 });
 
-
-
 // manage localStorage
 
 const manageLocalStorage = (storing_value) => {
@@ -612,10 +609,10 @@ const manageLocalStorage = (storing_value) => {
     localStorage.setItem(
       "calHistory",
       new Date().toLocaleTimeString() +
-      "||" +
-      new Date().toLocaleDateString() +
-      "||" +
-      String(storing_value)
+        "||" +
+        new Date().toLocaleDateString() +
+        "||" +
+        String(storing_value)
     );
   } else {
     let temp = localStorage.getItem("calHistory");
@@ -682,9 +679,8 @@ calculatorContainer.addEventListener("keyup", (e) => {
 });
 function calculateCR(set, r) {
   if (set < r) {
-    return "Math Error"
-  }
-  else {
+    return "Math Error";
+  } else {
     let result = 1;
     for (let i = 0; i < r; i++) {
       result *= set - i;
@@ -702,21 +698,21 @@ function fact(n) {
   let ans = 1;
   if (n === 0) {
     return 1;
-  }
-  else {
+  } else {
     return n * fact(n - 1);
   }
 }
 
 function calnCr(n, r) {
-  let res = 1;
-  if (n < r) {
-    return "Math Error"
-  }
-  else {
-    res = (fact(n) / (fact(r) * fact(n - r)));
-    return res;
+  if (r > n - r) {
+    r = n - r;
   }
 
+  let result = BigInt(1);
+  for (let i = 0; i < r; i++) {
+    result *= BigInt(n - i);
+    result /= BigInt(i + 1);
+  }
+
+  return result.toString();
 }
-
