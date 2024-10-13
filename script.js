@@ -133,6 +133,7 @@ Array.prototype.forEach.call(buttons, function (button) {
       trimmedButtonValue != "bin" &&
       trimmedButtonValue != "dec" &&
       trimmedButtonValue != "pi" &&
+      trimmedButtonValue != "g" &&
       trimmedButtonValue != "log" &&
       trimmedButtonValue != "log10" &&
       trimmedButtonValue != "log2" &&
@@ -196,6 +197,8 @@ Array.prototype.forEach.call(buttons, function (button) {
       decimal();
     } else if (trimmedButtonValue === "pi") {
       pi();
+    } else if (trimmedButtonValue === "g") {
+      g();
     } else if (trimmedButtonValue === "log10") {
       log10();
     } else if (trimmedButtonValue === "log2") {
@@ -479,6 +482,12 @@ function decimal() {
 
 function pi() {
   display.value += Math.PI;
+  resultDisplayed = true;
+  manageLocalStorage(display.value);
+}
+
+function g() {
+  display.value += 9.80665;
   resultDisplayed = true;
   manageLocalStorage(display.value);
 }
