@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css">
@@ -12,7 +11,6 @@
 </head>
 
 <body>
-
     <header>
         <nav class="navbar">
             <div class="heading">
@@ -28,7 +26,8 @@
 
     <div class="calculator-container" id="calculator_container_screen">
         <div class="calculator">
-            <input type="text" title="You can directly type." id="screen" maxlength="30" readonly />
+            <input type="text" title="You can directly type." id="screen" maxlength="30" readonly/>
+
             <div class="calc-buttons">
                 <br>
                 <div class="functions-one">
@@ -75,6 +74,7 @@
                         <h1>,</h1>
                     </button>
                 </div>
+
                 <div class="padding-functions"></div>
                 <div class="functions-two">
                     <button class="button backspace" data-text="backspace">
@@ -100,7 +100,7 @@
                         <h1>//</h1>
                     </button>
                     <button class="button complex-stuff">
-                        <h1><span>&#x221A;</span></h1>
+                        <h1><span>√</span></h1>
                     </button>
                     <div class="separate-btn"></div>
                     <button class="button basic-stuff" data-text="(">
@@ -289,21 +289,20 @@
                                     </button>
                                 </button>
                             </button>
-
+                            
                         </button>
                     </div>
                 </div>
                 <button class="solve-quadratic" onclick=" solveQuadratic()">SOLVE EQUATION</button>
             </div>
+            
+            <br>
+            <div class="functions-three">
+                <button class="button triggers" data-text="enter">
+                    <h1>=</h1>
+                </button>
                 
-                
-                <br>
-                <div class="functions-three">
-                    <button class="button triggers" data-text="enter">
-                        <h1>=</h1>
-                    </button>
-                    
-                </div>
+            </div>
                 <div class="historyDisplay">
                     <h2>HISTORY</h2>
                     <table id="tableParent"></table>
@@ -316,7 +315,6 @@
         <button id="showHistoryButton" class="more-toggle-btn">HISTORY</button>
     </div>
 
-    <audio src="tink.wav"></audio>
 
     <script src="script.js"></script>
     <br></br>

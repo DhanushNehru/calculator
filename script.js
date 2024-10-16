@@ -4,15 +4,16 @@ const toggleButton = document.querySelector(".more-toggle-btn");
 const otherFuncView = document.querySelector(".other-functions");
 const historyToggleButton = document.querySelector("#showHistoryButton");
 const historyDisplay = document.querySelector(".historyDisplay");
-const parentTable = document.querySelector("#tableParent");
+const parentTable = document.querySelector("#tableParent"); 
 var resultDisplayed = false;
+
 // by default
 otherFuncView.style.display = "none";
 historyDisplay.style.display = "none";
 display.value = "0";
 
 function verification(displayText, new_caracter) {
-  play();
+  playSoundEffect();
   if (
     displayText === "" &&
     (new_caracter === "*" ||
@@ -93,16 +94,17 @@ function solveCubic(p, q) {
   }
 }
 
-function play() {
-  audio = document.querySelector("audio");
-  audio.play();
+function playSoundEffect() {
+  const audio = new Audio('./assets/sound-effects/tink.wav');
+  audio.play()
+    .catch(error => { console.error('Error playing sound:', error) });
 }
 
 Array.prototype.forEach.call(buttons, function (button) {
   button.addEventListener("click", function () {
-    play();
+    playSoundEffect();
     const trimmedButtonValue = button.textContent.trim();
-    console.log(" Button text content", trimmedButtonValue);
+
     if (resultDisplayed) {
       clear();
       resultDisplayed = false;
@@ -378,13 +380,13 @@ function equals() {
 }
 
 function clear() {
-  play();
+  playSoundEffect();
   display.value = "0";
 }
 
 //if the length if the display value is greater than 1 then remove the last character else clear the display value
 function backspace() {
-  play();
+  playSoundEffect();
   const letters = /[a-zA-Z]/;
   if (display.value.match(letters)) {
     clear();
