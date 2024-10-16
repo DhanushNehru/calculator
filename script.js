@@ -103,11 +103,16 @@ Array.prototype.forEach.call(buttons, function (button) {
   button.addEventListener("click", function () {
     play();
     const trimmedButtonValue = button.textContent.trim();
+    const buttonValue = button.getAttribute("data-text");
     console.log(" Button text content", trimmedButtonValue);
     if (resultDisplayed) {
       clear();
       resultDisplayed = false;
     }
+    if (buttonValue === "gamma") {
+      handleGamma();
+      resultDisplayed = true;
+  }
     if (
       display.value == 0 &&
       trimmedButtonValue != "." &&
@@ -128,6 +133,7 @@ Array.prototype.forEach.call(buttons, function (button) {
       trimmedButtonValue != "%" &&
       trimmedButtonValue != "x^" &&
       trimmedButtonValue != "x !" &&
+      trimmedButtonValue != "Γ x" &&
       trimmedButtonValue != "e ˣ" &&
       trimmedButtonValue != "e x" &&
       trimmedButtonValue != "bin" &&
@@ -185,7 +191,9 @@ Array.prototype.forEach.call(buttons, function (button) {
       exponent();
     } else if (trimmedButtonValue === "x !") {
       factorial();
-    } else if (trimmedButtonValue === "(") {
+    } else if (trimmedButtonValue === "Γ x") {
+      gamma();
+    }else if (trimmedButtonValue === "(") {
       right_bracket();
     } else if (trimmedButtonValue === ")") {
       left_bracket();
@@ -724,4 +732,21 @@ function calnCr(n, r) {
   }
 
   return result.toString();
+}
+
+function gamma() {
+  var number = 1;
+  if (display.value === 1) {
+    display.value = "1";
+  } else if (display.value <= 0) {
+    display.value = "undefined";
+  } else {
+    var number = 1;
+    for (var i = display.value-1; i > 0; i--) {
+      number *= i;
+    }
+    display.value = number;
+  }
+  resultDisplayed = true;
+  manageLocalStorage(display.value);
 }
