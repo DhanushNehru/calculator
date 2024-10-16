@@ -2,7 +2,6 @@ const display = document.getElementById("screen");
 const buttons = document.getElementsByClassName("button");
 const toggleButton = document.querySelector(".more-toggle-btn");
 const otherFuncView = document.querySelector(".other-functions");
-const calculatorContainer = document.getElementById("body_screen");
 const historyToggleButton = document.querySelector("#showHistoryButton");
 const historyDisplay = document.querySelector(".historyDisplay");
 const parentTable = document.querySelector("#tableParent");
@@ -680,12 +679,13 @@ const clearLocalStorage = () => {
   historyDisplay.style.display = "none";
 };
 
-// on press escape button
-calculatorContainer.addEventListener("keyup", (e) => {
+// Pressing the 'Escape' key will completly clear the display
+document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") {
     display.value = "";
   }
 });
+
 function calculateCR(set, r) {
   if (set < r) {
     return "Math Error";
@@ -697,12 +697,15 @@ function calculateCR(set, r) {
     return result;
   }
 }
+
 function nPr(set) {
   display.value += "P";
 }
+
 function nCr(set) {
   display.value += "C";
 }
+
 function fact(n) {
   let ans = 1;
   if (n === 0) {
