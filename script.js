@@ -1,41 +1,41 @@
-const display = document.getElementById("screen");
-const buttons = document.getElementsByClassName("button");
-const toggleButton = document.querySelector(".more-toggle-btn");
-const otherFuncView = document.querySelector(".other-functions");
-const calculatorContainer = document.getElementById("body_screen");
-const historyToggleButton = document.querySelector("#showHistoryButton");
-const historyDisplay = document.querySelector(".historyDisplay");
-const parentTable = document.querySelector("#tableParent");
+const display = document.getElementById('screen');
+const buttons = document.getElementsByClassName('button');
+const toggleButton = document.querySelector('.more-toggle-btn');
+const otherFuncView = document.querySelector('.other-functions');
+const calculatorContainer = document.getElementById('body_screen');
+const historyToggleButton = document.querySelector('#showHistoryButton');
+const historyDisplay = document.querySelector('.historyDisplay');
+const parentTable = document.querySelector('#tableParent');
 var resultDisplayed = false;
 // by default
-otherFuncView.style.display = "none";
-historyDisplay.style.display = "none";
-display.value = "0";
+otherFuncView.style.display = 'none';
+historyDisplay.style.display = 'none';
+display.value = '0';
 
 function verification(displayText, new_caracter) {
   play();
   if (
-    displayText === "" &&
-    (new_caracter === "*" ||
-      new_caracter === "/" ||
-      new_caracter === "+" ||
-      new_caracter === "-" ||
-      new_caracter === "//")
+    displayText === '' &&
+    (new_caracter === '*' ||
+      new_caracter === '/' ||
+      new_caracter === '+' ||
+      new_caracter === '-' ||
+      new_caracter === '//')
   ) {
     return displayText;
   }
 
   if (
-    (displayText[displayText.length - 1] === "/" ||
-      displayText[displayText.length - 1] === "*" ||
-      displayText[displayText.length - 1] === "+" ||
-      displayText[displayText.length - 1] === "-" ||
-      displayText[displayText.length - 1] === "//") &&
-    (new_caracter === "/" ||
-      new_caracter === "*" ||
-      new_caracter === "+" ||
-      new_caracter === "-" ||
-      new_caracter === "//")
+    (displayText[displayText.length - 1] === '/' ||
+      displayText[displayText.length - 1] === '*' ||
+      displayText[displayText.length - 1] === '+' ||
+      displayText[displayText.length - 1] === '-' ||
+      displayText[displayText.length - 1] === '//') &&
+    (new_caracter === '/' ||
+      new_caracter === '*' ||
+      new_caracter === '+' ||
+      new_caracter === '-' ||
+      new_caracter === '//')
   ) {
     return displayText;
   }
@@ -46,7 +46,7 @@ function verification(displayText, new_caracter) {
 function solveQuadratic() {
   // Get coefficients from the display
   const equation = display.value;
-  const coeffs = equation.split(",").map(Number);
+  const coeffs = equation.split(',').map(Number);
 
   if (coeffs.length === 3) {
     const [a, b, c] = coeffs;
@@ -60,17 +60,16 @@ function solveQuadratic() {
       const x = -b / (2 * a);
       display.value = `x = ${x.toFixed(2)}`;
     } else {
-      display.value = "No real roots";
+      display.value = 'No real roots';
     }
   } else if (coeffs.length === 4) {
     const [a, b, c, d] = coeffs;
     const p = (3 * a * c - b * b) / (3 * a * a);
-    const q =
-      (2 * b * b * b - 9 * a * b * c + 27 * a * a * d) / (27 * a * a * a);
+    const q = (2 * b * b * b - 9 * a * b * c + 27 * a * a * d) / (27 * a * a * a);
     const roots = solveCubic(p, q);
-    display.value = roots.map((x) => x.toFixed(2)).join(", ");
+    display.value = roots.map((x) => x.toFixed(2)).join(', ');
   } else {
-    alert("Please enter coefficients in the screen before solving.");
+    swal('', 'Please enter coefficients in the screen before solving.', 'warning');
   }
 }
 
@@ -95,151 +94,147 @@ function solveCubic(p, q) {
 }
 
 function play() {
-  audio = document.querySelector("audio");
+  audio = document.querySelector('audio');
   audio.play();
 }
 
 Array.prototype.forEach.call(buttons, function (button) {
-  button.addEventListener("click", function () {
+  button.addEventListener('click', function () {
     play();
     const trimmedButtonValue = button.textContent.trim();
-    console.log(" Button text content", trimmedButtonValue);
+    console.log(' Button text content', trimmedButtonValue);
     if (resultDisplayed) {
       clear();
       resultDisplayed = false;
     }
+    if (display.value == 0 && trimmedButtonValue != '.' && !display.value.includes('.'))
+      display.value = '';
     if (
-      display.value == 0 &&
-      trimmedButtonValue != "." &&
-      !display.value.includes(".")
-    )
-      display.value = "";
-    if (
-      trimmedButtonValue != "=" &&
-      trimmedButtonValue != "⌫" &&
-      trimmedButtonValue != "C" &&
-      trimmedButtonValue != "+/-" &&
-      trimmedButtonValue != "x" &&
-      trimmedButtonValue != "\u00F7" &&
-      trimmedButtonValue != "//" &&
-      trimmedButtonValue != "\u221A" &&
-      trimmedButtonValue != "x 2" &&
-      trimmedButtonValue != "x ²" &&
-      trimmedButtonValue != "%" &&
-      trimmedButtonValue != "x^" &&
-      trimmedButtonValue != "x !" &&
-      trimmedButtonValue != "e ˣ" &&
-      trimmedButtonValue != "e x" &&
-      trimmedButtonValue != "bin" &&
-      trimmedButtonValue != "dec" &&
-      trimmedButtonValue != "pi" &&
-      trimmedButtonValue != "g" &&
-      trimmedButtonValue != "log" &&
-      trimmedButtonValue != "log10" &&
-      trimmedButtonValue != "log2" &&
-      trimmedButtonValue != "loge" &&
-      trimmedButtonValue != "rand" &&
-      trimmedButtonValue != "|x|" &&
-      trimmedButtonValue != "⌊x⌋" &&
-      trimmedButtonValue != "⌈x⌉" &&
-      trimmedButtonValue != "1/x" &&
-      trimmedButtonValue != "x 3" &&
-      trimmedButtonValue != "sin" &&
-      trimmedButtonValue != "cos" &&
-      trimmedButtonValue != "tan" &&
-      trimmedButtonValue != "sec" &&
-      trimmedButtonValue != "cosec" &&
-      trimmedButtonValue != "cot" &&
-      trimmedButtonValue != "\u221B" &&
-      trimmedButtonValue != "sin-1" &&
-      trimmedButtonValue != "cos-1" &&
-      trimmedButtonValue != "tan-1" &&
-      trimmedButtonValue != "nPr" &&
-      trimmedButtonValue != "nCr" &&
-      (trimmedButtonValue != "." || decimalPointOkay())
+      trimmedButtonValue != '=' &&
+      trimmedButtonValue != '⌫' &&
+      trimmedButtonValue != 'C' &&
+      trimmedButtonValue != '+/-' &&
+      trimmedButtonValue != 'x' &&
+      trimmedButtonValue != '\u00F7' &&
+      trimmedButtonValue != '//' &&
+      trimmedButtonValue != '\u221A' &&
+      trimmedButtonValue != 'x 2' &&
+      trimmedButtonValue != 'x ²' &&
+      trimmedButtonValue != '%' &&
+      trimmedButtonValue != 'x^' &&
+      trimmedButtonValue != 'x !' &&
+      trimmedButtonValue != 'e ˣ' &&
+      trimmedButtonValue != 'e x' &&
+      trimmedButtonValue != 'bin' &&
+      trimmedButtonValue != 'dec' &&
+      trimmedButtonValue != 'pi' &&
+      trimmedButtonValue != 'g' &&
+      trimmedButtonValue != 'log' &&
+      trimmedButtonValue != 'log10' &&
+      trimmedButtonValue != 'log2' &&
+      trimmedButtonValue != 'loge' &&
+      trimmedButtonValue != 'rand' &&
+      trimmedButtonValue != '|x|' &&
+      trimmedButtonValue != '⌊x⌋' &&
+      trimmedButtonValue != '⌈x⌉' &&
+      trimmedButtonValue != '1/x' &&
+      trimmedButtonValue != 'x 3' &&
+      trimmedButtonValue != 'sin' &&
+      trimmedButtonValue != 'cos' &&
+      trimmedButtonValue != 'tan' &&
+      trimmedButtonValue != 'sec' &&
+      trimmedButtonValue != 'cosec' &&
+      trimmedButtonValue != 'cot' &&
+      trimmedButtonValue != '\u221B' &&
+      trimmedButtonValue != 'sin-1' &&
+      trimmedButtonValue != 'cos-1' &&
+      trimmedButtonValue != 'tan-1' &&
+      trimmedButtonValue != 'nPr' &&
+      trimmedButtonValue != 'nCr' &&
+      (trimmedButtonValue != '.' || decimalPointOkay())
     ) {
       display.value = verification(display.value, trimmedButtonValue);
-    } else if (trimmedButtonValue === "=") {
+    } else if (trimmedButtonValue === '=') {
       equals();
-    } else if (trimmedButtonValue === "⌫") {
+    } else if (trimmedButtonValue === '⌫') {
       backspace();
-    } else if (trimmedButtonValue === "C") {
+    } else if (trimmedButtonValue === 'C') {
       clear();
-    } else if (trimmedButtonValue === "+/-") {
+    } else if (trimmedButtonValue === '+/-') {
       alterSign();
-    } else if (trimmedButtonValue === "x") {
+    } else if (trimmedButtonValue === 'x') {
       multiply();
-    } else if (trimmedButtonValue === "\u00F7") {
+    } else if (trimmedButtonValue === '\u00F7') {
       divide();
-    } else if (trimmedButtonValue === "//") {
+    } else if (trimmedButtonValue === '//') {
       mod();
-    } else if (trimmedButtonValue === "<=") {
+    } else if (trimmedButtonValue === '<=') {
       backspace();
-    } else if (trimmedButtonValue === "%") {
+    } else if (trimmedButtonValue === '%') {
       percent();
-    } else if (trimmedButtonValue === "x 2" || trimmedButtonValue === "x ²") {
+    } else if (trimmedButtonValue === 'x 2' || trimmedButtonValue === 'x ²') {
       square();
-    } else if (trimmedButtonValue === "\u221A") {
+    } else if (trimmedButtonValue === '\u221A') {
       squareRoot();
-    } else if (trimmedButtonValue === "x^") {
+    } else if (trimmedButtonValue === 'x^') {
       exponent();
-    } else if (trimmedButtonValue === "x !") {
+    } else if (trimmedButtonValue === 'x !') {
       factorial();
-    } else if (trimmedButtonValue === "(") {
+    } else if (trimmedButtonValue === '(') {
       right_bracket();
-    } else if (trimmedButtonValue === ")") {
+    } else if (trimmedButtonValue === ')') {
       left_bracket();
-    } else if (trimmedButtonValue === "e x" || trimmedButtonValue === "e ˣ") {
+    } else if (trimmedButtonValue === 'e x' || trimmedButtonValue === 'e ˣ') {
       exponential();
-    } else if (trimmedButtonValue === "bin") {
+    } else if (trimmedButtonValue === 'bin') {
       binary();
-    } else if (trimmedButtonValue === "dec") {
+    } else if (trimmedButtonValue === 'dec') {
       decimal();
-    } else if (trimmedButtonValue === "pi") {
+    } else if (trimmedButtonValue === 'pi') {
       pi();
-    } else if (trimmedButtonValue === "g") {
+    } else if (trimmedButtonValue === 'g') {
       g();
-    } else if (trimmedButtonValue === "log10") {
+    } else if (trimmedButtonValue === 'log10') {
       log10();
-    } else if (trimmedButtonValue === "log2") {
+    } else if (trimmedButtonValue === 'log2') {
       log2();
-    } else if (trimmedButtonValue === "loge") {
+    } else if (trimmedButtonValue === 'loge') {
       loge();
-    } else if (trimmedButtonValue === "rand") {
+    } else if (trimmedButtonValue === 'rand') {
       rand();
-    } else if (trimmedButtonValue === "|x|") {
+    } else if (trimmedButtonValue === '|x|') {
       abs();
-    } else if (trimmedButtonValue === "⌊x⌋") {
+    } else if (trimmedButtonValue === '⌊x⌋') {
       floor();
-    } else if (trimmedButtonValue === "⌈x⌉") {
+    } else if (trimmedButtonValue === '⌈x⌉') {
       ceil();
-    } else if (trimmedButtonValue === "1/x") {
+    } else if (trimmedButtonValue === '1/x') {
       reciprocalValue();
-    } else if (trimmedButtonValue === "x 3") {
+    } else if (trimmedButtonValue === 'x 3') {
       cube();
-    } else if (trimmedButtonValue === "sin") {
+    } else if (trimmedButtonValue === 'sin') {
       calculatesin();
-    } else if (trimmedButtonValue === "cos") {
+    } else if (trimmedButtonValue === 'cos') {
       calculatecos();
-    } else if (trimmedButtonValue === "tan") {
+    } else if (trimmedButtonValue === 'tan') {
       calculatetan();
-    } else if (trimmedButtonValue === "sec") {
+    } else if (trimmedButtonValue === 'sec') {
       calculatesec();
-    } else if (trimmedButtonValue === "cosec") {
+    } else if (trimmedButtonValue === 'cosec') {
       calculatecosec();
-    } else if (trimmedButtonValue === "cot") {
+    } else if (trimmedButtonValue === 'cot') {
       calculatecot();
-    } else if (trimmedButtonValue === "\u221B") {
+    } else if (trimmedButtonValue === '\u221B') {
       calculatecuberoot();
-    } else if (trimmedButtonValue === "sin-1") {
+    } else if (trimmedButtonValue === 'sin-1') {
       calculateisin();
-    } else if (trimmedButtonValue === "cos-1") {
+    } else if (trimmedButtonValue === 'cos-1') {
       calculateicos();
-    } else if (trimmedButtonValue === "tan-1") {
+    } else if (trimmedButtonValue === 'tan-1') {
       calculateitan();
-    } else if (trimmedButtonValue === "nPr") {
+    } else if (trimmedButtonValue === 'nPr') {
       nPr(display.value);
-    } else if (trimmedButtonValue === "nCr") {
+    } else if (trimmedButtonValue === 'nCr') {
       nCr(display.value);
     }
   });
@@ -247,7 +242,7 @@ Array.prototype.forEach.call(buttons, function (button) {
 
 // Prevents multiple decimal points from being typed through keyboard
 function isNumber(num) {
-  if (num === "." && decimalPointOkay()) {
+  if (num === '.' && decimalPointOkay()) {
     return true;
   }
   return !isNaN(parseFloat(num)) && isFinite(num);
@@ -257,24 +252,24 @@ function isNumber(num) {
 
 function decimalPointOkay() {
   screenNumber = display.value;
-  if (!screenNumber.includes(".")) {
+  if (!screenNumber.includes('.')) {
     return true;
   }
 
   const sinceLastDecimal = screenNumber.substring(
-    screenNumber.lastIndexOf(".") + 1,
-    screenNumber.length - 1
+    screenNumber.lastIndexOf('.') + 1,
+    screenNumber.length - 1,
   );
 
   if (
-    sinceLastDecimal.includes("+") ||
-    sinceLastDecimal.includes("-") ||
-    sinceLastDecimal.includes("*") ||
-    sinceLastDecimal.includes("/") ||
-    sinceLastDecimal.includes("//") ||
-    sinceLastDecimal.includes("(") ||
-    sinceLastDecimal.includes(")") ||
-    sinceLastDecimal.includes("^")
+    sinceLastDecimal.includes('+') ||
+    sinceLastDecimal.includes('-') ||
+    sinceLastDecimal.includes('*') ||
+    sinceLastDecimal.includes('/') ||
+    sinceLastDecimal.includes('//') ||
+    sinceLastDecimal.includes('(') ||
+    sinceLastDecimal.includes(')') ||
+    sinceLastDecimal.includes('^')
   ) {
     return true;
   }
@@ -282,82 +277,78 @@ function decimalPointOkay() {
 }
 
 // Adding key event listener
-document.addEventListener("keydown", (e) => {
+document.addEventListener('keydown', (e) => {
   // Check if the currently pressed key is number  play()
-  const pressedButton = document.querySelector(
-    `[data-text="${e.key.toLowerCase()}"]`
-  );
+  const pressedButton = document.querySelector(`[data-text="${e.key.toLowerCase()}"]`);
   if (pressedButton) {
-    pressedButton.classList.add("highlighted");
+    pressedButton.classList.add('highlighted');
     setTimeout(() => {
-      pressedButton.classList.remove("highlighted");
+      pressedButton.classList.remove('highlighted');
     }, 200);
   }
 
   // Check if the currently pressed key is number
   if (isNumber(e.key)) {
-    if (display.value == 0 && e.key != "." && !display.value.includes("."))
-      display.value = "";
+    if (display.value == 0 && e.key != '.' && !display.value.includes('.')) display.value = '';
 
     display.value = verification(display.value, e.key);
   }
 
   // Check if the currently pressed key is an operator
-  if (/^[+\-\//\*\/\=\(\)\%]*$/.test(e.key))
-    display.value = verification(display.value, e.key);
+  if (/^[+\-\//\*\/\=\(\)\%]*$/.test(e.key)) display.value = verification(display.value, e.key);
 
   // Check if the currently pressed key is Backspace, then remove last element
-  if (e.key === "Backspace") backspace();
+  if (e.key === 'Backspace') backspace();
 
   // Check if the currently pressed key is Enter, calculate the value
-  if (e.key === "Enter") equals();
+  if (e.key === 'Enter') equals();
 
   // Check if the currently pressed key is 'c', then clear the value
-  if (e.key === "c") {
+  if (e.key === 'c') {
     resultDisplayed = false;
     clear();
   }
 });
 
 function right_bracket() {
-  display.value += "(";
+  display.value += '(';
 }
 
 function left_bracket() {
-  display.value += ")";
+  display.value += ')';
 }
 
 function equals() {
-  if (display.value.includes("^")) {
-    console.log(" Equals1 ", display.value);
-    display.value = display.value.replaceAll("^", "**");
-    console.log(" Equals2 ", display.value);
+  if (display.value.includes('^')) {
+    console.log(' Equals1 ', display.value);
+    display.value = display.value.replaceAll('^', '**');
+    console.log(' Equals2 ', display.value);
     display.value = eval(display.value);
     resultDisplayed = true;
     // local storage implementation
     manageLocalStorage(eval(display.value));
-  } else if (display.value.includes("P")) {
+  } else if (display.value.includes('P')) {
     let num = display.value;
-    let [n, r] = display.value.split("P");
+    let [n, r] = display.value.split('P');
     let nInt = parseInt(n);
     let rInt = parseInt(r);
-    console.log("nInt  ", nInt);
-    console.log("rInt  ", rInt);
+    console.log('nInt  ', nInt);
+    console.log('rInt  ', rInt);
     const result = calculateCR(nInt, rInt);
     display.value = result;
     resultDisplayed = true;
-    console.log("Result ", result);
-  } else if (display.value.includes("C")) {
+    console.log('Result ', result);
+  } else if (display.value.includes('C')) {
     let num = display.value;
-    let [n, r] = display.value.split("C");
+    let [n, r] = display.value.split('C');
     let nInt = parseInt(n);
     let rInt = parseInt(r);
-    console.log("nInt  ", nInt);
-    console.log("rInt  ", rInt);
+    console.log('nInt  ', nInt);
+    console.log('rInt  ', rInt);
     const result = calnCr(nInt, rInt);
     display.value = result;
     resultDisplayed = true;
-    console.log("Result ", result);
+    console.log('Result ', result);
   }
   // if ((display.value).indexOf("^") > -1) {
   //   var base = (display.value).slice(0, (display.value).indexOf("^"));
@@ -373,14 +364,14 @@ function equals() {
     } catch (error) {
       console.log(error);
       // display.value = "Syntax error !";
-      alert("Syntax error! Kindly recheck.");
+      swal('', 'Syntax error! Kindly recheck.', 'error');
     }
   }
 }
 
 function clear() {
   play();
-  display.value = "0";
+  display.value = '0';
 }
 
 //if the length if the display value is greater than 1 then remove the last character else clear the display value
@@ -404,16 +395,16 @@ function alterSign() {
 }
 
 function multiply() {
-  display.value = verification(display.value, "*");
+  display.value = verification(display.value, '*');
 }
 
 function divide() {
-  display.value = verification(display.value, "/");
+  display.value = verification(display.value, '/');
 }
 
 function mod() {
-  display.value = verification(display.value, "//");
-  display.value = display.value.replaceAll("//", "%");
+  display.value = verification(display.value, '//');
+  display.value = display.value.replaceAll('//', '%');
   modulo = display.value % new_caracter;
   resultDisplayed = true;
   manageLocalStorage(eval(modulo));
@@ -422,9 +413,9 @@ function mod() {
 function factorial() {
   var number = 1;
   if (display.value === 0) {
-    display.value = "1";
+    display.value = '1';
   } else if (display.value < 0) {
-    display.value = "undefined";
+    display.value = 'undefined';
   } else {
     var number = 1;
     for (var i = display.value; i > 0; i--) {
@@ -455,7 +446,7 @@ function percent() {
 }
 
 function exponent() {
-  display.value += "^";
+  display.value += '^';
   resultDisplayed = true;
   manageLocalStorage(display.value);
 }
@@ -555,8 +546,7 @@ function calculatecos() {
 }
 function calculatetan() {
   display.value =
-    Math.sin((Math.PI / 180) * display.value) /
-    Math.cos((Math.PI / 180) * display.value);
+    Math.sin((Math.PI / 180) * display.value) / Math.cos((Math.PI / 180) * display.value);
   resultDisplayed = true;
 }
 function calculatesec() {
@@ -569,13 +559,12 @@ function calculatecosec() {
 }
 function calculatecot() {
   display.value =
-    Math.cos((Math.PI / 180) * display.value) /
-    Math.sin((Math.PI / 180) * display.value);
+    Math.cos((Math.PI / 180) * display.value) / Math.sin((Math.PI / 180) * display.value);
   resultDisplayed = true;
 }
 //cuberoot function
 function calculatecuberoot() {
-  console.log("cuberoot");
+  console.log('cuberoot');
   display.value = Math.cbrt(display.value);
   resultDisplayed = true;
   manageLocalStorage(display.value);
@@ -601,49 +590,49 @@ function calculateitan() {
 
 // more functions toggle function.
 
-toggleButton.addEventListener("click", () => {
-  if (otherFuncView.style.display === "none") {
-    toggleButton.innerHTML = "HIDE FUNCTIONS";
-    otherFuncView.style.display = "";
+toggleButton.addEventListener('click', () => {
+  if (otherFuncView.style.display === 'none') {
+    toggleButton.innerHTML = 'HIDE FUNCTIONS';
+    otherFuncView.style.display = '';
   } else {
-    otherFuncView.style.display = "none";
-    toggleButton.innerHTML = "MORE FUNCTIONS";
+    otherFuncView.style.display = 'none';
+    toggleButton.innerHTML = 'MORE FUNCTIONS';
   }
 });
 
 // manage localStorage
 
 const manageLocalStorage = (storing_value) => {
-  if (localStorage.getItem("calHistory") === null) {
+  if (localStorage.getItem('calHistory') === null) {
     localStorage.setItem(
-      "calHistory",
+      'calHistory',
       new Date().toLocaleTimeString() +
-        "||" +
+        '||' +
         new Date().toLocaleDateString() +
-        "||" +
-        String(storing_value)
+        '||' +
+        String(storing_value),
     );
   } else {
-    let temp = localStorage.getItem("calHistory");
+    let temp = localStorage.getItem('calHistory');
     temp =
       temp +
-      "--" +
+      '--' +
       new Date().toLocaleTimeString() +
-      "||" +
+      '||' +
       new Date().toLocaleDateString() +
-      "||" +
+      '||' +
       String(storing_value);
-    localStorage.setItem("calHistory", temp);
+    localStorage.setItem('calHistory', temp);
   }
 };
 
 // show history with toggle
 
-historyToggleButton.addEventListener("click", () => {
-  if (historyDisplay.style.display === "none") {
-    historyDisplay.style.display = "";
+historyToggleButton.addEventListener('click', () => {
+  if (historyDisplay.style.display === 'none') {
+    historyDisplay.style.display = '';
   } else {
-    historyDisplay.style.display = "none";
+    historyDisplay.style.display = 'none';
     return;
   }
 
@@ -653,19 +642,19 @@ historyToggleButton.addEventListener("click", () => {
     parentTable.removeChild(parentTable.firstChild);
   }
 
-  if (localStorage.getItem("calHistory") === null) {
-    alert("Sorry! There is no calculation history.");
-    historyDisplay.style.display = "none";
+  if (localStorage.getItem('calHistory') === null) {
+    swal('', 'Sorry! There is no calculation history.', 'info');
+    historyDisplay.style.display = 'none';
   } else {
-    const node = document.createElement("tr");
+    const node = document.createElement('tr');
     node.innerHTML = `<th>Date</th><th>Time</th><th>Final Calculation</th>`;
     parentTable.appendChild(node);
-    const History = localStorage.getItem("calHistory").split("--");
+    const History = localStorage.getItem('calHistory').split('--');
     History.forEach((history) => {
-      const time = history.split("||")[0];
-      const date = history.split("||")[1];
-      const value = history.split("||")[2];
-      const node = document.createElement("tr");
+      const time = history.split('||')[0];
+      const date = history.split('||')[1];
+      const value = history.split('||')[2];
+      const node = document.createElement('tr');
       node.innerHTML = `<td>${date}</td><td>${time}</td><td>${value}</td>`;
       parentTable.appendChild(node);
     });
@@ -675,20 +664,20 @@ historyToggleButton.addEventListener("click", () => {
 // on press the clear history button
 
 const clearLocalStorage = () => {
-  localStorage.clear("calHistory");
-  alert("Calculator history deleted!");
-  historyDisplay.style.display = "none";
+  localStorage.clear('calHistory');
+  swal('', 'Calculator history deleted!', 'success');
+  historyDisplay.style.display = 'none';
 };
 
 // on press escape button
-calculatorContainer.addEventListener("keyup", (e) => {
-  if (e.key === "Escape") {
-    display.value = "";
+calculatorContainer.addEventListener('keyup', (e) => {
+  if (e.key === 'Escape') {
+    display.value = '';
   }
 });
 function calculateCR(set, r) {
   if (set < r) {
-    return "Math Error";
+    return 'Math Error';
   } else {
     let result = 1;
     for (let i = 0; i < r; i++) {
@@ -698,10 +687,10 @@ function calculateCR(set, r) {
   }
 }
 function nPr(set) {
-  display.value += "P";
+  display.value += 'P';
 }
 function nCr(set) {
-  display.value += "C";
+  display.value += 'C';
 }
 function fact(n) {
   let ans = 1;
