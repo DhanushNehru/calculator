@@ -2,46 +2,35 @@ const display = document.getElementById("screen");
 const buttons = document.getElementsByClassName("button");
 const toggleButton = document.querySelector(".more-toggle-btn");
 const otherFuncView = document.querySelector(".other-functions");
-const calculatorContainer = document.getElementById("body_screen");
 const historyToggleButton = document.querySelector("#showHistoryButton");
 const historyDisplay = document.querySelector(".historyDisplay");
-const parentTable = document.querySelector("#tableParent");
+const parentTable = document.querySelector("#tableParent"); 
 var resultDisplayed = false;
+
 // by default
 otherFuncView.style.display = "none";
 historyDisplay.style.display = "none";
 display.value = "0";
 
 function verification(displayText, new_caracter) {
-  play();
-  if (
-    displayText === "" &&
-    (new_caracter === "*" ||
-      new_caracter === "/" ||
-      new_caracter === "+" ||
-      new_caracter === "-" ||
-      new_caracter === "//")
-  ) {
+  playSoundEffect();
+
+  const operators = ["+", "-", "*", "/", "//", "%"];
+
+  // Prevent adding an operator if the display is empty.
+  if (!displayText && operators.includes(new_caracter)) {
     return displayText;
   }
 
-  if (
-    (displayText[displayText.length - 1] === "/" ||
-      displayText[displayText.length - 1] === "*" ||
-      displayText[displayText.length - 1] === "+" ||
-      displayText[displayText.length - 1] === "-" ||
-      displayText[displayText.length - 1] === "//") &&
-    (new_caracter === "/" ||
-      new_caracter === "*" ||
-      new_caracter === "+" ||
-      new_caracter === "-" ||
-      new_caracter === "//")
-  ) {
-    return displayText;
+  // Prevent inserting two consecutive operators
+  if (operators.includes(displayText.slice(-1)) && operators.includes(new_caracter)) {
+    displayText = displayText.slice(0, -1);
+    return displayText + new_caracter;
   }
 
   return displayText + new_caracter;
 }
+
 
 function solveQuadratic() {
   // Get coefficients from the display
@@ -94,16 +83,17 @@ function solveCubic(p, q) {
   }
 }
 
-function play() {
-  audio = document.querySelector("audio");
-  audio.play();
+function playSoundEffect() {
+  const audio = new Audio('./assets/sound-effects/tink.wav');
+  audio.play()
+    .catch(error => { console.error('Error playing sound:', error) });
 }
 
 Array.prototype.forEach.call(buttons, function (button) {
   button.addEventListener("click", function () {
-    play();
+    playSoundEffect();
     const trimmedButtonValue = button.textContent.trim();
-    console.log(" Button text content", trimmedButtonValue);
+
     if (resultDisplayed) {
       clear();
       resultDisplayed = false;
@@ -379,13 +369,13 @@ function equals() {
 }
 
 function clear() {
-  play();
+  playSoundEffect();
   display.value = "0";
 }
 
 //if the length if the display value is greater than 1 then remove the last character else clear the display value
 function backspace() {
-  play();
+  playSoundEffect();
   const letters = /[a-zA-Z]/;
   if (display.value.match(letters)) {
     clear();
@@ -680,12 +670,13 @@ const clearLocalStorage = () => {
   historyDisplay.style.display = "none";
 };
 
-// on press escape button
-calculatorContainer.addEventListener("keyup", (e) => {
+// Pressing the 'Escape' key will completly clear the display
+document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") {
     display.value = "";
   }
 });
+
 function calculateCR(set, r) {
   if (set < r) {
     return "Math Error";
@@ -697,12 +688,15 @@ function calculateCR(set, r) {
     return result;
   }
 }
+
 function nPr(set) {
   display.value += "P";
 }
+
 function nCr(set) {
   display.value += "C";
 }
+
 function fact(n) {
   let ans = 1;
   if (n === 0) {
