@@ -14,34 +14,23 @@ display.value = "0";
 
 function verification(displayText, new_caracter) {
   playSoundEffect();
-  if (
-    displayText === "" &&
-    (new_caracter === "*" ||
-      new_caracter === "/" ||
-      new_caracter === "+" ||
-      new_caracter === "-" ||
-      new_caracter === "//")
-  ) {
+
+  const operators = ["+", "-", "*", "/", "//", "%"];
+
+  // Prevent adding an operator if the display is empty.
+  if (!displayText && operators.includes(new_caracter)) {
     return displayText;
   }
 
-  if (
-    (displayText[displayText.length - 1] === "/" ||
-      displayText[displayText.length - 1] === "*" ||
-      displayText[displayText.length - 1] === "+" ||
-      displayText[displayText.length - 1] === "-" ||
-      displayText[displayText.length - 1] === "//") &&
-    (new_caracter === "/" ||
-      new_caracter === "*" ||
-      new_caracter === "+" ||
-      new_caracter === "-" ||
-      new_caracter === "//")
-  ) {
-    return displayText;
+  // Prevent inserting two consecutive operators
+  if (operators.includes(displayText.slice(-1)) && operators.includes(new_caracter)) {
+    displayText = displayText.slice(0, -1);
+    return displayText + new_caracter;
   }
 
   return displayText + new_caracter;
 }
+
 
 function solveQuadratic() {
   // Get coefficients from the display
