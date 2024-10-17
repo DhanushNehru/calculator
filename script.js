@@ -676,7 +676,7 @@ historyToggleButton.addEventListener("click", () => {
 
 const clearLocalStorage = () => {
   localStorage.clear("calHistory");
-  alert("Calculator history deleted!");
+  showToast("History cleared successfully!");
   historyDisplay.style.display = "none";
 };
 
@@ -724,4 +724,15 @@ function calnCr(n, r) {
   }
 
   return result.toString();
+}
+
+function showToast(message) {
+  const toast = document.getElementById("toastContainer");
+  toast.innerHTML = message;
+  toast.className = "toast show";
+
+  // Hide the toast after 3 seconds
+  setTimeout(() => {
+    toast.className = toast.className.replace("show", "");
+  }, 3000);
 }
