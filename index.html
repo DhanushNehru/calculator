@@ -1,319 +1,316 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Calculator | Dhanush Nehru</title>
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="icon" href="https://cdn2.iconfinder.com/data/icons/ios7-inspired-mac-icon-set/512/Calculator_512.png">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <link
+      rel="icon"
+      href="https://cdn2.iconfinder.com/data/icons/ios7-inspired-mac-icon-set/512/Calculator_512.png" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.11.2/math.min.js"></script>
-</head>
 
-<body id="body_screen">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  </head>
 
+  <body id="body_screen">
     <header>
-        <nav class="navbar">
-            <div class="heading">
-                <h1 id="calc-style">Calculator<i class='bx bx-calculator'></i></h1>
-            </div>
-            <div>
-                <button class="mode-toggle" id="bright-icon"><i class='bx bx-sun'></i></button>
-                <button class="mode-toggle" id="neon-icon"><i class='bx bx-moon'></i></button>
-                <!-- <button class="share" id="share">Share</button> -->
-            </div>
-        </nav>
+      <nav class="navbar">
+        <div class="heading">
+          <h1 id="calc-style">Calculator<i class="bx bx-calculator"></i></h1>
+        </div>
+        <div>
+          <button class="mode-toggle" id="bright-icon"><i class="bx bx-sun"></i></button>
+          <button class="mode-toggle" id="neon-icon"><i class="bx bx-moon"></i></button>
+          <!-- <button class="share" id="share">Share</button> -->
+        </div>
+      </nav>
     </header>
 
     <div class="calculator-container" id="calculator_container_screen">
-        <div class="calculator">
-            <input type="text" title="You can directly type." id="screen" maxlength="30" readonly />
-            <div class="calc-buttons">
-                <br>
-                <div class="functions-one">
-                    <button class="button numbers" data-text="7">
-                        <h1>7</h1>
-                    </button>
-                    <button class="button numbers" data-text="8">
-                        <h1>8</h1>
-                    </button>
-                    <button class="button numbers" data-text="9">
-                        <h1>9</h1>
-                    </button>
-                    <div class="separate-btn"></div>
-                    <button class="button numbers" data-text="4">
-                        <h1>4</h1>
-                    </button>
-                    <button class="button numbers" data-text="5">
-                        <h1>5</h1>
-                    </button>
-                    <button class="button numbers" data-text="6">
-                        <h1>6</h1>
-                    </button>
-                    <div class="separate-btn"></div>
-                    <button class="button numbers" data-text="1">
-                        <h1>1</h1>
-                    </button>
-                    <button class="button numbers" data-text="2">
-                        <h1>2</h1>
-                    </button>
-                    <button class="button numbers" data-text="3">
-                        <h1>3</h1>
-                    </button>
-                    <div class="separate-btn"></div>
-                    <button class="button" data-text="c">
-                        <h1>C</h1>
-                    </button>
-                    <button class="button numbers" data-text="0">
-                        <h1>0</h1>
-                    </button>
-                    <button class="button basic-stuff" data-text=".">
-                        <h1>.</h1>
-                    </button>
-                    <button class="button basic-stuff" data-text=".">
-                        <h1>,</h1>
-                    </button>
-                </div>
-                <div class="padding-functions"></div>
-                <div class="functions-two">
-                    <button class="button backspace" data-text="backspace">
-                        <h1>⌫</h1>
-                    </button>
-                    <button class="button basic-stuff" data-text="+">
-                        <h1>+</h1>
-                    </button>
-                    <button class="button basic-stuff" data-text="-">
-                        <h1>-</h1>
-                    </button>
-                    <button class="button basic-stuff" data-text="+/-">
-                        <h1>+/-</h1>
-                    </button>
-                    <div class="separate-btn"></div>
-                    <button class="button basic-stuff" data-text="*">
-                        <h1>x</h1>
-                    </button>
-                    <button class="button basic-stuff" data-text="/">
-                        <h1><span>&#247;</span></h1>
-                    </button>
-                    <button class="button basic-stuff" data-text="//">
-                        <h1>//</h1>
+      <div class="calculator">
+        <input type="text" title="You can directly type." id="screen" maxlength="30" readonly />
+        <div class="calc-buttons">
+          <br />
+          <div class="functions-one">
+            <button class="button numbers" data-text="7">
+              <h1>7</h1>
+            </button>
+            <button class="button numbers" data-text="8">
+              <h1>8</h1>
+            </button>
+            <button class="button numbers" data-text="9">
+              <h1>9</h1>
+            </button>
+            <div class="separate-btn"></div>
+            <button class="button numbers" data-text="4">
+              <h1>4</h1>
+            </button>
+            <button class="button numbers" data-text="5">
+              <h1>5</h1>
+            </button>
+            <button class="button numbers" data-text="6">
+              <h1>6</h1>
+            </button>
+            <div class="separate-btn"></div>
+            <button class="button numbers" data-text="1">
+              <h1>1</h1>
+            </button>
+            <button class="button numbers" data-text="2">
+              <h1>2</h1>
+            </button>
+            <button class="button numbers" data-text="3">
+              <h1>3</h1>
+            </button>
+            <div class="separate-btn"></div>
+            <button class="button" data-text="c">
+              <h1>C</h1>
+            </button>
+            <button class="button numbers" data-text="0">
+              <h1>0</h1>
+            </button>
+            <button class="button basic-stuff" data-text=".">
+              <h1>.</h1>
+            </button>
+            <button class="button basic-stuff" data-text=".">
+              <h1>,</h1>
+            </button>
+          </div>
+          <div class="padding-functions"></div>
+          <div class="functions-two">
+            <button class="button backspace" data-text="backspace">
+              <h1>⌫</h1>
+            </button>
+            <button class="button basic-stuff" data-text="+">
+              <h1>+</h1>
+            </button>
+            <button class="button basic-stuff" data-text="-">
+              <h1>-</h1>
+            </button>
+            <button class="button basic-stuff" data-text="+/-">
+              <h1>+/-</h1>
+            </button>
+            <div class="separate-btn"></div>
+            <button class="button basic-stuff" data-text="*">
+              <h1>x</h1>
+            </button>
+            <button class="button basic-stuff" data-text="/">
+              <h1><span>&#247;</span></h1>
+            </button>
+            <button class="button basic-stuff" data-text="//">
+              <h1>//</h1>
+            </button>
+            <button class="button complex-stuff">
+              <h1><span>&#x221A;</span></h1>
+            </button>
+            <div class="separate-btn"></div>
+            <button class="button basic-stuff" data-text="(">
+              <h1>(</h1>
+            </button>
+            <button class="button basic-stuff" data-text=")">
+              <h1>)</h1>
+            </button>
+            <button class="button complex-stuff">
+              <h1>x <sup>2</sup></h1>
+            </button>
+            <div class="separate-btn"></div>
+            <button class="button complex-stuff" data-text="%">
+              <h1>%</h1>
+            </button>
+            <button class="button complex-stuff">
+              <h1>x !</h1>
+            </button>
+            <button class="button complex-stuff">
+              <h1>x^</h1>
+            </button>
+          </div>
+
+          <br />
+
+          <br />
+          <div class="options-container">
+            <br /><br />
+
+            <div class="more-functions-toggle">
+              <button class="more-toggle-btn">MORE FUNCTIONS</button>
+              <div class="other-functions">
+                <button class="button complex-stuff">
+                  <h1>bin</h1>
+                </button>
+                <button class="button complex-stuff">
+                  <h1>dec</h1>
+                </button>
+                <button class="button complex-stuff">
+                  <h1>e <sup>x</sup></h1>
+                </button>
+                <button class="button complex-stuff">
+                  <h1>pi</h1>
+                </button>
+                <button class="button complex-stuff">
+                  <h1>g</h1>
+                </button>
+                <button class="button complex-stuff">
+                  <h1>log<sub>10</sub></h1>
+                </button>
+                <button class="button complex-stuff">
+                  <h1>1/x</h1>
+                </button>
+                <button class="button complex-stuff">
+                  <h1>x <sup>3</sup></h1>
+                </button>
+                <button class="button complex-stuff">
+                  <h1>sin</h1>
+                </button>
+                <button class="button complex-stuff">
+                  <h1>cos</h1>
+                </button>
+                <button class="button complex-stuff">
+                  <h1>tan</h1>
+                </button>
+                <button class="button complex-stuff">
+                  <h1>sec</h1>
+                </button>
+                <button class="button complex-stuff">
+                  <h1>cosec</h1>
+                </button>
+                <button class="button complex-stuff">
+                  <h1>cot</h1>
+                </button>
+                <button class="button complex-stuff">
+                  <h1>sin<sup>-1</sup></h1>
+                </button>
+                <button class="button complex-stuff">
+                  <h1>cos<sup>-1</sup></h1>
+                </button>
+                <button class="button complex-stuff">
+                  <h1>tan<sup>-1</sup></h1>
+                </button>
+                <button class="button complex-stuff">
+                  <h1>&#8731;</h1>
+                </button>
+                <button class="button complex-stuff">
+                  <h1>log<sub>2</sub></h1>
+                </button>
+                <button class="button complex-stuff">
+                  <h1>log<sub>e</sub></h1>
+                </button>
+                <button class="button complex-stuff">
+                  <h1>rand</h1>
+                </button>
+                <button class="button complex-stuff">
+                  <h1>|x|</h1>
+                </button>
+                <button class="button complex-stuff">
+                  <h1>⌊x⌋</h1>
+                </button>
+                <button class="button complex-stuff">
+                  <h1>⌈x⌉</h1>
+                </button>
+                <button class="button complex-stuff">
+                  <h1>nPr</h1>
+                </button>
+                <button class="button complex-stuff">
+                  <h1>nCr</h1>
+
+                  <button class="button complex-stuff">
+                    <h1>e <sup>x</sup></h1>
+                  </button>
+                  <button class="button complex-stuff">
+                    <h1>pi</h1>
+                    <button class="button complex-stuff">
+                      <h1>log<sub>10</sub></h1>
                     </button>
                     <button class="button complex-stuff">
-                        <h1><span>&#x221A;</span></h1>
+                      <h1>1/x</h1>
                     </button>
-                    <div class="separate-btn"></div>
-                    <button class="button basic-stuff" data-text="(">
-                        <h1>(</h1>
-                    </button>
-                    <button class="button basic-stuff" data-text=")">
-                        <h1>)</h1>
+                    <br />
+                    <button class="button complex-stuff">
+                      <h1>x <sup>3</sup></h1>
                     </button>
                     <button class="button complex-stuff">
-                        <h1>x <sup>2</sup></h1>
+                      <h1>sin</h1>
+                      <button class="button complex-stuff">
+                        <h1>cos</h1>
+                        <button class="button complex-stuff">
+                          <h1>tan</h1>
+                        </button>
+                        <button class="button complex-stuff">
+                          <h1>sec</h1>
+                        </button>
+                        <button class="button complex-stuff">
+                          <h1>cosec</h1>
+                        </button>
+                        <br />
+                        <button class="button complex-stuff">
+                          <h1>cot</h1>
+                        </button>
+                        <button class="button complex-stuff">
+                          <h1>sin<sup>-1</sup></h1>
+                        </button>
+                        <button class="button complex-stuff">
+                          <h1>cos<sup>-1</sup></h1>
+                        </button>
+                        <button class="button complex-stuff">
+                          <h1>tan<sup>-1</sup></h1>
+                        </button>
+                        <button class="button complex-stuff">
+                          <h1>sinh</h1>
+                        </button>
+                        <button class="button complex-stuff">
+                          <h1>&#8731;</h1>
+                        </button>
+                        <button class="button complex-stuff">
+                          <h1>log<sub>2</sub></h1>
+                        </button>
+                        <br />
+                        <button class="button complex-stuff">
+                          <h1>log<sub>e</sub></h1>
+                        </button>
+                        <button class="button complex-stuff">
+                          <h1>rand</h1>
+                        </button>
+                        <button class="button complex-stuff">
+                          <h1>|x|</h1>
+                        </button>
+                        <button class="button complex-stuff">
+                          <h1>⌊x⌋</h1>
+                        </button>
+                        <button class="button complex-stuff">
+                          <h1>⌈x⌉</h1>
+                        </button>
+                        <button class="button complex-stuff">
+                          <h1>nPr</h1>
+                        </button>
+                        <button class="button complex-stuff">
+                          <h1>nCr</h1>
+                        </button>
+                        <br />
+                      </button>
                     </button>
-                    <div class="separate-btn"></div>
-                    <button class="button complex-stuff" data-text="%">
-                        <h1>%</h1>
-                    </button>
-                    <button class="button complex-stuff">
-                        <h1>x !</h1>
-                    </button>
-                    <button class="button complex-stuff">
-                        <h1>x^</h1>
-                    </button>
-                </div>
-
-                <br>
-
-                <br>
-                <div class="options-container">
-
-                <br><br>
-
-                <div class="more-functions-toggle">
-                    <button class="more-toggle-btn">MORE FUNCTIONS</button>
-                    <div class="other-functions">
-                        <button class="button complex-stuff">
-                            <h1>bin</h1>
-                        </button>
-                        <button class="button complex-stuff">
-                            <h1>dec</h1>
-
-                        </button>
-                        <button class="button complex-stuff">
-                            <h1>e <sup>x</sup></h1>
-                        </button>
-                        <button class="button complex-stuff">
-                            <h1>pi</h1>
-                        </button>
-                        <button class="button complex-stuff">
-                            <h1>g</h1>
-                        </button>
-                        <button class="button complex-stuff">
-                            <h1>log<sub>10</sub></h1>
-                        </button>
-                        <button class="button complex-stuff">
-                            <h1>1/x</h1>
-                        </button>
-                        <button class="button complex-stuff">
-                            <h1>x <sup>3</sup></h1>
-                        </button>
-                        <button class="button complex-stuff">
-                            <h1>sin</h1>
-                        </button>
-                        <button class="button complex-stuff">
-                            <h1>cos</h1>
-                        </button>
-                        <button class="button complex-stuff">
-                            <h1>tan</h1>
-                        </button>
-                        <button class="button complex-stuff">
-                            <h1>sec</h1>
-                        </button>
-                        <button class="button complex-stuff">
-                            <h1>cosec</h1>
-                        </button>
-                        <button class="button complex-stuff">
-                            <h1>cot</h1>
-                        </button>
-                        <button class="button complex-stuff">
-                            <h1>sin<sup>-1</sup></h1>
-                        </button>
-                        <button class="button complex-stuff">
-                            <h1>cos<sup>-1</sup></h1>
-                        </button>
-                        <button class="button complex-stuff">
-                            <h1>tan<sup>-1</sup></h1>
-                        </button>
-                        <button class="button complex-stuff">
-                            <h1>&#8731;</h1>
-                        </button>
-                        <button class="button complex-stuff">
-                            <h1>log<sub>2</sub></h1>
-                        </button>
-                        <button class="button complex-stuff">
-                            <h1>log<sub>e</sub></h1>
-                        </button>
-                        <button class="button complex-stuff">
-                            <h1>rand</h1>
-                        </button>
-                        <button class="button complex-stuff">
-                            <h1>|x|</h1>
-                        </button>
-                        <button class="button complex-stuff">
-                            <h1>⌊x⌋</h1>
-                        </button>
-                        <button class="button complex-stuff">
-                            <h1>⌈x⌉</h1>
-                        </button>
-                        <button class="button complex-stuff">
-                            <h1>nPr</h1>
-                        </button>
-                        <button class="button complex-stuff">
-                            <h1>nCr</h1>
-
-                            <button class="button complex-stuff">
-                                <h1>e <sup>x</sup></h1>
-                            </button>
-                            <button class="button complex-stuff">
-                                <h1>pi</h1>
-                                <button class="button complex-stuff">
-                                    <h1>log<sub>10</sub></h1>
-                                </button>
-                                <button class="button complex-stuff">
-                                    <h1>1/x</h1>
-                                </button>
-                                <br>
-                                <button class="button complex-stuff">
-                                    <h1>x <sup>3</sup></h1>
-                                </button>
-                                <button class="button complex-stuff">
-                                    <h1>sin</h1>
-                                    <button class="button complex-stuff">
-                                        <h1>cos</h1>
-                                        <button class="button complex-stuff">
-                                            <h1>tan</h1>
-                                        </button>
-                                        <button class="button complex-stuff">
-                                            <h1>sec</h1>
-                                        </button>
-                                        <button class="button complex-stuff">
-                                            <h1>cosec</h1>
-                                        </button>
-                                        <br>
-                                        <button class="button complex-stuff">
-                                            <h1>cot</h1>
-                                        </button>
-                                        <button class="button complex-stuff">
-                                            <h1>sin<sup>-1</sup></h1>
-                                        </button>
-                                        <button class="button complex-stuff">
-                                            <h1>cos<sup>-1</sup></h1>
-                                        </button>
-                                        <button class="button complex-stuff">
-                                            <h1>tan<sup>-1</sup></h1>
-                                        </button>
-                                        <button class="button complex-stuff">
-                                            <h1>sinh</h1>
-                                        </button>
-                                        <button class="button complex-stuff">
-                                            <h1>&#8731;</h1>
-                                        </button>
-                                        <button class="button complex-stuff">
-                                            <h1>log<sub>2</sub></h1>
-                                        </button>
-                                        <br>
-                                        <button class="button complex-stuff">
-                                            <h1>log<sub>e</sub></h1>
-                                        </button>
-                                        <button class="button complex-stuff">
-                                            <h1>rand</h1>
-                                        </button>
-                                        <button class="button complex-stuff">
-                                            <h1>|x|</h1>
-                                        </button>
-                                        <button class="button complex-stuff">
-                                            <h1>⌊x⌋</h1>
-                                        </button>
-                                        <button class="button complex-stuff">
-                                            <h1>⌈x⌉</h1>
-                                        </button>
-                                        <button class="button complex-stuff">
-                                            <h1>nPr</h1>
-                                        </button>
-                                        <button class="button complex-stuff">
-                                            <h1>nCr</h1>
-                                        </button>
-                                        <br>
-                                    </button>
-                                </button>
-                            </button>
-
-                        </button>
-                    </div>
-                </div>
-                <button class="solve-quadratic" onclick=" solveQuadratic()">SOLVE EQUATION</button>
+                  </button>
+                </button>
+              </div>
             </div>
-                
-                
-                <br>
-                <div class="functions-three">
-                    <button class="button triggers" data-text="enter">
-                        <h1>=</h1>
-                    </button>
-                    
-                </div>
-                <div class="historyDisplay">
-                    <h2>HISTORY</h2>
-                    <table id="tableParent"></table>
-                    <button onclick="clearLocalStorage()" class="hClear-btn">Clear History</button>
-                </div>
-            </div>
+            <button class="solve-quadratic" onclick=" solveQuadratic()">SOLVE EQUATION</button>
+          </div>
+
+          <br />
+          <div class="functions-three">
+            <button class="button triggers" data-text="enter">
+              <h1>=</h1>
+            </button>
+          </div>
+          <div class="historyDisplay">
+            <h2>HISTORY</h2>
+            <table id="tableParent"></table>
+            <button onclick="clearLocalStorage()" class="hClear-btn">Clear History</button>
+          </div>
         </div>
+      </div>
     </div>
     <div class="toggleHistory">
-        <button id="showHistoryButton" class="more-toggle-btn">HISTORY</button>
+      <button id="showHistoryButton" class="more-toggle-btn">HISTORY</button>
     </div>
 
     <audio src="tink.wav"></audio>
@@ -321,43 +318,50 @@
     <script src="script.js"></script>
     <br></br>
     <footer class="end">
-        <p class="love">Made with <span style="color: #e25555;">&hearts;</span> by <a href="https://twitter.com/Dhanush_Nehru"><span>Dhanush Nehru</span></a></p>
-        <div class="share">
-            <a href="https://www.facebook.com/sharer/sharer.php?u=https://calculator-dhanushnehru.netlify.app/" target="_blank">
-                <img src="./logos/facebook.svg" alt="Share on Facebook">
-            </a>
-            <a href="https://twitter.com/intent/tweet?url=https://calculator-dhanushnehru.netlify.app/&text=Check%20out%20this%20amazing%20calculator!" target="_blank">
-                <img src="./logos/twitter-x.svg" alt="Share on Twitter">
-            </a>
-            <a href="instagram://library?AssetPath=https://user-images.githubusercontent.com/48837703/215178413-15e5d827-f7ad-4204-b5a1-80778cac6d21.png">
-                <img src="./logos/instagram.svg" alt="Share on Instagram">
-            </a>
-            <a href="https://api.whatsapp.com/send?text=Check%20out%20this%20amazing%20calculator:%20https://calculator-dhanushnehru.netlify.app/">
-                <img src="./logos/whatsapp.svg" alt="Share on WhatsApp">
-            </a>
-        </div>
+      <p class="love">
+        Made with <span style="color: #e25555">&hearts;</span> by
+        <a href="https://twitter.com/Dhanush_Nehru"><span>Dhanush Nehru</span></a>
+      </p>
+      <div class="share">
+        <a
+          href="https://www.facebook.com/sharer/sharer.php?u=https://calculator-dhanushnehru.netlify.app/"
+          target="_blank">
+          <img src="./logos/facebook.svg" alt="Share on Facebook" />
+        </a>
+        <a
+          href="https://twitter.com/intent/tweet?url=https://calculator-dhanushnehru.netlify.app/&text=Check%20out%20this%20amazing%20calculator!"
+          target="_blank">
+          <img src="./logos/twitter-x.svg" alt="Share on Twitter" />
+        </a>
+        <a
+          href="instagram://library?AssetPath=https://user-images.githubusercontent.com/48837703/215178413-15e5d827-f7ad-4204-b5a1-80778cac6d21.png">
+          <img src="./logos/instagram.svg" alt="Share on Instagram" />
+        </a>
+        <a
+          href="https://api.whatsapp.com/send?text=Check%20out%20this%20amazing%20calculator:%20https://calculator-dhanushnehru.netlify.app/">
+          <img src="./logos/whatsapp.svg" alt="Share on WhatsApp" />
+        </a>
+      </div>
     </footer>
 
     <script>
-        math.config({ number: 'BigNumber' })
-        let brightIcon = document.getElementById("bright-icon");
+      math.config({ number: 'BigNumber' });
+      let brightIcon = document.getElementById('bright-icon');
 
-        brightIcon.onclick = () => {
-            document.body.classList.toggle("dark-theme");
-            if (document.body.classList.contains("dark-theme")) {
-                brightIcon.src = "/logos/brightness.png"
-            } else {
-                brightIcon.src = "/logos/night-mode.png";
-            }
+      brightIcon.onclick = () => {
+        document.body.classList.toggle('dark-theme');
+        if (document.body.classList.contains('dark-theme')) {
+          brightIcon.src = '/logos/brightness.png';
+        } else {
+          brightIcon.src = '/logos/night-mode.png';
         }
+      };
 
-        let neonIcon = document.getElementById("neon-icon");
+      let neonIcon = document.getElementById('neon-icon');
 
-        neonIcon.onclick = () => {
-            document.body.classList.toggle("neon-theme");
-        }
+      neonIcon.onclick = () => {
+        document.body.classList.toggle('neon-theme');
+      };
     </script>
-
-</body>
-
+  </body>
 </html>
