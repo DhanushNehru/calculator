@@ -111,7 +111,12 @@ input[type="text"] {
 	-moz-box-sizing: border-box;
 	/* Firefox, other Gecko */
 	box-sizing: border-box;
-	cursor: default;
+	cursor: text;
+}
+input[type="text"]:hover {
+	border: 2px solid yellow;
+	outline: none;
+	box-shadow: 0 0 5px yellow; 
 }
 
 .calc-buttons {
@@ -280,37 +285,94 @@ footer {
 	background-color: #80ffff;
 }
 
-/* table design */
-
+/* Table Styles */
 table {
-	font-family: arial, sans-serif;
-	border-collapse: collapse;
-	width: 100%;
+    font-family: 'Arial', sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); 
+    border-radius: 10px;
+    overflow: hidden; 
+    background-color: white; 
+    transition: transform 0.3s;
+}
+
+table:hover {
+    transform: scale(1.02);
 }
 
 td,
 th {
-	border: 1px solid #dddddd;
-	text-align: left;
-	padding: 8px;
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 12px; 
+    transition: background-color 0.3s; 
+}
+
+th {
+    background-color: #4CAF50; 
+    color: white; 
+    font-weight: bold; 
 }
 
 tr:nth-child(even) {
-	background-color: #dddddd;
+    background-color: #f9f9f9; 
 }
 
+tr:hover {
+    background-color: #e0f7fa; 
+}
+
+/* Clear Button Styles */
 .hClear-btn {
-	background-color: red;
-	color: white;
-	height: 40px;
-	margin: 10px;
-	border: none;
-	border-radius: 23px;
-	cursor: pointer;
+    background-color: #ff4444; 
+    color: white;
+    height: 45px; 
+    margin: 10px 0; 
+    border: none;
+    border-radius: 23px;
+    cursor: pointer;
+    font-size: 16px; 
+    padding: 0 20px; 
+    transition: background-color 0.3s, transform 0.2s; 
+    position: relative;
 }
 
 .hClear-btn:hover {
+    background-color: #ff0000; 
 	color: black;
+    transform: scale(1.05); 
+}
+
+.hClear-btn:focus {
+    outline: none; 
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.5); 
+}
+
+/* Active Button State */
+.hClear-btn:active {
+    transform: scale(0.95);
+}
+
+/* Tooltip Styles */
+.hClear-btn:hover::after {
+    content: 'Clear all entries'; 
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 50px; 
+    background-color: #333;
+    color: #fff;
+    padding: 5px 10px; 
+    border-radius: 5px; 
+    white-space: nowrap; 
+    z-index: 10; 
+    opacity: 0; 
+    transition: opacity 0.3s; 
+}
+
+.hClear-btn:hover::after {
+    opacity: 1; /* Show tooltip on hover */
 }
 
 /* Lots of media query for best responsiveness from a PC to 
@@ -480,4 +542,21 @@ a 2g phone :) */
 }
 .heading {
 	color: var(--primary-heading-color);
+}
+.error-message {
+    background-color: #ffebee;
+    color: #d32f2f;
+    border: 1px solid #ef9a9a;
+    border-radius: 4px;
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 16px;
+    text-align: left;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.error-message:hover {
+    background-color: #ffcdd2;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }

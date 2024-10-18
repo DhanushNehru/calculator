@@ -7,10 +7,175 @@ const historyToggleButton = document.querySelector('#showHistoryButton');
 const historyDisplay = document.querySelector('.historyDisplay');
 const parentTable = document.querySelector('#tableParent');
 var resultDisplayed = false;
-// by default
+
+// Default settings
 otherFuncView.style.display = 'none';
 historyDisplay.style.display = 'none';
 display.value = '0';
+
+// Function to verify input
+function verification(displayText, newCharacter) {
+    play();
+    const lastChar = displayText[displayText.length - 1];
+    const operators = ['*', '/', '+', '-', '//'];
+
+    // Prevent invalid starting character or consecutive operators
+    if ((displayText === '' && operators.includes(newCharacter)) || 
+        (operators.includes(lastChar) && operators.includes(newCharacter))) {
+        return displayText;
+    }
+    
+    return displayText + newCharacter;
+}
+
+// Function to solve quadratic equations
+function solveQuadratic() {
+    const equation = display.value;
+    const coeffs = equation.split(',').map(Number);
+    
+    if (coeffs.length === 3) {
+        const [a, b, c] = coeffs;
+        const discriminant = b * b - 4 * a * c;
+        if (discriminant > 0) {
+            const x1 = (-b + Math.sqrt(discriminant)) / (2 * a);
+            const x2 = (-b - Math.sqrt(discriminant)) / (2 * a);
+            display.value = `x1 = ${x1.toFixed(2)}, x2 = ${x2.toFixed(2)}`;
+        } else if (discriminant === 0) {
+            const x = -b / (2 * a);
+            display.value = `x = ${x.toFixed(2)}`;
+        } else {
+            display.value = 'No real roots';
+        }
+    } else if (coeffs.length === 4) {
+        const [a, b, c, d] = coeffs;
+        const p = (3 * a * c - b * b) / (3 * a * a);
+        const q = (2 * b * b * b - 9 * a * b * c + 27 * a * a * d) / (27 * a * a * a);
+        const roots = solveCubic(p, q);
+        display.value = roots.map((x) => x.toFixed(2)).join(', ');
+    } else {
+        swal('', 'Please enter coefficients in the screen before solving.', 'warning');
+    }
+}
+
+// Function to solve cubic equations
+function solveCubic(p, q) {
+    const D = (q * q) / 4 + (p * p * p) / 27;
+    if (D > 0) {
+        const u = Math.cbrt(-q / 2 + Math.sqrt(D));
+        const v = Math.cbrt(-q / 2 - Math.sqrt(D));
+        return [u + v];
+    } else if (D === 0) {
+        const u = Math.cbrt(-q / 2);
+        return [2 * u, -u];
+    } else {
+        const phi = Math.acos(-q / 2 / Math.sqrt((-p * p * p) / 27));
+        const r = 2 * Math.sqrt(-p / 3);
+        return [
+            r * Math.cos(phi / 3),
+            r * Math.cos((phi + 2 * Math.PI) / 3),
+            r * Math.cos((phi + 4 * Math.PI) / 3),
+        ];
+    }
+}
+
+// Function to play sound
+function play() {
+    const audio = document.querySelector('audio');
+    audio.play();
+}
+
+// Handle button clicks
+Array.prototype.forEach.call(buttons, function (button) {
+    button.addEventListener('click', function () {
+        const trimmedButtonValue = button.textContent.trim();
+        
+        if (resultDisplayed) {
+            clear();
+            resultDisplayed = false;
+        }
+
+        if (display.value === '0' && trimmedButtonValue !== '.' && !display.value.includes('.')) {
+            display.value = '';
+        }
+
+        // Operator and action handling
+        switch (trimmedButtonValue) {
+            case '=': equals(); break;
+            case '⌫': backspace(); break;
+            case 'C': clear(); break;
+            case '+/-': alterSign(); break;
+            case 'x': multiply(); break;
+            case '\u00F7': divide(); break;
+            case '//': mod(); break;
+            case 'sin': calculatesin(); break;
+            // ... other operations
+            default: 
+                if (!['', '(', ')', 'x !', 'e x', 'x 3'].includes(trimmedButtonValue)) {
+                    display.value = verification(display.value, trimmedButtonValue);
+                }
+        }
+    });
+});
+
+// Prevents multiple decimal points
+function isNumber(num) {
+    return num === '.' ? decimalPointOkay() : !isNaN(parseFloat(num)) && isFinite(num);
+}
+
+// Validate decimal point entry
+function decimalPointOkay() {
+    const screenNumber = display.value;
+    if (!screenNumber.includes('.')) return true;
+
+    const sinceLastDecimal = screenNumber.substring(screenNumber.lastIndexOf('.') + 1);
+    return !/[+\-*/()]/.test(sinceLastDecimal);
+}
+
+// Keyboard event listener
+document.addEventListener('keydown', (e) => {
+    const pressedButton = document.querySelector(`[data-text="${e.key.toLowerCase()}"]`);
+    if (pressedButton) {
+        pressedButton.classList.add('highlighted');
+        setTimeout(() => pressedButton.classList.remove('highlighted'), 200);
+    }
+
+    // Handle number input
+    if (isNumber(e.key)) {
+        if (display.value == 0 && e.key != '.' && !display.value.includes('.')) display.value = '';
+        display.value = verification(display.value, e.key);
+    }
+
+    // Handle operator input
+    if (/^[+\-\/*\(\)]+$/.test(e.key)) display.value = verification(display.value, e.key);
+    
+    // Handle special keys
+    if (e.key === 'Backspace') backspace();
+    if (e.key === 'Enter') equals();
+    if (e.key === 'c') clear();
+});
+
+// Functions for brackets
+function right_bracket() {
+    display.value += '(';
+}
+
+function left_bracket() {
+    display.value += ')';
+}
+
+// Function to evaluate expression
+function equals() {
+    try {
+        if (display.value.includes('^')) {
+            display.value = display.value.replaceAll('^', '**');
+        }
+        display.value = eval(display.value); // Make sure to handle potential eval issues.
+        resultDisplayed = true;
+        manageLocalStorage(display.value); // Store result in local storage.
+    } catch (error) {
+        display.value = 'Error'; // Error handling for invalid expressions
+    }
+}
 
 function verification(displayText, new_caracter) {
   play();
