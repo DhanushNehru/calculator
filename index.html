@@ -310,11 +310,29 @@
       </div>
     </div>
     <div class="toggleHistory">
+        <span class="errorBtn">
+            <button id="showHistoryButton" class="more-toggle-btn">HISTORY</button>
+        </span>
       <button id="showHistoryButton" class="more-toggle-btn">HISTORY</button>
     </div>
 
     <audio src="tink.wav"></audio>
 
+    <!-- This is the block to show the Toast Message -->
+    <div>
+        <section id="toast" class="info">
+            <div id="icon-wrapper">
+                <div id="icon"></div>
+            </div>
+            <div id="toast-message">
+                <h4 id="toast-title">Status</h4>
+                <p id="toast-description">Descriptive Message.</p>
+            </div>
+            <button id="toast-close">&times;</button> <!-- Close Button -->
+            <div id="timer"></div>
+        </section>
+    </div>
+    
     <script src="script.js"></script>
     <br></br>
     <footer class="end">
