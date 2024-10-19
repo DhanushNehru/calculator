@@ -654,7 +654,7 @@ historyToggleButton.addEventListener("click", () => {
   }
 
   if (localStorage.getItem("calHistory") === null) {
-    alert("Sorry! There is no calculation history.");
+    openToast('error', 'Error', 'Sorry.! There is no calculation history...!!!');
     historyDisplay.style.display = "none";
   } else {
     const node = document.createElement("tr");
@@ -725,3 +725,49 @@ function calnCr(n, r) {
 
   return result.toString();
 }
+
+
+// Global countdown variable
+let countdown; 
+
+const toast = document.querySelector("#toast");
+const toastMessageTitle = document.querySelector("#toast-title");
+const toastMessageDescription = document.querySelector("#toast-description");
+const toastTimer = document.querySelector("#timer");
+
+
+// Function to open the toast
+const openToast = (type, title, message) => {
+    toast.className = type + " open"; 
+    toastMessageTitle.textContent = title; 
+    toastMessageDescription.textContent = message; 
+
+    toastTimer.classList.remove("timer-animation");
+    void toastTimer.offsetWidth; 
+    toastTimer.classList.add("timer-animation");
+
+    toast.style.animation = "open 0.5s forwards"; 
+
+    clearTimeout(countdown);
+
+    countdown = setTimeout(closeToast, 5000);
+    const closeButton = document.querySelector("#toast-close");
+    if(closeButton)
+    {
+      closeButton.addEventListener("click", () => {
+        closeToast(); 
+    });
+    
+    }
+};
+
+// Function to close the toast
+const closeToast = () => {
+    toast.style.animation = "close 0.5s forwards"; 
+    clearTimeout(countdown); 
+    setTimeout(() => {
+        toast.className = ""; 
+    }, 500); 
+};
+
+
