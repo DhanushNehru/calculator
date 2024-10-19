@@ -123,6 +123,7 @@ Array.prototype.forEach.call(buttons, function (button) {
       trimmedButtonValue != '%' &&
       trimmedButtonValue != 'x^' &&
       trimmedButtonValue != 'x !' &&
+      trimmedButtonValue != "Γ x" &&
       trimmedButtonValue != 'e ˣ' &&
       trimmedButtonValue != 'e x' &&
       trimmedButtonValue != 'bin' &&
@@ -180,6 +181,8 @@ Array.prototype.forEach.call(buttons, function (button) {
       exponent();
     } else if (trimmedButtonValue === 'x !') {
       factorial();
+    } else if (trimmedButtonValue === "Γ x") {
+      gamma();
     } else if (trimmedButtonValue === '(') {
       right_bracket();
     } else if (trimmedButtonValue === ')') {
@@ -760,3 +763,28 @@ const closeToast = () => {
 };
 
 
+function gamma() {
+  let z = parseFloat(display.value);
+  let result;
+  if (z === 0.5) {
+    display.value = "1.772"; 
+    return;
+  } else if (z === 1) {
+    display.value = "1";
+    return;
+  } else if (z <= 0) {
+    display.value = "undefined";
+    return;
+  }
+  const NUM_SAMPLES = 100000; 
+  let sum = 0;
+  let step = 100 / NUM_SAMPLES; 
+  for (let i = 1; i <= NUM_SAMPLES; i++) {
+    let t = step * i;
+    sum += Math.pow(t, z - 1) * Math.exp(-t);
+  }
+  result = step * sum;
+  display.value = result.toFixed(4); 
+  resultDisplayed = true;
+  manageLocalStorage(display.value);
+}
