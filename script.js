@@ -288,6 +288,7 @@ Array.prototype.forEach.call(buttons, function (button) {
       trimmedButtonValue != '%' &&
       trimmedButtonValue != 'x^' &&
       trimmedButtonValue != 'x !' &&
+      trimmedButtonValue != "Γ x" &&
       trimmedButtonValue != 'e ˣ' &&
       trimmedButtonValue != 'e x' &&
       trimmedButtonValue != 'bin' &&
@@ -345,6 +346,8 @@ Array.prototype.forEach.call(buttons, function (button) {
       exponent();
     } else if (trimmedButtonValue === 'x !') {
       factorial();
+    } else if (trimmedButtonValue === "Γ x") {
+      gamma();
     } else if (trimmedButtonValue === '(') {
       right_bracket();
     } else if (trimmedButtonValue === ')') {
@@ -807,9 +810,9 @@ historyToggleButton.addEventListener('click', () => {
     parentTable.removeChild(parentTable.firstChild);
   }
 
-  if (localStorage.getItem('calHistory') === null) {
-    swal('', 'Sorry! There is no calculation history.', 'info');
-    historyDisplay.style.display = 'none';
+  if (localStorage.getItem("calHistory") === null) {
+    openToast('error', 'Error', 'Sorry.! There is no calculation history...!!!');
+    historyDisplay.style.display = "none";
   } else {
     const node = document.createElement('tr');
     node.innerHTML = `<th>Date</th><th>Time</th><th>Final Calculation</th>`;
@@ -878,4 +881,75 @@ function calnCr(n, r) {
   }
 
   return result.toString();
+}
+
+
+// Global countdown variable
+let countdown; 
+
+const toast = document.querySelector("#toast");
+const toastMessageTitle = document.querySelector("#toast-title");
+const toastMessageDescription = document.querySelector("#toast-description");
+const toastTimer = document.querySelector("#timer");
+
+
+// Function to open the toast
+const openToast = (type, title, message) => {
+    toast.className = type + " open"; 
+    toastMessageTitle.textContent = title; 
+    toastMessageDescription.textContent = message; 
+
+    toastTimer.classList.remove("timer-animation");
+    void toastTimer.offsetWidth; 
+    toastTimer.classList.add("timer-animation");
+
+    toast.style.animation = "open 0.5s forwards"; 
+
+    clearTimeout(countdown);
+
+    countdown = setTimeout(closeToast, 5000);
+    const closeButton = document.querySelector("#toast-close");
+    if(closeButton)
+    {
+      closeButton.addEventListener("click", () => {
+        closeToast(); 
+    });
+    
+    }
+};
+
+// Function to close the toast
+const closeToast = () => {
+    toast.style.animation = "close 0.5s forwards"; 
+    clearTimeout(countdown); 
+    setTimeout(() => {
+        toast.className = ""; 
+    }, 500); 
+};
+
+
+function gamma() {
+  let z = parseFloat(display.value);
+  let result;
+  if (z === 0.5) {
+    display.value = "1.772"; 
+    return;
+  } else if (z === 1) {
+    display.value = "1";
+    return;
+  } else if (z <= 0) {
+    display.value = "undefined";
+    return;
+  }
+  const NUM_SAMPLES = 100000; 
+  let sum = 0;
+  let step = 100 / NUM_SAMPLES; 
+  for (let i = 1; i <= NUM_SAMPLES; i++) {
+    let t = step * i;
+    sum += Math.pow(t, z - 1) * Math.exp(-t);
+  }
+  result = step * sum;
+  display.value = result.toFixed(4); 
+  resultDisplayed = true;
+  manageLocalStorage(display.value);
 }
