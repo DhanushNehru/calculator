@@ -69,7 +69,8 @@ function solveQuadratic() {
     const roots = solveCubic(p, q);
     display.value = roots.map((x) => x.toFixed(2)).join(', ');
   } else {
-    swal('', 'Please enter coefficients in the screen before solving.', 'warning');
+    play();
+    openToast('error', 'Error', 'Please enter coefficients in the screen before solving..!!');
   }
 }
 
@@ -646,6 +647,7 @@ historyToggleButton.addEventListener('click', () => {
   }
 
   if (localStorage.getItem("calHistory") === null) {
+    play();
     openToast('error', 'Error', 'Sorry.! There is no calculation history...!!!');
     historyDisplay.style.display = "none";
   } else {
