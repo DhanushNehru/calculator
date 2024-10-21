@@ -507,7 +507,7 @@ a 2g phone :) */
   
 #icon-wrapper
 {
-  width: 30px;
+  min-width: 30px;
   height: 30px;
   background: var(--secondary);
   border-radius: 5px;
