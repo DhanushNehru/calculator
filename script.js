@@ -367,8 +367,7 @@ function equals() {
       manageLocalStorage(math.evaluate(display.value).toString());
     } catch (error) {
       console.log(error);
-      // display.value = "Syntax error !";
-      swal('', 'Syntax error! Kindly recheck.', 'error');
+      openToast('error', 'Error', 'Syntax error! Kindly recheck...!!');
     }
   }
 }
