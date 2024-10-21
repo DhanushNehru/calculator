@@ -49,6 +49,10 @@
 	--primary-calculator-shadow: #ff5f72;
 }
 
+.html {
+	scroll-behavior: smooth;
+}
+
 body {
 	background-color: var(--primary-body-color);
 	/* Chrome 10-25, Safari 5.1-6 */
@@ -786,4 +790,23 @@ main button
   border: 1px solid #42C0F2; 
   color: #42C0F2;
   background: #CFEFFC;
+}
+
+#scrollToTopBtn {
+    display: none; /* Hidden by default */
+    background-color: white; /* Blue */
+    color: black; /* White text */
+	
+    border: none; /* No borders */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px; /* Some padding */
+    cursor: pointer; /* Pointer cursor on hover */
+	z-index: 1000;
+}
+#scrollToTopBtn:hover {
+	background-color: #d2cdcd;
+	transition: 0.2s;
+	color: rgb(255, 85, 23);
+	text-shadow: 0px 0px 1px white;
+	box-shadow: 0 5px 15px rgba(5, 197, 245, 0.986);
 }

@@ -6,8 +6,10 @@ const calculatorContainer = document.getElementById('body_screen');
 const historyToggleButton = document.querySelector('#showHistoryButton');
 const historyDisplay = document.querySelector('.historyDisplay');
 const parentTable = document.querySelector('#tableParent');
+const scrollToTopBtn = document.getElementById('scrollToTopBtn');
 var resultDisplayed = false;
 // by default
+let moreFunctionsPressed = false; // Flag to track if the more functions button was pressed
 otherFuncView.style.display = 'none';
 historyDisplay.style.display = 'none';
 display.value = '0';
@@ -591,13 +593,34 @@ function calculateitan() {
   display.value = (180 / Math.PI) * radian;
 }
 
+// Scroll to top button
+
+window.onscroll = function() {
+    if (moreFunctionsPressed &&  document.documentElement.scrollTop > 20 ) {
+        scrollToTopBtn.style.display = "block";
+    } else {
+        scrollToTopBtn.style.display = "none";
+    }
+};
+
+// Function to scroll to the top of the document
+// Function to scroll to the top of the document smoothly
+scrollToTopBtn.onclick = function() {
+  window.scrollTo({
+      top: 0,
+      behavior: 'smooth' // Smooth scroll to top
+  });
+};
+
 // more functions toggle function.
 
 toggleButton.addEventListener('click', () => {
   if (otherFuncView.style.display === 'none') {
+    moreFunctionsPressed = true;
     toggleButton.innerHTML = 'HIDE FUNCTIONS';
     otherFuncView.style.display = '';
   } else {
+    moreFunctionsPressed = false
     otherFuncView.style.display = 'none';
     toggleButton.innerHTML = 'MORE FUNCTIONS';
   }
