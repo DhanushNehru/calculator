@@ -692,7 +692,7 @@ historyToggleButton.addEventListener('click', () => {
 
 const clearLocalStorage = () => {
   localStorage.clear('calHistory');
-  swal('', 'Calculator history deleted!', 'success');
+  openToast('success', 'Success', 'Calculator history deleted...!!!'); 
   historyDisplay.style.display = 'none';
 };
 
