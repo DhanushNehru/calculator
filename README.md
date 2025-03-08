@@ -24,8 +24,8 @@ A Calculator that performs many **mathematical** functions
 - Factorial of n
 - Trigonometric operation
 - Cuberoot
--nPr[Permutation of n elments]
--nCr[Number of combinations for given set]
+- nPr[Permutation of n elments]
+- nCr[Number of combinations for given set]
 ```
 
 ## Gitpod
