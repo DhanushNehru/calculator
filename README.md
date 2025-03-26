@@ -51,6 +51,8 @@ You can use Gitpod in the cloud [![Gitpod Ready-to-Code](https://img.shields.io/
 To deploy the project locally
 > You need to clone the project and Run the **HTML** file.
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/7eb8d807-e17a-4d7d-8171-ca5c979ad2c4/deploy-status?branch=main)](https://app.netlify.com/sites/calculator-dhanushnehru/deploys)
+
 ## Screenshot
 
 >Interface of the **Calculator**
@@ -60,3 +62,5 @@ To deploy the project locally
 </br>
 
 If you liked this project support it by starring it 🌟 and share it on social media
+
+
