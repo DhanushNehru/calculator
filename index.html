@@ -236,6 +236,34 @@
               <h1>=</h1>
             </button>
           </div>
+          
+
+ <div class="currency-converter">
+    <h3>Currency Converter</h3>
+    <input type="number" id="amount" placeholder="Enter amount">
+    <select id="fromCurrency">
+        <option value="USD">USD - US Dollar</option>
+        <option value="INR">INR - Indian Rupee</option>
+        <option value="EUR">EUR - Euro</option>
+        <option value="GBP">GBP - British Pound</option>
+        <option value="JPY">JPY - Japanese Yen</option>
+        <option value="AUD">AUD - Australian Dollar</option>
+        <option value="CAD">CAD - Canadian Dollar</option>
+    </select>
+    <select id="toCurrency">
+        <option value="USD">USD - US Dollar</option>
+        <option value="INR">INR - Indian Rupee</option>
+        <option value="EUR">EUR - Euro</option>
+        <option value="GBP">GBP - British Pound</option>
+        <option value="JPY">JPY - Japanese Yen</option>
+        <option value="AUD">AUD - Australian Dollar</option>
+        <option value="CAD">CAD - Canadian Dollar</option>
+    </select>
+    <button onclick="convertCurrency()">Convert</button>
+    <p id="convertedAmount"></p>
+</div>
+
+
           <div class="historyDisplay">
             <h2>HISTORY</h2>
             <table id="tableParent"></table>
