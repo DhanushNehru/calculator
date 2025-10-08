@@ -89,10 +89,8 @@ body::-webkit-scrollbar {
 
 .calculator-container {
 	text-align: center;
-}
-
-.calculator {
-	width: 70%;
+	width:100%;
+	max-width: 70%;
 	background-color: var(--primary-calculator-color);
 	padding: 20px;
 	border-radius: 10px;
@@ -100,7 +98,7 @@ body::-webkit-scrollbar {
 	box-shadow: 2px 2px 40px var(--primary-calculator-shadow);
 }
 
-input[type="text"] {
+input[type="text"]{
 	width: 90%;
 	height: 100px;
 	border-radius: 20px;
@@ -125,7 +123,7 @@ input[type="text"] {
 
 .button {
 	margin: 3px;
-	width: 108px;
+	width: 100px;
 	border: 2px solid black;
 	height: 80px;
 	border-radius: 40px;
@@ -210,10 +208,28 @@ button:hover {
 	display: flex;
 }
 
+
 .other-functions {
-	margin: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);   /* 3 columns in each row */
+    gap: 10px;
+	justify-content:center;
+    width: 100%;
+    max-width: 380px;
+    margin: 16px auto 24px auto;
 	text-align: center;
 }
+
+.other-functions .button {
+   width: 90px;           /* same as above buttons */
+    min-width: 0;
+    height: 42px;
+    font-size: 1rem;
+    border-radius: 20px;
+    box-sizing: border-box;
+    margin: 0;
+}
+
 
 .triggers {
 	background-color: #ffc266;
@@ -427,6 +443,52 @@ a 2g phone :) */
 	.triggers {
 		width: 80%;
 	}
+}
+
+@media (max-width: 600px) {
+    .calculator {
+        max-width: 99vw;
+        padding: 8px 2px;
+    }
+    input[type="text"] {
+        height: 55px;
+        font-size: 1.1rem;
+        padding: 8px;
+    }
+    .button {
+        min-width: 40px;
+        height: 40px;
+        font-size: 0.9rem;
+        border-radius: 18px;
+        padding: 3px 0;
+    }
+    .calc-buttons {
+        gap: 6px;
+    }
+    .more-toggle-btn,
+    .solve-quadratic {
+        width: 98%;
+        font-size: 1rem;
+        margin: 8px auto;
+        min-width: 0;
+        padding: 6px 2px;
+    }
+}
+@media (max-width: 400px) {
+    .calculator {
+        padding: 4px 0;
+    }
+    input[type="text"] {
+        font-size: 0.7rem;
+        padding: 4px;
+        height: 35px;
+    }
+    .button {
+        min-width: 22px;
+        height: 25px;
+        font-size: 0.7rem;
+        border-radius: 10px;
+    }
 }
 
 .mode-toggle {
