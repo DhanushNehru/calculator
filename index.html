@@ -30,7 +30,12 @@
 
     <div class="calculator-container" id="calculator_container_screen">
       <div class="calculator">
-        <input type="text" title="You can directly type." id="screen" maxlength="30" readonly />
+        <div style="display: flex; align-items: center;">
+          <input type="text" title="You can directly type." id="screen" maxlength="30" readonly />
+          <button id="copy-result-btn" title="Copy result" style="margin-left:10px; background:transparent; border:none; cursor:pointer; font-size:1.5em;">
+            <i class="bx bx-copy"></i>
+          </button>
+        </div>
         <div class="calc-buttons">
           <br />
           <div class="functions-one">
@@ -271,11 +276,11 @@
     <script src="script.js"></script>
     <br></br>
     <footer class="end">
-      <p class="love">
+      <p class="love" style="font-size:14px;">
         Made with <span style="color: #e25555">&hearts;</span> by
         <a href="https://twitter.com/Dhanush_Nehru"><span>Dhanush Nehru</span></a>
       </p>
-      <div class="share">
+      <div class="share" style="font-size:13px;">
         <a
           href="https://www.facebook.com/sharer/sharer.php?u=https://calculator-dhanushnehru.netlify.app/"
           target="_blank">

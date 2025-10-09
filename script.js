@@ -812,3 +812,13 @@ function gamma() {
   resultDisplayed = true;
   manageLocalStorage(display.value);
 }
+
+// Copy result button functionality
+const copyBtn = document.getElementById('copy-result-btn');
+if (copyBtn) {
+  copyBtn.addEventListener('click', () => {
+    navigator.clipboard.writeText(display.value)
+      .then(() => openToast('success', 'Copied!', 'Result copied to clipboard.'))
+      .catch(() => openToast('error', 'Error', 'Could not copy result.'));
+  });
+}
