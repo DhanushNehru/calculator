@@ -439,7 +439,7 @@ function factorial() {
   }
 
   // Show scientific notation for large results
-  display.value = result.toString().length > 15 ? result.toExponential(5) : result.toString();
+  display.value = result.toString().length > 15 ? Number(result).toExponential(5) : result.toString();
   resultDisplayed = true;
   manageLocalStorage(display.value);
 }
