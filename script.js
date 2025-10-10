@@ -415,22 +415,35 @@ function mod() {
   manageLocalStorage(eval(modulo));
 }
 
+// Factorial Function
 function factorial() {
-  var number = 1;
-  if (display.value === 0) {
-    display.value = '1';
-  } else if (display.value < 0) {
-    display.value = 'undefined';
-  } else {
-    var number = 1;
-    for (var i = display.value; i > 0; i--) {
-      number *= i;
-    }
-    display.value = number;
+  play(); // optional sound if used
+  const display = document.getElementById('screen');
+  const num = parseFloat(display.value);
+
+  if (isNaN(num)) {
+    openToast('error', 'Error', 'Please enter a valid number!');
+    return;
   }
+
+  if (num < 0) {
+    display.value = 'undefined';
+    resultDisplayed = true;
+    manageLocalStorage(display.value);
+    return;
+  }
+
+  let result = 1n;
+  for (let i = 1n; i <= BigInt(Math.floor(num)); i++) {
+    result *= i;
+  }
+
+  // Show scientific notation for large results
+  display.value = result.toString().length > 15 ? Number(result).toExponential(5) : result.toString();
   resultDisplayed = true;
   manageLocalStorage(display.value);
 }
+
 
 function square() {
   display.value = eval(display.value * display.value);
