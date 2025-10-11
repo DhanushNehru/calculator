@@ -30,7 +30,12 @@
 
     <div class="calculator-container" id="calculator_container_screen">
       <div class="calculator">
-        <input type="text" title="You can directly type." id="screen" maxlength="30" readonly />
+        <div style="display: flex; align-items: center;">
+          <input type="text" title="You can directly type." id="screen" maxlength="30" readonly />
+          <button id="copy-result-btn" class="copy-result-btn" title="Copy result">
+            <i class="bx bx-copy"></i>
+          </button>
+        </div>
         <div class="calc-buttons">
           <br />
           <div class="functions-one">

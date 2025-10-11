@@ -256,13 +256,9 @@ footer {
 	padding: 1rem;
 }
 
-.end {
-	background-color: var(--primary-end-color);
-	color: rgb(169, 184, 193);
-	text-align: center;
-	padding: 0.25rem;
-	bottom: 0;
-	font-size: 20px;
+footer.end {
+  font-size: 13px;
+  padding: 0.5rem;
 }
 .love{
 	font-size: 30px;
