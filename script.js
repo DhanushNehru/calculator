@@ -76,6 +76,35 @@ function solveQuadratic() {
   }
 }
 
+function convertCurrency() {
+    const amount = parseFloat(document.getElementById("amount").value);
+    const fromCurrency = document.getElementById("fromCurrency").value;
+    const toCurrency = document.getElementById("toCurrency").value;
+    const resultElement = document.getElementById("convertedAmount");
+
+    if (isNaN(amount) || amount <= 0) {
+        alert("Please enter a valid amount.");
+        return;
+    }
+    const rates = {
+        USD: 1,
+        INR: 83.0,
+        EUR: 0.92,
+        GBP: 0.79,
+        JPY: 146.2,
+        AUD: 1.55,
+        CAD: 1.35
+    };
+
+  
+    const amountInUSD = amount / rates[fromCurrency];
+    const convertedValue = amountInUSD * rates[toCurrency];
+
+    resultElement.textContent = `${convertedValue.toFixed(2)} ${toCurrency}`;
+}
+
+
+
 function solveCubic(p, q) {
   const D = (q * q) / 4 + (p * p * p) / 27;
   if (D > 0) {
