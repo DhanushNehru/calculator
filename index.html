@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="style.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Calculator | Dhanush Nehru</title>
+    <title>Calculator </title>
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
     <link
       rel="icon"
@@ -28,9 +28,9 @@
       </nav>
     </header>
 
-    <div class="calculator-container" id="calculator_container_screen">
+      <div class="calculator-container" id="calculator_container_screen">
       <div class="calculator">
-        <div style="display: flex; align-items: center;">
+        <div class="input-container">
           <input type="text" title="You can directly type." id="screen" maxlength="30" readonly />
           <button id="copy-result-btn" class="copy-result-btn" title="Copy result">
             <i class="bx bx-copy"></i>
@@ -216,51 +216,59 @@
     </div>
     
     <script src="script.js"></script>
-    <br>
-    <footer class="end">
-      <p class="love">
-        Made with <span style="color: #e25555">&hearts;</span> by
-        <a href="https://twitter.com/Dhanush_Nehru"><span>Dhanush Nehru</span></a>
-      </p>
-      <div class="share">
-        <a
-          href="https://www.facebook.com/sharer/sharer.php?u=https://calculator-dhanushnehru.netlify.app/"
-          target="_blank">
-          <img src="./logos/facebook.svg" alt="Share on Facebook" />
-        </a>
-        <a
-          href="https://twitter.com/intent/tweet?url=https://calculator-dhanushnehru.netlify.app/&text=Check%20out%20this%20amazing%20calculator!"
-          target="_blank">
-          <img src="./logos/twitter-x.svg" alt="Share on Twitter" />
-        </a>
-        <a
-          href="instagram://library?AssetPath=https://user-images.githubusercontent.com/48837703/215178413-15e5d827-f7ad-4204-b5a1-80778cac6d21.png">
-          <img src="./logos/instagram.svg" alt="Share on Instagram" />
-        </a>
-        <a
-          href="https://api.whatsapp.com/send?text=Check%20out%20this%20amazing%20calculator:%20https://calculator-dhanushnehru.netlify.app/">
-          <img src="./logos/whatsapp.svg" alt="Share on WhatsApp" />
-        </a>
-      </div>
-    </footer>
 
     <script>
       math.config({ number: 'BigNumber' });
+      
+      // Mode toggle functionality
       let brightIcon = document.getElementById('bright-icon');
-
-      brightIcon.onclick = () => {
-        document.body.classList.toggle('dark-theme');
-        if (document.body.classList.contains('dark-theme')) {
-          brightIcon.src = '/logos/brightness.png';
-        } else {
-          brightIcon.src = '/logos/night-mode.png';
-        }
-      };
-
       let neonIcon = document.getElementById('neon-icon');
 
+      // Function to reset all themes
+      function resetThemes() {
+        document.body.classList.remove('dark-theme', 'neon-theme');
+        brightIcon.innerHTML = '<i class="bx bx-sun"></i>';
+        neonIcon.innerHTML = '<i class="bx bx-moon"></i>';
+      }
+
+      // Light mode toggle
+      brightIcon.onclick = () => {
+        // Remove other themes first
+        document.body.classList.remove('neon-theme');
+        // Toggle dark theme
+        document.body.classList.toggle('dark-theme');
+        
+        if (document.body.classList.contains('dark-theme')) {
+          brightIcon.innerHTML = '<i class="bx bx-moon"></i>';
+          brightIcon.title = 'Switch to Light Mode';
+        } else {
+          brightIcon.innerHTML = '<i class="bx bx-sun"></i>';
+          brightIcon.title = 'Switch to Dark Mode';
+        }
+        
+        // Reset neon icon
+        neonIcon.innerHTML = '<i class="bx bx-moon"></i>';
+        neonIcon.title = 'Neon Mode';
+      };
+
+      // Neon mode toggle
       neonIcon.onclick = () => {
+        // Remove other themes first
+        document.body.classList.remove('dark-theme');
+        // Toggle neon theme
         document.body.classList.toggle('neon-theme');
+        
+        if (document.body.classList.contains('neon-theme')) {
+          neonIcon.innerHTML = '<i class="bx bx-moon"></i>';
+          neonIcon.title = 'Disable Neon Mode';
+        } else {
+          neonIcon.innerHTML = '<i class="bx bx-moon"></i>';
+          neonIcon.title = 'Neon Mode';
+        }
+        
+        // Reset bright icon
+        brightIcon.innerHTML = '<i class="bx bx-sun"></i>';
+        brightIcon.title = 'Dark Mode';
       };
     </script>
   </body>

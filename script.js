@@ -835,3 +835,86 @@ if (copyBtn) {
       .catch(() => openToast('error', 'Error', 'Could not copy result.'));
   });
 }
+
+// ===== RESPONSIVE WEB DESIGN ENHANCEMENTS =====
+
+// Touch-friendly interactions
+document.addEventListener('touchstart', function(e) {
+  // Add touch feedback
+  if (e.target.classList.contains('button')) {
+    e.target.style.transform = 'scale(0.95)';
+  }
+});
+
+document.addEventListener('touchend', function(e) {
+  // Remove touch feedback
+  if (e.target.classList.contains('button')) {
+    setTimeout(() => {
+      e.target.style.transform = '';
+    }, 100);
+  }
+});
+
+// Prevent zoom on double tap for iOS
+let lastTouchEnd = 0;
+document.addEventListener('touchend', function (event) {
+  const now = (new Date()).getTime();
+  if (now - lastTouchEnd <= 300) {
+    event.preventDefault();
+  }
+  lastTouchEnd = now;
+}, false);
+
+// Handle orientation change
+window.addEventListener('orientationchange', function() {
+  // Small delay to ensure proper layout recalculation
+  setTimeout(() => {
+    // Trigger a resize event to recalculate layouts
+    window.dispatchEvent(new Event('resize'));
+  }, 100);
+});
+
+// Viewport height fix for mobile browsers
+function setViewportHeight() {
+  const vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
+}
+
+// Set initial viewport height
+setViewportHeight();
+
+// Update viewport height on resize
+window.addEventListener('resize', setViewportHeight);
+window.addEventListener('orientationchange', setViewportHeight);
+
+// Performance optimization for mobile
+if ('IntersectionObserver' in window) {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.willChange = 'transform';
+      } else {
+        entry.target.style.willChange = 'auto';
+      }
+    });
+  });
+  
+  // Observe all buttons for performance optimization
+  document.querySelectorAll('.button').forEach(button => {
+    observer.observe(button);
+  });
+}
+
+// Add haptic feedback for supported devices
+function addHapticFeedback() {
+  if ('vibrate' in navigator) {
+    navigator.vibrate(10); // Short vibration
+  }
+}
+
+// Add haptic feedback to button clicks
+document.addEventListener('click', function(e) {
+  if (e.target.classList.contains('button')) {
+    addHapticFeedback();
+  }
+});
