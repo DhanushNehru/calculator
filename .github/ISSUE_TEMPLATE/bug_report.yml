@@ -1,0 +1,67 @@
+name: 🐞 Bug Report
+description: Report a bug or unexpected behavior in the project.
+title: "[BUG] <Enter a clear and concise title here>"
+labels: ["bug"]
+assignees: []
+
+body:
+  - type: input
+    id: title
+    attributes:
+      label: Title
+      description: A short, descriptive title for the bug.
+      placeholder: "Feature not loading on dashboard"
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Provide a clear and concise description of the issue.
+      placeholder: "Explain what the bug is and when it occurs..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to Reproduce
+      description: Steps to reproduce the behavior.
+      placeholder: |
+        1. Go to '...'
+        2. Click on '...'
+        3. Scroll down to '...'
+        4. See error
+    validations:
+      required: false
+
+  - type: textarea
+    id: expected_actual
+    attributes:
+      label: Expected vs Actual Behavior
+      description: Explain what you expected to happen and what actually happened.
+      placeholder: |
+        **Expected:** The app should...
+        **Actual:** Instead, it...
+
+  - type: input
+    id: environment
+    attributes:
+      label: Environment Details
+      description: Mention your environment details (OS, browser, Node.js version, etc.)
+      placeholder: "e.g., Windows 11, Chrome 128, Node v18.17.0"
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots or Logs
+      description: Attach screenshots or paste relevant console logs (if applicable).
+      placeholder: "Drag and drop screenshots or paste logs here..."
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Additional Note
+      description: Any additional context or information about the issue.
+      placeholder: "Add any other details that might help us investigate."
