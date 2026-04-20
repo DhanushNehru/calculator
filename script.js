@@ -245,6 +245,17 @@ Array.prototype.forEach.call(buttons, function (button) {
     }
   });
 });
+document.getElementById('logBtn').addEventListener('click', log);
+function log() {
+    const num = parseFloat(display.value);
+    if (isNaN(num) || num <= 0) {
+        openToast('error', 'Error', 'Enter a positive number to calculate log');
+        return;
+    }
+    display.value = Math.log10(num);
+    resultDisplayed = true;
+    manageLocalStorage(display.value);
+}
 
 // Prevents multiple decimal points from being typed through keyboard
 function isNumber(num) {
